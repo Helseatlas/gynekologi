@@ -1,7 +1,7 @@
 %let tema=Hyster;
 
 data &tema._Lap_dp_bohf2;
-set &tema._Lap_dp_bohf;
+set &tema._Lap_dp_bohf_tot;
 RateSnittLap=RateSnitt;
 rateLap2014=rate2014;
 rateLap2015=rate2015;
@@ -15,7 +15,7 @@ keep BoHF RateSnittLap RateSnittNlap &tema._Lap_dp Innbyggere rateLap2014 rateLa
 run;
 
 data &tema._Aapen_dp_bohf2;
-set &tema._Aapen_dp_bohf;
+set &tema._Aapen_dp_bohf_tot;
 RateSnittApen=RateSnitt;
 rateApen2014=rate2014;
 rateApen2015=rate2015;
@@ -29,7 +29,7 @@ keep BoHF RateSnittApen RateSnittNapen &tema._Aapen_dp Innbyggere rateApen2014 r
 run;
 
 data &tema._Vaginal_dp_bohf2;
-set &tema._Vaginal_dp_bohf;
+set &tema._Vaginal_dp_bohf_tot;
 RateSnittVag=RateSnitt;
 rateVag2014=rate2014;
 rateVag2015=rate2015;

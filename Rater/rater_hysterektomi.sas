@@ -1,7 +1,15 @@
 %let agg_var = Hyster_Aapen_dp; *D-diagnose, P-prosedure;
+%Let aldersspenn=in (17:95); /*Definerer det aktuelle aldersspennet: (0:105) --> 0 til 105 år*/
+
+/*
+2. mai 2018
+Hysterektomi kjører ikke rater_felles.sas.
+Fikk flere feilmeldinger.
+*/
+
+
 %let Ratefil=helseatl.k_u_&agg_var;
 
-%Let aldersspenn=in (17:95); /*Definerer det aktuelle aldersspennet: (0:105) --> 0 til 105 år*/
 %Let Alderskategorier=30; /*20, 21, 30, 31, 40, 41, 50, 51 eller 99
 							20=2-delt med alle aldre, 21=2-delt KUN med aldre med RV
 							30 3-delt med alle aldre, 31=3-delt KUN med aldre med RV
@@ -21,7 +29,7 @@ else if 80<=alder then alder_ny=5;
 /******  DATAGRUNNLAG  ****************************************************************/
 %let RV_variabelnavn= tot; /*navn på ratevariabel i det aggregerte datasettet*/
 %Let ratevariabel = Hysterektomi - aapen; /*Brukes til å lage "pene" overskrifter*/
-%Let forbruksmal = &agg_var; /*Brukes til å lage tabell-overskrift i Årsvarfig, gir også navn til 'ut'-datasett*/
+%Let forbruksmal = &agg_var._&RV_variabelnavn; /*Brukes til å lage tabell-overskrift i Årsvarfig, gir også navn til 'ut'-datasett*/
 
 %utvalgx;
 %omraadeNorge;
@@ -47,7 +55,7 @@ run;
 /******  DATAGRUNNLAG  ****************************************************************/
 %let RV_variabelnavn= tot; /*navn på ratevariabel i det aggregerte datasettet*/
 %Let ratevariabel = Hysterektomi - vaginal; /*Brukes til å lage "pene" overskrifter*/
-%Let forbruksmal = &agg_var; /*Brukes til å lage tabell-overskrift i Årsvarfig, gir også navn til 'ut'-datasett*/
+%Let forbruksmal = &agg_var._&RV_variabelnavn; /*Brukes til å lage tabell-overskrift i Årsvarfig, gir også navn til 'ut'-datasett*/
 
 %utvalgx;
 %omraadeNorge;
@@ -74,7 +82,7 @@ run;
 /******  DATAGRUNNLAG  ****************************************************************/
 %let RV_variabelnavn= tot; /*navn på ratevariabel i det aggregerte datasettet*/
 %Let ratevariabel = Hysterektomi - lapraskopisk; /*Brukes til å lage "pene" overskrifter*/
-%Let forbruksmal = &agg_var; /*Brukes til å lage tabell-overskrift i Årsvarfig, gir også navn til 'ut'-datasett*/
+%Let forbruksmal = &agg_var._&RV_variabelnavn; /*Brukes til å lage tabell-overskrift i Årsvarfig, gir også navn til 'ut'-datasett*/
 
 %utvalgx;
 %omraadeNorge;
@@ -103,7 +111,7 @@ run;
 /******  DATAGRUNNLAG  ****************************************************************/
 %let RV_variabelnavn= tot; /*navn på ratevariabel i det aggregerte datasettet*/
 %Let ratevariabel = Hysterektomi - total; /*Brukes til å lage "pene" overskrifter*/
-%Let forbruksmal = &agg_var; /*Brukes til å lage tabell-overskrift i Årsvarfig, gir også navn til 'ut'-datasett*/
+%Let forbruksmal = &agg_var._&RV_variabelnavn; /*Brukes til å lage tabell-overskrift i Årsvarfig, gir også navn til 'ut'-datasett*/
 
 %utvalgx;
 %omraadeNorge;

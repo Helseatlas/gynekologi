@@ -1,4 +1,4 @@
-/***********INKONTINENS***********************/
+
 
 %let agg_var = endometriose_d;
 %let Ratefil=helseatl.k_u_&agg_var;
