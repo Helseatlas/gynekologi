@@ -1,5 +1,5 @@
 
-%let agg_var = endomBiopsi_p;
+%let agg_var = diagEndoB_p;
 %let Ratefil=helseatl.k_u_&agg_var;
 
 %Let aldersspenn=in (17:97); /*Definerer det aktuelle aldersspennet: (0:105) --> 0 til 105 år*/
@@ -17,12 +17,10 @@ else if 65<=alder<=79 then alder_ny=4;
 else if 80<=alder then alder_ny=5;
 %mend;
 
-
-
 /******  DATAGRUNNLAG  ****************************************************************/
-%let RV_variabelnavn= poli_off; /*navn på ratevariabel i det aggregerte datasettet*/
-%Let ratevariabel = &agg_var._off; /*Brukes til å lage "pene" overskrifter*/
-%Let forbruksmal = &agg_var._off; /*Brukes til å lage tabell-overskrift i Årsvarfig, gir også navn til 'ut'-datasett*/
+%let RV_variabelnavn= poli; /*navn på ratevariabel i det aggregerte datasettet*/
+%Let ratevariabel = &agg_var; /*Brukes til å lage "pene" overskrifter*/
+%Let forbruksmal = &agg_var; /*Brukes til å lage tabell-overskrift i Årsvarfig, gir også navn til 'ut'-datasett*/
 
 %utvalgx;
 %omraadeNorge;
@@ -35,10 +33,16 @@ run;
 %forholdstall;
 
 
+
+
+%let agg_var = diagEndoU_p;
+%let Ratefil=helseatl.k_u_&agg_var;
+
+
 /******  DATAGRUNNLAG  ****************************************************************/
-%let RV_variabelnavn= poli_priv; /*navn på ratevariabel i det aggregerte datasettet*/
-%Let ratevariabel = &agg_var._priv; /*Brukes til å lage "pene" overskrifter*/
-%Let forbruksmal = &agg_var._priv; /*Brukes til å lage tabell-overskrift i Årsvarfig, gir også navn til 'ut'-datasett*/
+%let RV_variabelnavn= tot; /*navn på ratevariabel i det aggregerte datasettet*/
+%Let ratevariabel = &agg_var; /*Brukes til å lage "pene" overskrifter*/
+%Let forbruksmal = &agg_var; /*Brukes til å lage tabell-overskrift i Årsvarfig, gir også navn til 'ut'-datasett*/
 
 %utvalgx;
 %omraadeNorge;
@@ -49,7 +53,6 @@ delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
 run;
 
 %forholdstall;
-
 
 
 
