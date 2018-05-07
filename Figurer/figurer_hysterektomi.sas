@@ -1,7 +1,7 @@
 %let tema=Hyster;
 
 data &tema._Lap_dp_bohf2;
-set &tema._Lap_dp_bohf_tot;
+set &tema._Lap_dp_tot_bohf;
 RateSnittLap=RateSnitt;
 rateLap2014=rate2014;
 rateLap2015=rate2015;
@@ -10,12 +10,12 @@ if bohf=8888 then do;
 RateSnittNlap=RateSnitt;
 end;
 
-keep BoHF RateSnittLap RateSnittNlap &tema._Lap_dp Innbyggere rateLap2014 rateLap2015 rateLap2016;
+keep BoHF RateSnittLap RateSnittNlap &tema._Lap_dp_tot Innbyggere rateLap2014 rateLap2015 rateLap2016;
 
 run;
 
 data &tema._Aapen_dp_bohf2;
-set &tema._Aapen_dp_bohf_tot;
+set &tema._Aapen_dp_tot_bohf;
 RateSnittApen=RateSnitt;
 rateApen2014=rate2014;
 rateApen2015=rate2015;
@@ -24,12 +24,12 @@ if bohf=8888 then do;
 RateSnittNapen=RateSnitt;
 end;
 
-keep BoHF RateSnittApen RateSnittNapen &tema._Aapen_dp Innbyggere rateApen2014 rateApen2015 rateApen2016;
+keep BoHF RateSnittApen RateSnittNapen &tema._Aapen_dp_tot Innbyggere rateApen2014 rateApen2015 rateApen2016;
 
 run;
 
 data &tema._Vaginal_dp_bohf2;
-set &tema._Vaginal_dp_bohf_tot;
+set &tema._Vaginal_dp_tot_bohf;
 RateSnittVag=RateSnitt;
 rateVag2014=rate2014;
 rateVag2015=rate2015;
@@ -38,7 +38,7 @@ if bohf=8888 then do;
 RateSnittNvag=RateSnitt;
 end;
 
-keep BoHF RateSnittVag RateSnittNvag &tema._Vaginal_dp Innbyggere rateVag2014 rateVag2015 rateVag2016;
+keep BoHF RateSnittVag RateSnittNvag &tema._Vaginal_dp_tot Innbyggere rateVag2014 rateVag2015 rateVag2016;
 
 run;
 
@@ -86,9 +86,9 @@ run;
 %let tittel=Antall hysterektomier per 100 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2014-16.;
 %let xlabel=Hysterektomi, ikke-kreft, pr. 100 000 innbyggere. Aldersjusterte rater.;
 %let anno=ANNO;
-%let tabellvar1=&tema._Lap_dp;/*fra forbruksmal*/
-%let tabellvar2=&tema._Aapen_dp;/*fra forbruksmal*/
-%let tabellvar3=&tema._Vaginal_dp;/*fra forbruksmal*/
+%let tabellvar1=&tema._Lap_dp_tot;/*fra forbruksmal*/
+%let tabellvar2=&tema._Aapen_dp_tot;/*fra forbruksmal*/
+%let tabellvar3=&tema._Vaginal_dp_tot;/*fra forbruksmal*/
 %let tabellvar4=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2 &tabellvar3 &tabellvar4;
 %let labeltabell=&tabellvar1="Lap" &tabellvar2="Apen" &tabellvar3="Vaginal" &tabellvar4="Innbyggere";
