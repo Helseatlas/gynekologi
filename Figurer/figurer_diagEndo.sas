@@ -1,7 +1,7 @@
 
 
 /***************************************************/
-/* Lag figur konsultasjoner todelt off/priv                 */
+/* Lag figur todelt LCA10/LCA06                */
 /***************************************************/
 
 %let tema=diagEndo;
