@@ -7,11 +7,11 @@
 %let tema=diagEndo;
 
 
-%let dsn1=&tema.B_p_bohf;
-%let rv1=&tema.B_p;
+%let dsn1=&tema.B_p_poli_bohf;
+%let rv1=&tema.B_p_poli;
 
-%let dsn2=&tema.U_p_bohf;
-%let rv2=&tema.U_p;
+%let dsn2=&tema.U_p_tot_bohf;
+%let rv2=&tema.U_p_tot;
 %merge(ant_datasett=2, dsn_ut=&tema._bohf); 
 
 %let fignavn=BiopsiAbrasio;

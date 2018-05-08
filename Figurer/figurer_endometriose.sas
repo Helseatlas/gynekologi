@@ -7,13 +7,13 @@
 %let tema=endometriose_d;
 
 %let dsn1=&tema._off_bohf;
-%let rv1=&tema._off;
+%let rv1=&tema._poli_off;
 
 %let dsn2=&tema._priv_bohf;
-%let rv2=&tema._priv;
+%let rv2=&tema._poli_priv;
 
-%let dsn3=&tema._pers_bohf;
-%let rv3=&tema._pers;
+%let dsn3=&tema._poli_unik_bohf;
+%let rv3=&tema._poli_unik;
 
 
 %merge(ant_datasett=3, dsn_ut=&tema._bohf);

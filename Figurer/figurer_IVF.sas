@@ -15,8 +15,8 @@
 %let agg_var1 = Insem_p; *D-diagnose, P-prosedure;
 %let agg_var2 = IVF_p; *D-diagnose, P-prosedure;
 
-%let dsn1=&agg_var1._bohf; %let rv1=&agg_var1;
-%let dsn2=&agg_var2._bohf; %let rv2=&agg_var2;
+%let dsn1=&agg_var1._tot_bohf; %let rv1=&agg_var1._tot;
+%let dsn2=&agg_var2._tot_bohf; %let rv2=&agg_var2._tot;
 
 %merge(ant_datasett=2, dsn_ut=merged_&tema);
 
@@ -44,13 +44,13 @@
 
 
 
-%let dsnIVF=&agg_var2._bohf; %let rv1=&agg_var2;
+%let dsnIVF=&agg_var2._tot_bohf; %let rv1=&agg_var2._tot;
 
 
 %let fignavn=IVF;
 %let tittel=Antall IVF (eggoverføring) per 100 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2014-16.;
 %let xlabel= IVF (eggoverføring), pr. 100 000 innbyggere. Aldersjusterte rater.;
-%let tabellvar1=&agg_var2;
+%let tabellvar1=&agg_var2._tot;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
 %let labeltabell=&tabellvar1="IVF" &tabellvar2="Kvinner";
@@ -59,12 +59,12 @@
 %ratefig(datasett=&dsnIVF);
 
 
-%let dsnIUI=&agg_var1._bohf; %let rv1=&agg_var1;
+%let dsnIUI=&agg_var1._tot_bohf; %let rv1=&agg_var1._tot;
 
 %let fignavn=IUI;
 %let tittel=Antall IUI per 100 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2014-16.;
 %let xlabel= Intrauterin inseminasjon (IUI), pr. 100 000 innbyggere. Aldersjusterte rater.;
-%let tabellvar1=&agg_var1;
+%let tabellvar1=&agg_var1._tot;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
 %let labeltabell=&tabellvar1="IUI" &tabellvar2="Kvinner";

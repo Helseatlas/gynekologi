@@ -12,8 +12,8 @@
 %let dsn2=&tema._priv_bohf;
 %let rv2=&tema._priv;
 
-%let dsn3=&tema._pers_bohf;
-%let rv3=&tema._pers;
+%let dsn3=&tema._poli_unik_bohf;
+%let rv3=&tema._poli_unik;
 
 
 %merge(ant_datasett=3, dsn_ut=&tema._bohf);
@@ -34,7 +34,7 @@ run;
 %let tabellvar3=kons_pr_pers;
 %let tabellvariable= &tabellvar1 &tabellvar2 &tabellvar3;
 %let labeltabell=&tabellvar1="Konsultasjoner" &tabellvar2="Personer" &tabellvar3="Kons./Person";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0 &tabellvar2 NLnum8.0;
+%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0 &tabellvar3 NLnum8.1;
 %let skala=;
 
 %ratefig_todeltSoyle(datasett=&tema._bohf);
