@@ -1,7 +1,32 @@
 
+
+%macro rater_felles(privat = 1);
+
+/*
+Ikke kjør privat, hvis privat = 0
+*/
+
 %let Ratefil=helseatl.k_u_&agg_var;
 
 %Let Alderskategorier=30;
+
+/*********
+ * Total *
+**********/
+
+%let RV_variabelnavn= tot; /*navn på ratevariabel i det aggregerte datasettet*/
+%Let ratevariabel = &agg_var._&RV_variabelnavn; /*Brukes til å lage "pene" overskrifter*/
+%Let forbruksmal = &agg_var._&RV_variabelnavn; /*Brukes til å lage tabell-overskrift i Årsvarfig, gir også navn til 'ut'-datasett*/
+
+%utvalgx;
+%omraadeNorge;
+%rateberegninger;
+
+proc datasets nolist;
+delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
+run;
+
+%forholdstall;
 
 
 /***************
@@ -40,6 +65,7 @@ run;
 %forholdstall;
 
 
+%if &privat ne 0 %then %do;
 /******  poli_priv  ****************************************************************/
 %let RV_variabelnavn= poli_priv; /*navn på ratevariabel i det aggregerte datasettet*/
 %Let ratevariabel = &agg_var._priv; /*Brukes til å lage "pene" overskrifter*/
@@ -54,6 +80,7 @@ delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
 run;
 
 %forholdstall;
+%end;
 
 
 /************
@@ -91,7 +118,7 @@ run;
 
 %forholdstall;
 
-
+%if &privat ne 0 %then %do;
 /******  priv_unik  ****************************************************************/
 %let RV_variabelnavn= priv_unik; /*navn på ratevariabel i det aggregerte datasettet*/
 %Let ratevariabel = &agg_var._&RV_variabelnavn; /*Brukes til å lage "pene" overskrifter*/
@@ -106,7 +133,7 @@ delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
 run;
 
 %forholdstall;
-
+%end;
 
 /******************
  * Akutt/planlagt *
@@ -179,3 +206,4 @@ run;
 
 %forholdstall;
 
+%mend;
