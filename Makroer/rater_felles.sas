@@ -1,6 +1,6 @@
 
 
-%macro rater_felles(privat = 1, kun_total = 0);
+%macro rater_felles(privat = 1, kun_total = 0, kun_poli = 0);
 
 /*
 Ikke kjør privat, hvis privat = 0
@@ -11,6 +11,8 @@ Ikke kjør privat, hvis privat = 0
 %Let Alderskategorier=30;
 
 
+
+%if &kun_poli = 0 %then %do;
 
 /*********
  * Total *
@@ -29,6 +31,8 @@ delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
 run;
 
 %forholdstall;
+
+%end;
 
 %if &kun_total = 0 %then %do;
 
@@ -90,6 +94,7 @@ run;
  * Personer *
  ************/
 
+ %if &kun_poli = 0 %then %do;
 /******  tot_unik  ****************************************************************/
 %let RV_variabelnavn= tot_unik; /*navn på ratevariabel i det aggregerte datasettet*/
 %Let ratevariabel = &agg_var._&RV_variabelnavn; /*Brukes til å lage "pene" overskrifter*/
@@ -104,6 +109,7 @@ delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
 run;
 
 %forholdstall;
+%end;
 
 /******  poli_unik  ****************************************************************/
 %let RV_variabelnavn= poli_unik; /*navn på ratevariabel i det aggregerte datasettet*/
@@ -120,7 +126,7 @@ run;
 
 %forholdstall;
 
-
+%if &kun_poli = 0 %then %do;
 /******  off_unik  ****************************************************************/
 %let RV_variabelnavn= off_unik; /*navn på ratevariabel i det aggregerte datasettet*/
 %Let ratevariabel = &agg_var._&RV_variabelnavn; /*Brukes til å lage "pene" overskrifter*/
@@ -224,6 +230,7 @@ run;
 
 %forholdstall;
 
+%end;
 %end;
 
 %mend;
