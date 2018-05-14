@@ -12,8 +12,8 @@
 
 /*INPUT FOR HVER FIGUR:*/
 
-%let agg_var1 = Insem_p; *D-diagnose, P-prosedure;
-%let agg_var2 = IVF_p; *D-diagnose, P-prosedure;
+%let agg_var2 = Insem_p; *D-diagnose, P-prosedure;
+%let agg_var1 = IVF_p; *D-diagnose, P-prosedure;
 
 %let dsn1=&agg_var1._tot_bohf; %let rv1=&agg_var1._tot;
 %let dsn2=&agg_var2._tot_bohf; %let rv2=&agg_var2._tot;
@@ -32,10 +32,10 @@
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvar3=Innbyggere;
-%let label_1=IUI;
-%let label_2=IVF;
+%let label_2=IUI;
+%let label_1=IVF;
 %let tabellvariable= &tabellvar1 &tabellvar2 &tabellvar3;
-%let labeltabell=&tabellvar1="IUI" &tabellvar2="IVF" &tabellvar3="Kvinner";
+%let labeltabell=&tabellvar2="IUI" &tabellvar1="IVF" &tabellvar3="Kvinner";
 %let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0 &tabellvar3 NLnum8.0;
 
 %let skala=/*values=(0 to 1.6 by 0.2)*/;
