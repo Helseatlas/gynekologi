@@ -45,7 +45,7 @@ run;
 
 * put all info together;
 
-data helseatl.KA_t_&forbruksmal;
+data KA_t_&forbruksmal;
   set snittAlder;
   set antall;
   set highest;
