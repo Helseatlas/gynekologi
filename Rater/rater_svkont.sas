@@ -158,3 +158,9 @@ delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
 run;
 
 /*%forholdstall;*/
+
+
+/*
+For å ikke ødelegge for fremtidige rateberegninger må innbyggerfil defineres tilbake til original
+*/
+%Let innbyggerfil=Innbygg.innb_2004_2016_bydel_allebyer;

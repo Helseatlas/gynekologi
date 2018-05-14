@@ -1,4 +1,6 @@
+
 %Let innbyggerfil=helseatl.polibarsel_fodsler;
+
 
 
 %Let aldersspenn=in (16:50); /*Definerer det aktuelle aldersspennet: (0:105) --> 0 til 105 år*/
@@ -89,3 +91,8 @@ delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
 run;
 
 /*%forholdstall;*/
+
+/*
+For å ikke ødelegge for fremtidige rateberegninger må innbyggerfil defineres tilbake til original
+*/
+%Let innbyggerfil=Innbygg.innb_2004_2016_bydel_allebyer;
