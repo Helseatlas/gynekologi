@@ -1,5 +1,6 @@
 %let agg_var = IVF_p; *D-diagnose, P-prosedure;
-%Let aldersspenn=in (20:45); /*Definerer det aktuelle aldersspennet: (0:105) --> 0 til 105 år*/
+/*%Let aldersspenn=in (20:45); */
+%Let aldersspenn=in (16:105);
 
 %rater_felles(kun_total = 1);
 

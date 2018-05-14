@@ -1,6 +1,6 @@
 
 %let agg_var = diagEndoB_p;
-%Let aldersspenn=in (16:97); /*Definerer det aktuelle aldersspennet: (0:105) --> 0 til 105 år*/
+%Let aldersspenn=in (16:105); /*Definerer det aktuelle aldersspennet: (0:105) --> 0 til 105 år*/
 
 %rater_felles(kun_poli=1);
 
