@@ -7,10 +7,10 @@
 %let tema=endometriose_d;
 
 %let dsn1=&tema._off_bohf;
-%let rv1=&tema._poli_off;
+%let rv1=&tema._off;
 
 %let dsn2=&tema._priv_bohf;
-%let rv2=&tema._poli_priv;
+%let rv2=&tema._priv;
 
 %let dsn3=&tema._poli_unik_bohf;
 %let rv3=&tema._poli_unik;
