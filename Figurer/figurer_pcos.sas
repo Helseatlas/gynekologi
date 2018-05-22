@@ -1,4 +1,4 @@
-﻿
+
 /***************************************************/
 /* Lag figur konsultasjoner todelt off/priv                 */
 /***************************************************/
@@ -15,7 +15,7 @@
 
 %let fignavn=offpriv;
 %let type=kons;
-%let tittel=Antall polikliniske konsultasjoner for PCOS per 100 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2014-16.;
+%let tittel=Antall polikliniske konsultasjoner for PCOS per 100 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per �r i perioden 2014-16.;
 %let xlabel= Polikliniske konsultasjoner for PCOS pr. 100 000 innbyggere. Aldersjusterte rater.;
 %let label_1=Offentlig;
 %let label_2=Privat;

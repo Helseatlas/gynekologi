@@ -1,4 +1,4 @@
-ï»¿
+
 
 /***************************************************/
 /* Lag figur konsultasjoner todelt off/priv                 */
@@ -16,7 +16,7 @@
 
 %let fignavn=offpriv;
 %let type=kons;
-%let tittel=Antall polikliniske konsultasjoner for genitalt prolaps per 100 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per Ã¥r i perioden 2014-16.;
+%let tittel=Antall polikliniske konsultasjoner for genitalt prolaps per 100 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2014-16.;
 %let xlabel= Polikliniske konsultasjoner for genitalt prolaps, pr. 100 000 innbyggere. Aldersjusterte rater.;
 %let label_1=Offentlig;
 %let label_2=Privat;
@@ -42,7 +42,7 @@
 
 %let fignavn=;
 %let type=inngr;
-%let tittel=Antall inngrep for genitalt prolaps per 100 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per Ã¥r i perioden 2014-16.;
+%let tittel=Antall inngrep for genitalt prolaps per 100 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2014-16.;
 %let xlabel= Inngrep for genitalt prolaps, pr. 100 000 innbyggere. Aldersjusterte rater.;
 %let tabellvar1=&rv1;
 %let tabellvar2=Innbyggere;
