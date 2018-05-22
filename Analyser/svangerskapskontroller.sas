@@ -1,4 +1,6 @@
 %Let sv_lengde=255;
+%Let forste_trim_grense=199;
+%Let andre_trim_grense=87;
 %Let sv_dato="13SEP2014"d;
 %Let gj_aar=2016;
 
@@ -75,7 +77,7 @@ by pid descending EoC_inndato descending fodedato;
 
 if dager_for_fodsel ne . then do;
 /*Tar med alle kontakter fom: fødselsdato - &sv_lengde. Tar ikke med kontroller som er en del av et døgnopphold.*/	
-	if EoC_aktivitetskategori3 ne 1 and dager_for_fodsel lt &sv_lengde then svkontakt=1;
+	if EoC_aktivitetskategori3 ne 1 and dager_for_fodsel le &sv_lengde then svkontakt=1;
 end;
 
 if Kontroll=1 and svkontakt=1 then svkontr_a=1;
@@ -88,6 +90,14 @@ if UL=1 and svkontakt=1 then svkontUL=1;
 
 if svkontr_a=1 or svkontUL=1 then svkont_aUL=1;
 
+if dager_for_fodsel gt &forste_trim_grense then forste_trim=1;
+else if dager_for_fodsel le &forste_trim_grense and dager_for_fodsel gt &andre_trim_grense then andre_trim=1;
+else if dager_for_fodsel le &andre_trim_grense then tredje_trim=1;
+
+if svkontUL=1 and forste_trim=1 then UL1T=1;
+if svkontUL=1 and andre_trim=1 then UL2T=1;
+if svkontUL=1 and tredje_trim=1 then UL3T=1;
+
 run;
 
 /*Velger ut aktuelle kontakter for videre analyse. Tar med bare de som er knyttet til en fødsel som forekommer etter &sv_dato*/
@@ -96,6 +106,22 @@ set &dsn;
 by pid descending EoC_inndato descending fodedato;
 where fodedato ne . and fodedato gt &sv_dato;				
 run;
+
+/*Teller antall kontakter i hvert svangerskap*/
+proc sql;
+   create table &dsn._allekont as 
+   select distinct pid, fodedato, fodealder, fodekomnr, fodebydel, SUM(svkontakt)
+   from &dsn._utvalg
+   group by pid, fodedato;
+quit;
+
+/*Teller antall kontakter i hvert svangerskap*/
+proc sql;
+   create table &dsn._alleUL as 
+   select distinct pid, fodedato, fodealder, fodekomnr, fodebydel, SUM(svkontUL)
+   from &dsn._utvalg
+   group by pid, fodedato;
+quit;
 
 /*Teller antall fødsler og lagrer til innbyggerfil.*/
 proc sql;
@@ -193,6 +219,18 @@ quit;
 %settAar_lagre;
 
 %Let tema=svkontUL;
+%aggreger(inndata=&dsn._utvalg, utdata=&tema._agg, agg_var=&tema);
+%settAar_lagre;
+
+%Let tema=UL1T;
+%aggreger(inndata=&dsn._utvalg, utdata=&tema._agg, agg_var=&tema);
+%settAar_lagre;
+
+%Let tema=UL2T;
+%aggreger(inndata=&dsn._utvalg, utdata=&tema._agg, agg_var=&tema);
+%settAar_lagre;
+
+%Let tema=UL3T;
 %aggreger(inndata=&dsn._utvalg, utdata=&tema._agg, agg_var=&tema);
 %settAar_lagre;
 

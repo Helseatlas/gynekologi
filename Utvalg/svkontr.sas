@@ -27,6 +27,7 @@ array takst {*} Normaltariff:;
 
 		if substr(takst{i},1,4) in ('211a') then Takst211a=1; 
 		if substr(takst{i},1,4) in ('211b') then Takst211b=1; 
+		if substr(takst{i},1,4) in ('211c') then Takst211c=1;
 		if substr(takst{i},1,4) in ('211e') then Takst211e=1;
 		if substr(takst{i},1,3) in ('216') then Takst216=1;
 		if substr(takst{i},1,4) in ('217a') then Takst217a=1; 
@@ -45,6 +46,7 @@ else if O_diag=1 and EoC_aktivitetskategori3 ne 1 then Kontroll_Odiag=1;		/*Tar 
 /*Hvis ingen av tilstandskodene tilsier svangerskapskontroll, men kontrollen har takst for svangerskapskontroll så kategoriseres den som Kontroll_takst*/
 else if Takst211a=1 or Takst211b=1 or Takst216=1 or Takst211e=1 or Takst217a=1 or Takst217b=1 or Takst217c=1 or Takst217d=1 then Kontroll_takst=1;
 
+if Takst211a=1 or Takst211b=1 or Takst211c=1 then UL=1;
 
 if Kontroll_normal=1 or Kontroll_hoyrisk=1 or Kontroll_Odiag=1 or Kontroll_takst=1 then Kontroll=1;
 

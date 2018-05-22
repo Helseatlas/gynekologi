@@ -66,6 +66,130 @@
 
 %ratefig(datasett=&tema._tot_bohf);
 
+/*Sammensatt figur med alle UL i de tre trimestrene*/
+
+%let tema=UL;
+
+data &tema.1T_bohf2;
+set &tema.1T_tot_bohf;
+RateSnitt1T=RateSnitt;
+rate1T2014=rate2014;
+rate1T2015=rate2015;
+rate1T2016=rate2016;
+if bohf=8888 then do;
+RateSnittN1T=RateSnitt;
+end;
+
+keep BoHF RateSnitt1T RateSnittN1T &tema.1T_tot Innbyggere rate1T2014 rate1T2015 rate1T2016;
+
+run;
+
+data &tema.2T_bohf2;
+set &tema.2T_tot_bohf;
+RateSnitt2T=RateSnitt;
+rate2T2014=rate2014;
+rate2T2015=rate2015;
+rate2T2016=rate2016;
+if bohf=8888 then do;
+RateSnittN2T=RateSnitt;
+end;
+
+keep BoHF RateSnitt2T RateSnittN2T &tema.2T_tot Innbyggere rate2T2014 rate2T2015 rate2T2016;
+
+run;
+
+data &tema.3T_bohf2;
+set &tema.3T_tot_bohf;
+RateSnitt3T=RateSnitt;
+rate3T2014=rate2014;
+rate3T2015=rate2015;
+rate3T2016=rate2016;
+if bohf=8888 then do;
+RateSnittN3T=RateSnitt;
+end;
+
+keep BoHF RateSnitt3T RateSnittN3T &tema.3T_tot Innbyggere rate3T2014 rate3T2015 rate3T2016;
+
+run;
+
+proc sort data=&tema.1T_bohf2;
+by bohf;
+quit;
+
+proc sort data=&tema.2T_bohf2;
+by bohf;
+quit;
+
+proc sort data=&tema.3T_bohf2;
+by bohf;
+quit;
+
+
+
+options locale=NB_no;
+data &tema._BOHF;
+merge &tema.1T_bohf2 &tema.2T_bohf2 &tema.3T_bohf2;
+by BoHF;
+Antall_tot=&tema.1T_tot + &tema.2T_tot + &tema.3T_tot;
+RateSnitt_tot = RateSnitt1T + RateSnitt2T + RateSnitt3T;
+RateSnitt_1T2T = RateSnitt1T + RateSnitt2T;
+Rate2014_tot = rate1T2014 + rate2T2014 + rate3T2014;
+Rate2015_tot = rate1T2015 + rate2T2015 + rate3T2015;
+Rate2016_tot = rate1T2016 + rate2T2016 + rate3T2016;
+Andel1T=RateSnitt1T/RateSnitt_tot;
+pros_plass= + 0.3;/* avstand fra x=0, eventuelt RateSnitt_tot -0.02 hvis ETTER søylen */;
+if bohf=8888 then do;
+RateSnittN_tot = RateSnittN1T + RateSnittN2T + RateSnittN3T;
+RateSnittN_1T2T = RateSnittN1T + RateSnittN2T;
+format Antall_tot nlnum8.0;
+end;
+max=max(of rate201:);
+min=min(of rate201:);
+run;
+
+proc sort data=&tema._BOHF;
+by descending RateSnitt_tot;
+run;
+
+
+/*INPUT FOR HVER FIGUR:*/
+%let fignavn=tredelt_kode; *additional info for figure name, can be empty;
+%let type=unders;    *inngrep, konsultasjoner, or undersøkelser;
+%let tittel=Antall ultralydundersøkelser per fødsel. Aldersstandardiserte rater. Gjennomsnitt for perioden 13.9.2014-31.12.2016.;
+%let xlabel=Ultralydundersøkelser pr. fødsel. Aldersjusterte rater.;
+%let anno=ANNO;
+%let tabellvar1=Antall_tot;/*fra forbruksmal*/
+%let tabellvar2=Innbyggere;/*fra forbruksmal*/
+%let tabellvariable= &tabellvar1 &tabellvar2;
+%let labeltabell=&tabellvar1="UL" &tabellvar2="Fødsler";
+%let dsn_fig=&tema._BOHF;
+%let skala=/*values=(0 to 1.5 by 0.5)*/;
+
+ODS Graphics ON /reset=All imagename="&tema._&type._&fignavn" imagefmt=png border=off ;
+ODS Listing Image_dpi=300 GPATH="&bildelagring.&mappe";
+title "&tittel";
+proc sgplot data=&dsn_fig noborder noautolegend sganno=&anno pad=(Bottom=5%);
+hbarparm category=bohf response=RateSnitt_tot / fillattrs=(color=CX95BDE6) outlineattrs=(color=black) missing name="hp1" legendlabel="3 trimester";
+hbarparm category=bohf response=RateSnitt_1T2T / fillattrs=(color=CX00509E) outlineattrs=(color=black) missing name="hp2" legendlabel="2 trimester" ;
+hbarparm category=bohf response=RateSnitt1T / fillattrs=(color=CX00FFFF) outlineattrs=(color=black) missing name="hp3" legendlabel="1 trimester" ; 
+hbarparm category=bohf response=RateSnittN_tot / fillattrs=(color=CXC3C3C3) outlineattrs=(color=black); 
+/*hbarparm category=bohf response=RateSnittN_hrnod / fillattrs=(color=CX969696) outlineattrs=(color=black);
+hbarparm category=bohf response=RateSnittN_hrn / fillattrs=(color=CX4C4C4C) outlineattrs=(color=black);
+hbarparm category=bohf response=RateSnittNn / fillattrs=(color=CX4C4C4C) outlineattrs=(color=black);*/
+/*scatter x=pros_plass y=bohf /datalabel=Andel1T datalabelpos=right markerattrs=(size=0) datalabelattrs=(color=white weight=bold size=8);*/
+
+
+	keylegend "hp3" "hp2" "hp1"/ location=outside position=bottom down=1 noborder titleattrs=(size=7 weight=bold);
+	 Yaxistable &tabellvar1 &tabellvar2 /Label location=inside labelpos=top position=right valueattrs=(size=7 family=arial) labelattrs=(size=7);
+     yaxis display=(noticks noline) label='Opptaksområde' labelattrs=(size=7 weight=bold) type=discrete discreteorder=data valueattrs=(size=7);
+     xaxis /*display=(nolabel)*/ offsetmin=0.02 &skala valueattrs=(size=7) label="&xlabel" labelattrs=(size=7 weight=bold);
+		Label &labeltabell;
+		Format Andel1T nlpct8.1;
+
+run;
+Title; 
+ods listing close;
+
 
 /*Sammensatt figur med alle kontroller*/
 
