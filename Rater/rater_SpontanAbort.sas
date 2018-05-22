@@ -1,5 +1,5 @@
 %let agg_var = SpontanAbort_dp;
-/*%Let aldersspenn=in (16:48);*/
+/*%Let aldersspenn=in (16:55);*/
 
 %Let aldersspenn=in (16:105);
 

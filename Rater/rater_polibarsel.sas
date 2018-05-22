@@ -2,9 +2,9 @@
 %Let innbyggerfil=helseatl.polibarsel_fodsler;
 
 
-
-%Let aldersspenn=in (16:50); /*Definerer det aktuelle aldersspennet: (0:105) --> 0 til 105 år*/
-%Let Alderskategorier=30;
+/*%Let aldersspenn=in (16:55);*/
+%Let aldersspenn=in (16:105); /*Definerer det aktuelle aldersspennet: (0:105) --> 0 til 105 år*/
+%Let Alderskategorier=31;
 
 %Let rate_pr=10;
 

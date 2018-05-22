@@ -5,3 +5,5 @@
 %rater_felles(kun_poli=1);
 
 
+%let agg_var = myom_dp;
+%rater_felles(kun_total = 1);
