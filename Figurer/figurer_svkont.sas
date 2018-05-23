@@ -170,9 +170,9 @@ ODS Listing Image_dpi=300 GPATH="&bildelagring.&mappe";
 title "&tittel";
 proc sgplot data=&dsn_fig noborder noautolegend sganno=&anno pad=(Bottom=5%);
 hbarparm category=bohf response=RateSnitt_tot / fillattrs=(color=CX95BDE6) outlineattrs=(color=black) missing name="hp1" legendlabel="3 trimester";
-hbarparm category=bohf response=RateSnitt_1T2T / fillattrs=(color=CX00509E) outlineattrs=(color=black) missing name="hp2" legendlabel="2 trimester" ;
-hbarparm category=bohf response=RateSnitt1T / fillattrs=(color=CX00FFFF) outlineattrs=(color=black) missing name="hp3" legendlabel="1 trimester" ; 
-hbarparm category=bohf response=RateSnittN_tot / fillattrs=(color=CXC3C3C3) outlineattrs=(color=black); 
+hbarparm category=bohf response=RateSnitt_1T2T / fillattrs=(color=CX568BBF) outlineattrs=(color=black) missing name="hp2" legendlabel="2 trimester" ;
+hbarparm category=bohf response=RateSnitt1T / fillattrs=(color=CX00509E) outlineattrs=(color=black) missing name="hp3" legendlabel="1 trimester" ; 
+hbarparm category=bohf response=RateSnittN_tot / fillattrs=(color=CXC3C3C3) outlineattrs=(color=CX4C4C4C); 
 /*hbarparm category=bohf response=RateSnittN_hrnod / fillattrs=(color=CX969696) outlineattrs=(color=black);
 hbarparm category=bohf response=RateSnittN_hrn / fillattrs=(color=CX4C4C4C) outlineattrs=(color=black);
 hbarparm category=bohf response=RateSnittNn / fillattrs=(color=CX4C4C4C) outlineattrs=(color=black);*/
@@ -313,9 +313,9 @@ ODS Graphics ON /reset=All imagename="&tema._&type._&fignavn" imagefmt=png borde
 ODS Listing Image_dpi=300 GPATH="&bildelagring.&mappe";
 title "&tittel";
 proc sgplot data=&dsn_fig noborder noautolegend sganno=&anno pad=(Bottom=5%);
-hbarparm category=bohf response=RateSnitt_tot / fillattrs=(color=CX95BDE6) outlineattrs=(color=black) missing name="hp1" legendlabel="Takst";
-hbarparm category=bohf response=RateSnitt_hrnod / fillattrs=(color=CX00FFFF) outlineattrs=(color=black) missing name="hp2" legendlabel="O-diagnose" ;
-hbarparm category=bohf response=RateSnitt_hrn / fillattrs=(color=CX568BBF) outlineattrs=(color=black) missing name="hp3" legendlabel="Høyrisiko" ; 
+hbarparm category=bohf response=RateSnitt_tot / fillattrs=(color=CXCCCCCC) outlineattrs=(color=black) missing name="hp1" legendlabel="Takst";
+hbarparm category=bohf response=RateSnitt_hrnod / fillattrs=(color=CX568BBF) outlineattrs=(color=black) missing name="hp2" legendlabel="O-diagnose" ;
+hbarparm category=bohf response=RateSnitt_hrn / fillattrs=(color=CX95BDE6) outlineattrs=(color=black) missing name="hp3" legendlabel="Høyrisiko" ; 
 hbarparm category=bohf response=RateSnittn / fillattrs=(color=CX00509E) outlineattrs=(color=black) missing name="hp4" legendlabel="Normal" ; 
 
 hbarparm category=bohf response=RateSnittN_tot / fillattrs=(color=CXC3C3C3) outlineattrs=(color=black); 
