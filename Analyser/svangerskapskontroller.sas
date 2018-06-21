@@ -110,7 +110,7 @@ run;
 /*Teller antall kontakter i hvert svangerskap*/
 proc sql;
    create table &dsn._allekont as 
-   select distinct pid, fodedato, fodealder, fodekomnr, fodebydel, SUM(svkontakt)
+   select distinct pid, fodedato, fodealder, fodekomnr, fodebydel, SUM(svkontakt) as ant_svkontakt
    from &dsn._utvalg
    group by pid, fodedato;
 quit;
@@ -118,7 +118,7 @@ quit;
 /*Teller antall kontakter i hvert svangerskap*/
 proc sql;
    create table &dsn._alleUL as 
-   select distinct pid, fodedato, fodealder, fodekomnr, fodebydel, SUM(svkontUL)
+   select distinct pid, fodedato, fodealder, fodekomnr, fodebydel, SUM(svkontUL) as ant_UL
    from &dsn._utvalg
    group by pid, fodedato;
 quit;
@@ -165,7 +165,7 @@ run;
 %macro settAar_lagre;
 
 /*Setter aar=&gj_aar i alle rader i det aggregerte datasettet*/
-data &tema._agg2;
+data &tema._agg;
 set &tema._agg;
 aar=&gj_aar;
 run;
@@ -186,9 +186,14 @@ proc sql;
    SUM(poli_off) as poli_off, SUM(poli_off_unik) as poli_off_unik,
    SUM(poli_priv) as poli_priv, SUM(poli_priv_unik) as poli_priv_unik,
    SUM(eoc_liggetid) as eoc_liggetid
-   from &tema._agg2
+   from &tema._agg
    group by aar, ermann, alder, komnr, bydel;
 quit;
+
+/*Sletter midlertidige datasett så ikke det blir for mange datasett*/
+proc datasets nolist;
+delete &tema._agg;
+run;
 
 %mend settAar_lagre;
 
@@ -198,9 +203,9 @@ quit;
 %aggreger(inndata=&dsn._utvalg, utdata=&tema._agg, agg_var=&tema);
 %settAar_lagre;
 
-%Let tema=svkontr_a;
+/*%Let tema=svkontr_a;
 %aggreger(inndata=&dsn._utvalg, utdata=&tema._agg, agg_var=&tema);
-%settAar_lagre;
+%settAar_lagre;*/
 
 %Let tema=svkontr_n;
 %aggreger(inndata=&dsn._utvalg, utdata=&tema._agg, agg_var=&tema);

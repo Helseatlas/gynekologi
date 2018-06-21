@@ -1,9 +1,9 @@
+
+/* Oppslag aldersbegrensning */
+%alders_oppslag(utvalg=svkont);
+
 %Let innbyggerfil=helseatl.svkont_fodsler;
-
-/*%Let aldersspenn=in (16:55);*/
-%Let aldersspenn=in (16:105); /*Definerer det aktuelle aldersspennet: (0:105) --> 0 til 105 år*/
 %Let Alderskategorier=31;
-
 %Let rate_pr=1;
 
 
@@ -21,7 +21,7 @@
 %rateberegninger;
 
 proc datasets nolist;
-delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
+delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd svkontakt_tot_NORGE;
 run;
 
 %forholdstall;
@@ -41,7 +41,7 @@ run;
 %rateberegninger;
 
 proc datasets nolist;
-delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
+delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd svkontr_a_tot_NORGE;
 run;
 
 /*%forholdstall;*/
@@ -60,7 +60,7 @@ run;
 %rateberegninger;
 
 proc datasets nolist;
-delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
+delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd svkontr_hr_tot_NORGE;
 run;
 
 /*%forholdstall;*/
@@ -79,7 +79,7 @@ run;
 %rateberegninger;
 
 proc datasets nolist;
-delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
+delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd svkontr_n_tot_NORGE;
 run;
 
 /*%forholdstall;*/
@@ -98,7 +98,7 @@ run;
 %rateberegninger;
 
 proc datasets nolist;
-delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
+delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd svkontr_od_tot_NORGE;
 run;
 
 /*%forholdstall;*/
@@ -117,7 +117,7 @@ run;
 %rateberegninger;
 
 proc datasets nolist;
-delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
+delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd svkontr_t_tot_NORGE;
 run;
 
 /*%forholdstall;*/
@@ -136,7 +136,7 @@ run;
 %rateberegninger;
 
 proc datasets nolist;
-delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
+delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd svkontUL_tot_NORGE;
 run;
 
 %forholdstall;
@@ -155,7 +155,7 @@ run;
 %rateberegninger;
 
 proc datasets nolist;
-delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
+delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd UL1T_tot_NORGE;
 run;
 
 %forholdstall;
@@ -174,7 +174,7 @@ run;
 %rateberegninger;
 
 proc datasets nolist;
-delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
+delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd UL2T_tot_NORGE;
 run;
 
 %forholdstall;
@@ -193,7 +193,7 @@ run;
 %rateberegninger;
 
 proc datasets nolist;
-delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
+delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd UL3T_tot_NORGE;
 run;
 
 %forholdstall;
@@ -212,7 +212,7 @@ run;
 %rateberegninger;
 
 proc datasets nolist;
-delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
+delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd svkont_aUL_tot_NORGE;
 run;
 
 /*%forholdstall;*/

@@ -29,3 +29,14 @@
 
 %ratefig_todeltSoyle(datasett=&tema._bohf);
 
+/*Lager rankingtabell*/
+proc sort data=&tema._bohf;
+by decending tot_rate;
+run;
+
+data rank_&tema;
+set &tema._bohf;
+where BoHF ne 8888;
+&tema._rank+1;
+keep &tema._rank BoHF;
+run;

@@ -30,6 +30,49 @@ end;
 	
 	
     /*if Hysterektomi_Kreft_dp=1 or Hysterektomi_dp=1 then Hysterektomi_total_dp=1;*/
+	
+
 
 run;
+
+
+/* hyppigste hdiag innefor hysterektomi diagnose / prosedyre */
+/*
+data hyst;
+  set npr_utva.ka_utvalg;
+  where Hysterektomi_dp;
+run;
+
+proc freq data=hyst order=freq;
+  tables hdiag3tegn hdiag ;
+run;
+*/
+
+/*
+D25 Leiomyom i livmor (30%)
+N92 Kraftig, hyppig og uregelmessig menstruasjon(25%)
+N81 Fremfall av kvinnelige kjønnsorganer(13%)
+N80 Endometriose (6%)
+*/
+
+data &datasett;
+set &datasett;
+
+    array prosedyre {*} NC:;
+          do i=1 to dim(prosedyre);
+          if prosedyre{i} in ('ZXC96') then RobotAssKirurgi=1;
+          end;
+
+     if hysterektomi_dp=1 then do;
+	 
+	   if hdiag3tegn='D25' then hyster_myom_dp=1;
+       if hdiag3tegn='N92' then hyster_blod_dp=1;
+	   if hyster_myom_dp ne 1 and hyster_blod_dp ne 1 then hyster_annen_dp=1;
+
+       if RobotAssKirurgi= 1 then hyster_robot_dp=1; else hyster_ikkerobot_dp=1;
+
+	 end;
+
+run;
+
 %mend hysterektomi;

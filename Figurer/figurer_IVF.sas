@@ -43,8 +43,19 @@
 %ratefig_todeltSoyle(datasett=merged_&tema);
 
 
+/*Lager rankingtabell*/
+proc sort data=merged_&tema;
+by decending tot_rate;
+run;
 
-%let dsnIVF=&agg_var2._tot_bohf; %let rv1=&agg_var2._tot;
+data rank_&tema;
+set merged_&tema;
+where BoHF ne 8888;
+&tema._rank+1;
+keep &tema._rank BoHF;
+run;
+
+/*%let dsnIVF=&agg_var2._tot_bohf; %let rv1=&agg_var2._tot;
 
 
 %let fignavn=IVF;
@@ -70,7 +81,7 @@
 %let labeltabell=&tabellvar1="IUI" &tabellvar2="Kvinner";
 %let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0 ;
 %let skala=;
-%ratefig(datasett=&dsnIUI);
+%ratefig(datasett=&dsnIUI);*/
 
 
 

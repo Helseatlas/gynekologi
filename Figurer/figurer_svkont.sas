@@ -16,6 +16,18 @@
 
 %ratefig(datasett=&tema._tot_bohf);
 
+/*Lager rankingtabell*/
+proc sort data=&tema._tot_bohf;
+by decending rateSnitt;
+run;
+
+data rank_&tema;
+set &tema._tot_bohf;
+where BoHF ne 8888;
+&tema._rank+1;
+keep &tema._rank BoHF;
+run;
+
 
 /*ANDEL MED KODE FOR KONTROLL/UL*/
 
@@ -30,7 +42,7 @@
 %merge(ant_datasett=2, dsn_ut=&tema._akode_bohf);
 
 %let Andel=andel_2_1;
-%let fignavn=andelkontrUL;
+%let fignavn=kontrUL;
 %let type=kons;
 %let tittel=Andel polikliniske konsultasjoner i svangerskapet med utvalgte koder. Gjennomsnitt for perioden 13.9.2014-31.12.2016.;
 %let xlabel= Andel konsultasjoner med utvalgte koder;
@@ -65,6 +77,18 @@
 %let skala=;
 
 %ratefig(datasett=&tema._tot_bohf);
+
+/*Lager rankingtabell*/
+proc sort data=&tema._tot_bohf;
+by decending rateSnitt;
+run;
+
+data rank_&tema;
+set &tema._tot_bohf;
+where BoHF ne 8888;
+&tema._rank+1;
+keep &tema._rank BoHF;
+run;
 
 /*Sammensatt figur med alle UL i de tre trimestrene*/
 
@@ -153,7 +177,7 @@ run;
 
 
 /*INPUT FOR HVER FIGUR:*/
-%let fignavn=tredelt_kode; *additional info for figure name, can be empty;
+%let fignavn=tredelt_trimester; *additional info for figure name, can be empty;
 %let type=unders;    *inngrep, konsultasjoner, or undersøkelser;
 %let tittel=Antall ultralydundersøkelser per fødsel. Aldersstandardiserte rater. Gjennomsnitt for perioden 13.9.2014-31.12.2016.;
 %let xlabel=Ultralydundersøkelser pr. fødsel. Aldersjusterte rater.;
@@ -180,7 +204,7 @@ hbarparm category=bohf response=RateSnittNn / fillattrs=(color=CX4C4C4C) outline
 
 
 	keylegend "hp3" "hp2" "hp1"/ location=outside position=bottom down=1 noborder titleattrs=(size=7 weight=bold);
-	 Yaxistable &tabellvar1 &tabellvar2 /Label location=inside labelpos=top position=right valueattrs=(size=7 family=arial) labelattrs=(size=7);
+	 Yaxistable &tabellvar1 &tabellvar2 /Label location=inside labelpos=bottom position=right valueattrs=(size=7 family=arial) labelattrs=(size=7);
      yaxis display=(noticks noline) label='Opptaksområde' labelattrs=(size=7 weight=bold) type=discrete discreteorder=data valueattrs=(size=7);
      xaxis /*display=(nolabel)*/ offsetmin=0.02 &skala valueattrs=(size=7) label="&xlabel" labelattrs=(size=7 weight=bold);
 		Label &labeltabell;
@@ -190,6 +214,91 @@ run;
 Title; 
 ods listing close;
 
+
+
+* 1 trimester;
+
+%let tabellvar1=&tema.1T_tot;/*fra forbruksmal*/
+
+proc sort data=&tema._BOHF;
+by descending RateSnitt1T;
+run;
+
+ODS Graphics ON /reset=All imagename="&tema._&type._1trimester" imagefmt=png border=off ;
+ODS Listing Image_dpi=300 GPATH="&bildelagring.&mappe";
+title1 "&tittel";
+title2 "1 trimester";
+proc sgplot data=&dsn_fig noborder noautolegend sganno=&anno pad=(Bottom=5%);
+
+hbarparm category=bohf response=RateSnitt1T / fillattrs=(color=CX00509E) outlineattrs=(color=black) missing name="hp3" legendlabel="1 trimester" ; 
+hbarparm category=bohf response=RateSnittN1T / fillattrs=(color=CXC3C3C3) outlineattrs=(color=CX4C4C4C); 
+
+
+	keylegend "hp3"/ location=outside position=bottom down=1 noborder titleattrs=(size=7 weight=bold);
+	 Yaxistable &tabellvar1 &tabellvar2 /Label location=inside labelpos=bottom position=right valueattrs=(size=7 family=arial) labelattrs=(size=7);
+     yaxis display=(noticks noline) label='Opptaksområde' labelattrs=(size=7 weight=bold) type=discrete discreteorder=data valueattrs=(size=7);
+     xaxis /*display=(nolabel)*/ offsetmin=0.02 &skala valueattrs=(size=7) label="&xlabel" labelattrs=(size=7 weight=bold);
+		Label &labeltabell;
+		
+run;
+Title1; title2;
+ods listing close;
+
+* 2 trimester;
+
+%let tabellvar1=&tema.2T_tot;/*fra forbruksmal*/
+
+proc sort data=&tema._BOHF;
+by descending RateSnitt2T;
+run;
+
+ODS Graphics ON /reset=All imagename="&tema._&type._2trimester" imagefmt=png border=off ;
+ODS Listing Image_dpi=300 GPATH="&bildelagring.&mappe";
+title1 "&tittel";
+title2 "2 trimester";
+proc sgplot data=&dsn_fig noborder noautolegend sganno=&anno pad=(Bottom=5%);
+
+hbarparm category=bohf response=RateSnitt2T / fillattrs=(color=CX568BBF) outlineattrs=(color=black) missing name="hp3" legendlabel="2 trimester" ; 
+hbarparm category=bohf response=RateSnittN2T / fillattrs=(color=CXC3C3C3) outlineattrs=(color=CX4C4C4C); 
+
+
+	keylegend "hp3"/ location=outside position=bottom down=1 noborder titleattrs=(size=7 weight=bold);
+	 Yaxistable &tabellvar1 &tabellvar2 /Label location=inside labelpos=bottom position=right valueattrs=(size=7 family=arial) labelattrs=(size=7);
+     yaxis display=(noticks noline) label='Opptaksområde' labelattrs=(size=7 weight=bold) type=discrete discreteorder=data valueattrs=(size=7);
+     xaxis /*display=(nolabel)*/ offsetmin=0.02 &skala valueattrs=(size=7) label="&xlabel" labelattrs=(size=7 weight=bold);
+		Label &labeltabell;
+		
+run;
+Title1; title2;
+ods listing close;
+
+* 3 trimester;
+
+%let tabellvar1=&tema.3T_tot;/*fra forbruksmal*/
+
+proc sort data=&tema._BOHF;
+by descending RateSnitt3T;
+run;
+
+ODS Graphics ON /reset=All imagename="&tema._&type._3trimester" imagefmt=png border=off ;
+ODS Listing Image_dpi=300 GPATH="&bildelagring.&mappe";
+title1 "&tittel";
+title2 "3 trimester";
+proc sgplot data=&dsn_fig noborder noautolegend sganno=&anno pad=(Bottom=5%);
+
+hbarparm category=bohf response=RateSnitt3T / fillattrs=(color=CX95BDE6) outlineattrs=(color=black) missing name="hp3" legendlabel="3 trimester" ; 
+hbarparm category=bohf response=RateSnittN3T / fillattrs=(color=CXC3C3C3) outlineattrs=(color=CX4C4C4C); 
+
+
+	keylegend "hp3"/ location=outside position=bottom down=1 noborder titleattrs=(size=7 weight=bold);
+	 Yaxistable &tabellvar1 &tabellvar2 /Label location=inside labelpos=bottom position=right valueattrs=(size=7 family=arial) labelattrs=(size=7);
+     yaxis display=(noticks noline) label='Opptaksområde' labelattrs=(size=7 weight=bold) type=discrete discreteorder=data valueattrs=(size=7);
+     xaxis /*display=(nolabel)*/ offsetmin=0.02 &skala valueattrs=(size=7) label="&xlabel" labelattrs=(size=7 weight=bold);
+		Label &labeltabell;
+		
+run;
+Title1; title2;
+ods listing close;
 
 /*Sammensatt figur med alle kontroller*/
 
@@ -335,3 +444,5 @@ scatter x=pros_plass y=bohf /datalabel=Andeln datalabelpos=right markerattrs=(si
 run;
 Title; 
 ods listing close;
+
+

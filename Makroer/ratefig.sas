@@ -64,6 +64,7 @@ call symput('FT2',trim(left(put(FT2,8.2))));
 call symput('FT3',trim(left(put(FT3,8.2))));
 run;
 
+
 /*Hvilken rateSnitt-variabel som plottes avhenger av om vi vil vise alle rater uansett, eller om vi vil fjerne de med lav n*/
 %if &vis_misstxt=1 %then %do;
 proc sort data=&datasett;

@@ -20,7 +20,17 @@
 %ratefig(datasett=&tema._tot_bohf);
 /*%let datasett=&tema._bohf;*/
 
+/*Lager rankingtabell*/
+proc sort data=&tema._tot_bohf;
+by decending rateSnitt;
+run;
 
+data rank_&tema;
+set &tema._tot_bohf;
+where BoHF ne 8888;
+&tema._rank+1;
+keep &tema._rank BoHF;
+run;
 
 /***************************************************/
 /* Lag figur reduksjon                */
@@ -41,3 +51,15 @@
 %let skala=;
 
 %ratefig(datasett=&tema._tot_bohf);
+
+/*Lager rankingtabell*/
+proc sort data=&tema._tot_bohf;
+by decending rateSnitt;
+run;
+
+data rank_&tema;
+set &tema._tot_bohf;
+where BoHF ne 8888;
+&tema._rank+1;
+keep &tema._rank BoHF;
+run;

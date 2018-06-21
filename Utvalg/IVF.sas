@@ -5,12 +5,11 @@ set &datasett;
 
 array diagnose {*} Hdiag: Bdiag: Tdiag:;
 
-     do i=1 to dim(diagnose);
-        if diagnose{i} in ('N974') then IVF_d=1;
-	if diagnose{i} in ('N978') then IVF_d=1;
-	if diagnose{i} in ('N979') then IVF_d=1;
-	if diagnose{i} in ('Z312') then IVF_d=1;
-     end;
+    do i=1 to dim(diagnose);
+    if substr(diagnose{i},1,3) in ('N97','N46') then Infertil_d=1;
+	/*if diagnose{i} in ('Z311','Z312','Z313','Z314') then Infertil_d=1;*/
+	/*if diagnose{i} in ('Z311','Z312','Z313','Z314') then ZInfertil_d=1;*/
+    end;
 
 array prosedyre {*} NC:;
 	do i=1 to dim(prosedyre);

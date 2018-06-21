@@ -13,8 +13,8 @@ array Prosedyre {*} NC:;
 			if substr(prosedyre{i},1,3) in ('LAC','LAD','LAE','LAF','LBD','LBE','LBF','LCB','LCC','LCD','LCF') then Endometriose_p=1;
 			if prosedyre{i} in ('JAL20','JAL21','JAL01','JAP01','JAP00') then Endometriose_p=1;
 			
-			if substr(prosedyre{i},1,3) in ('LCC','LCD') then endometriose_ifb_p=1;
-			if prosedyre{i} in ('LAE20','LAE21','LAF10','LAF11','LAF30') then endometriose_ifb_p=1;
+			/*if substr(prosedyre{i},1,3) in ('LCC','LCD') then endometriose_ifb_p=1;
+			if prosedyre{i} in ('LAE20','LAE21','LAF10','LAF11','LAF30') then endometriose_ifb_p=1;*/
 			
 /*			if prosedyre{i} in ('JAL21','JAL01','JAP01','LAC01','LAC11','LAC21','LAC31','LAC97','LAD01','LAE11',
 			'LAE21','LAF01','LAF11','LBD01','LBE01','LBF01','LBF11','LBF31','LBF41','LBF51','LBF61','LBF97','LCB01',
@@ -25,8 +25,8 @@ array Prosedyre {*} NC:;
 
 if Endometriose_d=1 and Endometriose_p=1 then Endometriose_dp=1;
 
-if endometriose_dp=1 and endometriose_ifb_p=1 then endometriose_ifb_dp=1;
-if endometriose_dp=1 and endometriose_ifb_p=. then endometriose_fb_dp=1;
+/*if endometriose_dp=1 and endometriose_ifb_p=1 then endometriose_ifb_dp=1;
+if endometriose_dp=1 and endometriose_ifb_p=. then endometriose_fb_dp=1;*/
 
 /*if endometriose_p=1 and endometriose_lapvag_p=. then endometriose_aapen_p=1;
 
