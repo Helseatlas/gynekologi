@@ -4,5 +4,11 @@
 
 
 %let agg_var = steril_p; *D-diagnose, P-prosedure;
-%rater_felles(kun_total = 1);
+%rater_felles(privat=0);
+
+%let agg_var = steril_ks_p; *D-diagnose, P-prosedure;
+%rater_felles(kun_total=1);
+
+%let agg_var = steril_iks_p; *D-diagnose, P-prosedure;
+%rater_felles(kun_total=1);
 

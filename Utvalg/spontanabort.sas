@@ -27,7 +27,7 @@ array Prosedyre {*} NC:;
 
 if LCH00=1 or LCH03=1 or LCH13=1 or LCH20=1 or LCH96=1 or MBA00=1 or MBA03=1 or MBA96=1 then AbortKir_p=1;
 if LCH10=1 or MAGM00=1  or WBGM55=1 then AbortMed_p=1;
-if SpontanAbort_d=1 and AbortKir_p=1 then SpontanAbortKir_dp=1;
+if SpontanAbort_d=1 and AbortKir_p=1 then SpontanAbort_dp=1;
 if SpontanAbort_d=1 and AbortMed_p=1 then SpontanAbortMed_dp=1;
 
 run;

@@ -18,6 +18,7 @@ array takst {*} Normaltariff:;
     do i=1 to dim(takst); 
 
 		if substr(takst{i},1,4) in ('214c') then diagEndoB_p=1; 
+		if substr(takst{i},1,4) in ('207b') then diagEndoB_p=1; 
 
 
 end;

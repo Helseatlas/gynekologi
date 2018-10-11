@@ -14,20 +14,20 @@ options sasautos=("&filbane.Makroer" SASAUTOS);
 
 /*Options symbolgen mlogic mprint;*/
 
-%include "&filbane.formater\SKDE_somatikk.sas";
-%include "&filbane.formater\NPR_somatikk.sas";
-%include "&filbane.formater\bo.sas";
-%include "&filbane.formater\beh.sas";
-%include "&filbane.formater\komnr.sas";
+%include "&filbane.Formater\SKDE_somatikk.sas";
+%include "&filbane.Formater\NPR_somatikk.sas";
+%include "&filbane.Formater\bo.sas";
+%include "&filbane.Formater\beh.sas";
+%include "&filbane.Formater\komnr.sas";
 
 %include "&filbane.rateprogram\rateberegninger.sas";
 
-%include "&filbane.stiler\stil_figur.sas";
-%include "&filbane.stiler\Anno_logo_kilde_NPR_SSB.sas";
+%include "&filbane.Stiler\stil_figur.sas";
+%include "&filbane.Stiler\Anno_logo_kilde_NPR_SSB.sas";
 
 /******  DATAGRUNNLAG  ****************************************************************/
 
-%Let innbyggerfil=Innbygg.innb_2004_2016_bydel_allebyer;
+%Let innbyggerfil=Innbygg.innb_2004_2017_bydel_allebyer;
 
 /******  HVA ØNSKER DU Å FÅ UT?  **************************************************************/
 %let aarsvarfigur=1; /* Ønsker du Årsvariasjonsfigurer og/eller Konfidensintervallfigurer? */
@@ -35,7 +35,7 @@ options sasautos=("&filbane.Makroer" SASAUTOS);
 %let NorgeSoyle=1; /* dersom du ønsker Norge som søyle i figur - dersom ikke må det stå =0 */
 %let KIfigur=;
 %let Mine_boomraader=; /* Utvalgte områder til figurer - eks: komnr in (1900:1930) eller bydel in (1:15)*/ 
-%let vis_ekskludering=0; /* Vis tabeller for ekskludering*/
+%let vis_ekskludering=; /* Vis tabeller for ekskludering*/
 /* Hvilke bonivåer ønskes? ja eller nei, hvor 1 betyr ja */
 %let kommune=; 		/*Bildefiler*/ %let Fig_AA_kom=; 	%let Fig_KI_kom=;
 %let kommune_HN=; 	/*Bildefiler*/ %let Fig_AA_komHN=; 	%let Fig_KI_komHN=;
@@ -62,16 +62,16 @@ options sasautos=("&filbane.Makroer" SASAUTOS);
 %let Ut_sett=; /*Utdata, dersom du ønsker stor tabell med KI osv., --> Ut_sett=1 */
 
 /******  PERIODE OG ALDER  **************************************************************/
-%let StartÅr=2014;
-%let SluttÅr=2016;
-%Let aar=2015; /* Standardiseringsår defineres her*/
+%let StartÅr=2015;
+%let SluttÅr=2017;
+%Let aar=2016; /* Standardiseringsår defineres her*/
 
 
 /******  JUSTERING  ********************************************************************/
 %Let aldjust=Ermann=0; /*Aktiveres KUN dersom KUN aldersjustering*/
 %Let standard = Aldersstandardiserte; /*Brukes til å lage figur og tabell-overskrifter */
 %Let kjonn=(0); /*Dersom både menn og kvinner (0,1), dersom kun menn (1), dersom kun kvinner (0)*/
-%Let rate_pr=100000; /*Definerer rate pr 1.000 eller 100.000 innbyggere eller osv */
+%Let rate_pr=10000; /*Definerer rate pr 1.000 eller 100.000 innbyggere eller osv */
 %Let boomraade=BoRHF in (1:4); /*Definerer Boområder det skal beregnes rater for utfra BoRHF - her kan man velge andre kriterier, feks BoHF, komnr osv*/
 %Let boomraadeN=BoRHF in (1:4); /*Definerer Boområder som det beregnes "nasjonale" andeler utfra BoRHF - her kan man velge andre kriterier, feks BoHF, komnr osv*/
 %let SnittOmraade=Norge; /*Definerer Snittlinja på figurene - må være samsvar med boomraade ovenfor*/

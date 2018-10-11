@@ -4,7 +4,7 @@
 /* Lag figur konsultasjoner todelt off/priv                 */
 /***************************************************/
 
-%let tema=myom_d;
+/*%let tema=myom_d;
 
 
 %let dsn1=&tema._off_bohf;
@@ -16,8 +16,8 @@
 
 %let fignavn=offpriv;
 %let type=kons;
-%let tittel=Antall polikliniske konsultasjoner for myom i livmor per 100 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2014-16.;
-%let xlabel= Polikliniske konsultasjoner for myom i livmor, pr. 100 000 innbyggere. Aldersjusterte rater.;
+%let tittel=Antall polikliniske konsultasjoner for myom i livmor per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
+%let xlabel= Polikliniske konsultasjoner for myom i livmor, pr. 10 000 innbyggere. Aldersjusterte rater.;
 %let label_1=Offentlig;
 %let label_2=Privat;
 %let tabellvar1=tot_antall;
@@ -27,10 +27,10 @@
 %let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
 %let skala=;
 
-%ratefig_todeltSoyle(datasett=&tema._bohf);
+%ratefig_todeltSoyle(datasett=&tema._bohf);*/
 
 /*Lager rankingtabell*/
-proc sort data=&tema._bohf;
+/*proc sort data=&tema._bohf;
 by decending tot_rate;
 run;
 
@@ -39,32 +39,58 @@ set &tema._bohf;
 where BoHF ne 8888;
 &tema._rank+1;
 keep &tema._rank BoHF;
-run;
+run;*/
 
 /***************************************************/
 /* Lag figur inngrep                 */
 /***************************************************/
 
+%let tema=myom;
 
-%let tema=myom_dp;
-%let rv1=&tema._tot;
+%let dsn1=&tema._dp_tot_bohf;
+%let rv1=&tema._dp_tot;
 
-%let fignavn=;
+%let dsn2=&tema._h_dp_tot_bohf;
+%let rv2=&tema._h_dp_tot;
+
+%let dsn3=&tema._dp_tot_unik_bohf;
+%let rv3=&tema._dp_tot_unik;
+
+%let dsn4=&tema._h_dp_tot_unik_bohf;
+%let rv4=&tema._h_dp_tot_unik;
+
+%merge(ant_datasett=4, dsn_ut=&tema._bohf);
+
+data &tema._bohf;
+set &tema._bohf;
+pas_rate=rate_3+rate_4;
+pas_antall=antall_3+antall_4;
+i_pr_pas=tot_rate/pas_rate;
+run;
+
+
+%let fignavn=andelhyst;
 %let type=inngr;
-%let tittel=Antall inngrep for myom i livmor per 100 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2014-16.;
-%let xlabel= Inngrep for myom i livmor, pr. 100 000 innbyggere. Aldersjusterte rater.;
-%let tabellvar1=&tema._tot;
-%let tabellvar2=Innbyggere;
+%let tittel=Antall inngrep for myom i livmor per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
+%let xlabel= Inngrep for myom i livmor, pr. 10 000 innbyggere. Aldersjusterte rater.;
+%let label_1=Andre inngrep;
+%let label_2=Hysterektomi;
+%let tabellvar1=tot_antall;
+%let tabellvar2=pas_antall;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Inngrep" &tabellvar2="Kvinner";
+%let labeltabell=&tabellvar1="Inngrep" &tabellvar2="Pasienter";
 %let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
 %let skala=;
 
-%ratefig(datasett=&tema._tot_bohf);
+%ratefig_todeltSoyle(datasett=&tema._bohf);
+
+%let mappe=Figurer\NPR\fig_pdf;
+%ratefig_todeltSoyle(datasett=&tema._bohf, bildeformat=pdf, noxlabel=1);
+%let mappe=Figurer\NPR;
 
 
 /*Lager rankingtabell*/
-proc sort data=&tema._tot_bohf;
+/*proc sort data=&tema._tot_bohf;
 by decending rateSnitt;
 run;
 
@@ -73,10 +99,10 @@ set &tema._tot_bohf;
 where BoHF ne 8888;
 &tema._rank+1;
 keep &tema._rank BoHF;
-run;
+run;*/
 
 /***************************************************/
-/* Lag figur andel innlagte, inngrep                 */
+/* Lag figur andel innlagte, andre inngrep                 */
 /***************************************************/
 
 
@@ -92,8 +118,8 @@ run;
 %let Andel=andel_2_1;
 %let fignavn=innlagte;
 %let type=inngr;
-%let tittel=Innleggelser som andel av alle inngrep for myom. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2014-16.;
-%let xlabel= Innleggelser som andel av alle inngrep for myom. Aldersjusterte rater.;
+%let tittel=Innleggelser som andel av andre (ikke hysterektomi) inngrep for myom. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
+%let xlabel= Innleggelser som andel av andre (ikke hysterektomi) inngrep for myom. Aldersjusterte rater.;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
@@ -108,7 +134,7 @@ run;
 /***************************************************/
 
 
-%let tema=myom_dp;
+/*%let tema=myom_dp;
 
 %let dsn1=&tema._tot_bohf;
 %let rv1=&tema._tot;
@@ -128,7 +154,7 @@ run;
 
 %let fignavn=LT_pr_inngr;
 %let type=inngr;
-%let tittel=Liggetid per inngrep, kirurgisk behandling for myom. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2014-16.;
+%let tittel=Liggetid per inngrep, kirurgisk behandling for myom. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
 %let xlabel= Liggetid per inngrep, myom. Aldersjusterte rater.;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
@@ -139,10 +165,10 @@ run;
 
 %ratefig(datasett=&tema._LT_bohf);
 %let vis_aarsvar=1;
-%let vis_ft=1;
+%let vis_ft=1;*/
 
 /*Lager rankingtabell*/
-proc sort data=&tema._LT_bohf;
+/*proc sort data=&tema._LT_bohf;
 by decending rateSnitt2;
 run;
 
@@ -151,7 +177,7 @@ set &tema._LT_bohf;
 where BoHF ne 8888;
 &tema._rank_LT+1;
 keep &tema._rank_LT BoHF;
-run;
+run;*/
 
 /***************************************************/
 /* Lag figur inngrep todelt overlapp KHB                 */
@@ -169,8 +195,8 @@ run;
 
 %let fignavn=overlapp;
 %let type=inngr;
-%let tittel=Antall inngrep for myom i livmor per 100 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2014-16.;
-%let xlabel= Inngrep for myom i livmor, pr. 100 000 innbyggere. Aldersjusterte rater.;
+%let tittel=Antall inngrep for myom i livmor per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
+%let xlabel= Inngrep for myom i livmor, pr. 10 000 innbyggere. Aldersjusterte rater.;
 %let label_1=Kun Myom;
 %let label_2=Myom og KHB;
 %let tabellvar1=tot_antall;
@@ -192,8 +218,8 @@ run;
 
 %let fignavn=;
 %let type=inngr;
-%let tittel=Antall inngrep for KUN myom i livmor per 100 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2014-16.;
-%let xlabel= Inngrep for KUN myom i livmor, pr. 100 000 innbyggere. Aldersjusterte rater.;
+%let tittel=Antall inngrep for KUN myom i livmor per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
+%let xlabel= Inngrep for KUN myom i livmor, pr. 10 000 innbyggere. Aldersjusterte rater.;
 %let tabellvar1=&tema._tot;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;

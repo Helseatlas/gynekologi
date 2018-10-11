@@ -1,7 +1,7 @@
 %macro panelfig;
 
 data norge;
-  set &tema.&teknikk._dp_tot_bohf(keep=rate20: bohf);
+  set &tema.&teknikk._dp_tot_bohf_trend(keep=rate20: bohf);
   where bohf=8888;
 run;
 
@@ -12,11 +12,13 @@ data yr&yr(keep=aar Nrate);
   rename rate&yr=Nrate;
 run;
 %mend;
+%trans_N(yr=2013);
 %trans_N(yr=2014);
 %trans_N(yr=2015);
 %trans_N(yr=2016);
+%trans_N(yr=2017);
 data N;
-  set yr2014 yr2015 yr2016;
+  set yr2013 yr2014 yr2015 yr2016 yr2017;
 run;
 
 
@@ -27,11 +29,13 @@ data yr&yr(keep=aar RV_just_rate BoHF);
   rename rate&yr=RV_just_rate;
 run;
 %mend;
-%trans_hf(yr=2014, innfil=&tema.&teknikk._dp_tot_bohf);
-%trans_hf(yr=2015, innfil=&tema.&teknikk._dp_tot_bohf);
-%trans_hf(yr=2016, innfil=&tema.&teknikk._dp_tot_bohf);
+%trans_hf(yr=2013, innfil=&tema.&teknikk._dp_tot_bohf_trend);
+%trans_hf(yr=2014, innfil=&tema.&teknikk._dp_tot_bohf_trend);
+%trans_hf(yr=2015, innfil=&tema.&teknikk._dp_tot_bohf_trend);
+%trans_hf(yr=2016, innfil=&tema.&teknikk._dp_tot_bohf_trend);
+%trans_hf(yr=2017, innfil=&tema.&teknikk._dp_tot_bohf_trend);
 data hf;
-  set yr2014 yr2015 yr2016;
+  set yr2013 yr2014 yr2015 yr2016 yr2017;
     where bohf <> 8888;
 
 run;
@@ -56,7 +60,7 @@ colaxis label='År' valueattrs=(size=5) labelattrs=(size=8 weight=bold);
 rowaxis label="&aksetekst" valueattrs=(size=6) labelattrs=(size=8 weight=bold);
 RUN; ods listing close;
 
-proc datasets nolist;
-delete N HF yr: norge;
-run;
+*proc datasets nolist;
+*delete N HF yr: norge;
+*run;
 %mend panelfig;

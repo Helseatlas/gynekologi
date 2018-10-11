@@ -25,22 +25,25 @@ run;
 
 %let fignavn=offpriv;
 %let type=kons;
-%let tittel=Antall polikliniske konsultasjoner for postmenopausale blødninger per 100 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2014-16.;
-%let xlabel= Polikliniske konsultasjoner for postmenopausale blødninger, pr. 100 000 innbyggere. Aldersjusterte rater.;
+%let tittel=Antall polikliniske konsultasjoner for postmenopausale blødninger per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
+%let xlabel= Polikliniske konsultasjoner for postmenopausale blødninger, pr. 10 000 innbyggere. Aldersjusterte rater.;
 %let label_1=Offentlig;
 %let label_2=Privat;
 %let tabellvar1=tot_antall;
 %let tabellvar2=antall_3;
-%let tabellvar3=kons_pr_pers;
-%let tabellvariable= &tabellvar1 &tabellvar2 &tabellvar3;
-%let labeltabell=&tabellvar1="Konsultasjoner" &tabellvar2="Personer" &tabellvar3="Kons./Person";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0 &tabellvar3 NLnum8.1;
+%let tabellvariable= &tabellvar1 &tabellvar2;
+%let labeltabell=&tabellvar1="Konsultasjoner" &tabellvar2="Personer";
+%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
 %let skala=;
 
 %ratefig_todeltSoyle(datasett=&tema._bohf);
 
+%let mappe=Figurer\NPR\fig_pdf;
+%ratefig_todeltSoyle(datasett=&tema._bohf, bildeformat=pdf, noxlabel=1);
+%let mappe=Figurer\NPR;
+
 /*Lager rankingtabell*/
-proc sort data=&tema._bohf;
+/*proc sort data=&tema._bohf;
 by decending tot_rate;
 run;
 
@@ -49,4 +52,4 @@ set &tema._bohf;
 where BoHF ne 8888;
 &tema._rank+1;
 keep &tema._rank BoHF;
-run;
+run;*/

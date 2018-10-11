@@ -11,37 +11,29 @@
 
 %let agg_var = Hyster_Aapen_dp; *D-diagnose, P-prosedure;
 %rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._t);
-data &agg_var._tot_bohf_t;
- set &agg_var._tot_bohf;
-run;
+
 
 %let agg_var = Hyster_Vaginal_dp;
 %rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._t);
-data &agg_var._tot_bohf_t;
- set &agg_var._tot_bohf;
-run;
+
 
 %let agg_var = Hyster_Lap_dp;
 %rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._t);
-data &agg_var._tot_bohf_t;
- set &agg_var._tot_bohf;
-run;
 
 /****************************************************************/
 /* Robot Assistert 5 Âr for trend                               */
 /****************************************************************/
 
+%let agg_var = Hyster_annen_dp;
+%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._t);
+
+
 %let agg_var = Hyster_robot_dp;
 %rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._t);
-data &agg_var._tot_bohf_t;
- set &agg_var._tot_bohf;
-run;
+
 
 %let agg_var = Hyster_ikkerobot_dp;
 %rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._t);
-data &agg_var._tot_bohf_t;
- set &agg_var._tot_bohf;
-run;
 
 /* set it back for future usage */
 %let Start≈r=2015;
