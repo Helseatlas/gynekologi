@@ -95,7 +95,7 @@ run;
 
 /*Regner ut hvor lenge etter fødselen den aktuelle kontakten var. */
 /*Hvis kontakten ikke er knyttet til en fødsel (har fodedato = .) får variabelen dager_etter_fodsel verdien missing*/
-data &dsn._kontakter;
+data &dsn._kont;
 set &dsn;
 
 if Levende_fodt=. and fodedato ne . then do;			/*Sikrer at vi ikke tar med selve fødselen*/
@@ -107,7 +107,7 @@ end;
 run;
 
 /*Klassifiserer en del tilstandskoder som spesielt relevante for barselkvinner*/
-data &dsn._koder;
+/*data &dsn._koder;
 set &dsn._kontakter;
 where barselkont=1;
 
@@ -117,21 +117,27 @@ array diagnose {*} Hdiag: Bdiag: Tdiag:;
 		 if substr(diagnose{i},1,3) in ('O90','O91','O92','O94') then barsel_kode=1;
 		 if substr(diagnose{i},1,3) in ('O98','O99') then barsel_kode=1;
 		 if substr(diagnose{i},1,3) in ('Z39','Z48') then barsel_kode=1;
-		 if substr(diagnose{i},1,3) in ('N61','T81') then barsel_kode=1;		/*N61 Betennelsestilstander i bryst, T81 Komplikasjoner til kirurgiske og medisinske prosedyrer, i kl annet sted*/
-		 if substr(diagnose{i},1,4) in ( 'N390') then barsel_kode=1;		/*N39 Urinveisinfeksjon md uspes. lokalisasjon*/
+		 if substr(diagnose{i},1,3) in ('N61','T81') then barsel_kode=1;		/*N61 Betennelsestilstander i bryst, T81 Komplikasjoner til kirurgiske og medisinske prosedyrer, i kl annet sted
+		 if substr(diagnose{i},1,4) in ( 'N390') then barsel_kode=1;		/*N39 Urinveisinfeksjon md uspes. lokalisasjon
 		 
      end;
 	 
 if barselkont7d=1 and barsel_kode=1 then barsel_kode7d=1;
 
-run;
+run;*/
 
 /*Aggregerer*/
 %Let tema=barselkont;
-%aggreger(inndata=&dsn._koder, utdata=k_u_&tema, agg_var=&tema, mappe=helseatl);
+%aggreger(inndata=&dsn._kont, utdata=k_u_&tema._18, agg_var=&tema, mappe=helseatl);
 %Let tema=barselkont7d;
-%aggreger(inndata=&dsn._koder, utdata=k_u_&tema, agg_var=&tema, mappe=helseatl);
-%Let tema=barsel_kode;
+%aggreger(inndata=&dsn._kont, utdata=k_u_&tema._18, agg_var=&tema, mappe=helseatl);
+/*%Let tema=barsel_kode;
 %aggreger(inndata=&dsn._koder, utdata=k_u_&tema, agg_var=&tema, mappe=helseatl);
 %Let tema=barsel_kode7d;
-%aggreger(inndata=&dsn._koder, utdata=k_u_&tema, agg_var=&tema, mappe=helseatl);
+%aggreger(inndata=&dsn._koder, utdata=k_u_&tema, agg_var=&tema, mappe=helseatl);*/
+
+
+proc sort data=&dsn._kont(keep=EoC_Id barselkont) out=flagg_barselkont;
+  by EOC_Id;
+quit;
+

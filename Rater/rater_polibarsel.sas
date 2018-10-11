@@ -13,7 +13,7 @@
 **********/
 
 %let agg_var=barselkont;
-%let Ratefil=helseatl.k_u_&agg_var;
+%let Ratefil=helseatl.k_u_&agg_var._18;
 
 %let RV_variabelnavn= tot; /*navn på ratevariabel i det aggregerte datasettet*/
 %Let ratevariabel = &agg_var._&RV_variabelnavn; /*Brukes til å lage "pene" overskrifter*/
@@ -34,7 +34,7 @@ run;
 **********/
 
 %let agg_var=barselkont;
-%let Ratefil=helseatl.k_u_&agg_var;
+%let Ratefil=helseatl.k_u_&agg_var._18;
 
 %let RV_variabelnavn= tot_unik; /*navn på ratevariabel i det aggregerte datasettet*/
 %Let ratevariabel = &agg_var._tu; /*Brukes til å lage "pene" overskrifter*/
@@ -55,7 +55,7 @@ run;
 **********/
 
 %let agg_var=barselkont7d;
-%let Ratefil=helseatl.k_u_&agg_var;
+%let Ratefil=helseatl.k_u_&agg_var._18;
 
 %let RV_variabelnavn= tot_unik; /*navn på ratevariabel i det aggregerte datasettet*/
 %Let ratevariabel = &agg_var._tu; /*Brukes til å lage "pene" overskrifter*/
@@ -71,49 +71,8 @@ run;
 
 /*%forholdstall;*/
 
-/*********
- * Total personer m polikl kontakt med barselrelevant kode i barseltid *
-**********/
-
-%let agg_var=barsel_kode;
-%let Ratefil=helseatl.k_u_&agg_var;
-
-%let RV_variabelnavn= tot_unik; /*navn på ratevariabel i det aggregerte datasettet*/
-%Let ratevariabel = &agg_var._tu; /*Brukes til å lage "pene" overskrifter*/
-%Let forbruksmal = &agg_var._tu; /*Brukes til å lage tabell-overskrift i Årsvarfig, gir også navn til 'ut'-datasett*/
-
-%utvalgx;
-%omraadeNorge;
-%rateberegninger;
-
-proc datasets nolist;
-delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd barsel_kode_tu_NORGE;
-run;
-
-/*%forholdstall;*/
-
-/*********
- * Total personer m polikl kontakt med barselrelevant kode første 7 dager i barseltid *
-**********/
-
-%let agg_var=barsel_kode7d;
-%let Ratefil=helseatl.k_u_&agg_var;
-
-%let RV_variabelnavn= tot_unik; /*navn på ratevariabel i det aggregerte datasettet*/
-%Let ratevariabel = &agg_var._tu; /*Brukes til å lage "pene" overskrifter*/
-%Let forbruksmal = &agg_var._tu; /*Brukes til å lage tabell-overskrift i Årsvarfig, gir også navn til 'ut'-datasett*/
-
-%utvalgx;
-%omraadeNorge;
-%rateberegninger;
-
-proc datasets nolist;
-delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd barsel_kode7d_tu_NORGE;
-run;
-
-/*%forholdstall;*/
 
 /*
 For å ikke ødelegge for fremtidige rateberegninger må innbyggerfil defineres tilbake til original
 */
-%Let innbyggerfil=Innbygg.innb_2004_2016_bydel_allebyer;
+%Let innbyggerfil=Innbygg.innb_2004_2017_bydel_allebyer;
