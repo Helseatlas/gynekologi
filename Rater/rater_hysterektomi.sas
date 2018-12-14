@@ -68,7 +68,7 @@ run;
 /****************************************************************/
 
 %let agg_var = Hysterektomi_dp;
-%rater_felles(privat=0, Ratefil=helseatl.k_u_&agg_var._18);
+%rater_felles(privat=0, unik = 0, innlegg = 0, Ratefil=helseatl.k_u_&agg_var._18);
 
 /****************************************************************/
 /* Hyppiste diagnoser                                           */
@@ -95,4 +95,8 @@ run;
 
 %let agg_var = Hyster_ikkerobot_dp;
 %rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._18);
+
+proc datasets nolist;
+delete KA_t:
+run;
 

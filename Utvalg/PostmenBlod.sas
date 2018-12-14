@@ -13,6 +13,13 @@ array diagnose {*} Hdiag: Bdiag: Tdiag:;
 
 end;
 
+if PostmenBlod_d=1 and diagEndoB_p=1 then PostmenblodB_dp=1;
+if PostmenBlod_d=1 and diagEndoU_p=1 then PostmenblodU_dp=1;
+if PostmenblodB_dp=1 or PostmenblodU_dp=1 then Postmenblod_dp=1;
+
+if diagEndoB_p=1 and PostmenBlod_d ne 1 then diagEndoB_A_dp=1;
+if diagEndoU_p=1 and PostmenBlod_d ne 1 then diagEndoU_A_dp=1;
+
 /*USIKKER PÅ PROSEDYREKODER; MÅ DISKUTERES MED REFERANSEGRUPPE*/
 /*Prosedyrekode for livmorkirurgi (hysterektomi)*/
 /*array Prosedyre {*} NC:;

@@ -49,3 +49,7 @@ delete RV: Norge: figur: Andel Alder: Bo: HN: Kom: Fylke: VK: bydel: snudd ;
 run;
 
 %forholdstall;
+
+proc datasets nolist;
+delete KA_t:
+run;

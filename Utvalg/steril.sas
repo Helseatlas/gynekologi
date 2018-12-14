@@ -22,6 +22,8 @@ array Prosedyre {*} NC:;
 if steril_p=1 and Keisersnitt=1 then steril_ks_p=1;
 if steril_p=1 and Keisersnitt ne 1 then steril_iks_p=1;
 
+if steril_a_p=1 then steril_ia_p=.;
+
 run;
 
 

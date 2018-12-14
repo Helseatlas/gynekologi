@@ -6,6 +6,7 @@ set &datasett;
 array diagnose {*} Hdiag: Bdiag: Tdiag:;
 	do i=1 to dim(diagnose);
 		if substr(diagnose{i},1,3) in ('N87','D06')  then cervix_preinv_dysplasi_d=1; 
+		if substr(diagnose{i},1,3) in ('C53')  then cervix_kreft_d=1; 
 	end;
 
 
@@ -31,9 +32,19 @@ if kolposkopi_p=1 then do;
 	if cervix_biopsi_p=1 then kolp_biop_p=1;
 	if cervix_biopsi_p ne 1 then kolp_p=1;
 end;
-if kolposkopi ne 1 then do;
+
+if kolposkopi_p ne 1 then do;
 	if cervix_biopsi_p=1 then biop_p=1;
 end;
+
+if cervix_biopsi_p=1 then 
+	do;
+	if cervix_kreft_d=1 then cervix_C_dp=1;
+	else if cervix_preinv_dysplasi_d=1 then cervix_DN_dp=1;
+	else cervix_U_dp=1;
+	end;
+
+if kolposkopi_p=1 or cervix_biopsi_p=1 then kolpORbiop_p=1;
 
 if fag_skde=4 and avtspes=1 then kontakt_avtspes=1;
 

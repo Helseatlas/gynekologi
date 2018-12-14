@@ -21,6 +21,7 @@
 %let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.1;
 %let skala=;
 
+%let mappe=&mappe_png;
 %ratefig(datasett=&tema._bohf);
 
 /*Lager rankingtabell*/
@@ -61,6 +62,7 @@ run;
 %let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
 %let skala=;
 
+%let mappe=&mappe_png;
 %andelsfig(datasett=&tema.a7d_bohf);
 
 

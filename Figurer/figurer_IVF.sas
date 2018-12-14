@@ -1,51 +1,44 @@
-* CHECK THAT MACROS SHOULD NOT ALTER THE OUTPUT FILES FROM RATEPROGRAM, E.G. HYSTEREKTOMI_BOHF, HYSTEREKTOMI_KREFT_BOHF, HYSTEREKTOMI_ANNEN_BOHF;
-* CHANGE THE MACRO SO THAT WHAT WE GRAPH WITH IS MORE DYNAMIC, E.G. hbarparm category=bohf response=RATESNITT3;
-
-/*OVERORDNET INPUT:*/
 
 
+%let tema=IVF_p;
+
+%let rv1=&tema._tot_unik;
+
+%let fignavn=personer; 
+%let type=inngr;    
+%let tittel=Pasienter som har fått assistert befruktning ved IVF. Aldersstandardiserte rater per 10 000 innbyggere. Gjennomsnitt per år i perioden 2015-17.;
+%let xlabel= Antall pr. 10 000 kvinner;
+%let tabellvar1=&tema._tot_unik;
+%let tabellvariable= &tabellvar1;* &tabellvar2;
+%let labeltabell=&tabellvar1="Kvinner";
+%let formattabell=&tabellvar1 NLnum8.0;* &tabellvar2 NLnum8.0;
+
+%let skala=;
+
+%let mappe=&mappe_png;
+%ratefig(datasett=&tema._tot_unik_bohf);
 
 
-%let tema=IVF;
+
+%let mappe=&mappe_pdf;
+%ratefig(datasett=&tema._tot_unik_bohf, bildeformat=pdf );
 
 
+/* Lager datasett for Instant Atlas */
+%Let beskrivelse=IVF_rate;
+data helseatl.IA_gyn_&beskrivelse;
+  set IVF_p_tot_unik_bohf (keep = bohf Ratesnitt IVF_p_tot_unik innbyggere rename=(Ratesnitt=Rate IVF_p_tot_unik=Antall)); 
 
-/*INPUT FOR HVER FIGUR:*/
+BoHF_Navn=vvalue(BoHF);
+Gruppe = 2;
+Niva = 10;
 
-%let agg_var2 = Insem_p; *D-diagnose, P-prosedure;
-%let agg_var1 = IVF_p; *D-diagnose, P-prosedure;
-
-%let dsn1=&agg_var1._alleaar_bohf; %let rv1=&agg_var1._alleaar;
-%let dsn2=&agg_var2._alleaar_bohf; %let rv2=&agg_var2._alleaar;
-
-
-%merge(ant_datasett=2, dsn_ut=merged_&tema);
-
-
-/*INPUT FOR HVER FIGUR:*/
-
-%let fignavn=IVF_IUI; *additional info for figure name, can be empty;
-%let type=inngr;    *inngrep, konsultasjoner, or undersøkelser;
-%let tittel=Pasienter som har fått assistert befruktning ved IVF og inseminasjon ila 2015-2017. Aldersstandardiserte rater per 10 000 innbyggere. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Pasienter som har fått assistert befruktning ved IVF og inseminasjon ila 2015-2017, pr. 10 000 innbyggere. Aldersjusterte rater.;
-
-* variables to use, and column and label names for the table on the right of the figure;
-%let tabellvar1=antall_1;
-%let tabellvar2=antall_2;
-%let label_2=Insem.;
-%let label_1=IVF;
-%let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar2="Insem." &tabellvar1="IVF";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
-
-%let skala=/*values=(0 to 1.6 by 0.2)*/;
-
-%ratefig_todeltSoyle(datasett=merged_&tema);
+numeric = "numeric";
+Tom_rad = "";
+Tom_rute = "";
+run;
 
 
-%let mappe=Figurer\NPR\fig_pdf;
-%ratefig_todeltSoyle(datasett=merged_&tema, bildeformat=pdf, noxlabel=1);
-%let mappe=Figurer\NPR;
 
 
 
@@ -66,7 +59,7 @@ run;*/
 
 %let fignavn=IVF;
 %let tittel=Antall IVF (eggoverføring) per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= IVF (eggoverføring), pr. 10 000 innbyggere. Aldersjusterte rater.;
+%let xlabel= IVF (eggoverføring), per 10 000 innbyggere. Aldersjusterte rater.;
 %let tabellvar1=&agg_var2._tot;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
@@ -80,7 +73,7 @@ run;*/
 
 %let fignavn=IUI;
 %let tittel=Antall IUI per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Intrauterin inseminasjon (IUI), pr. 10 000 innbyggere. Aldersjusterte rater.;
+%let xlabel= Intrauterin inseminasjon (IUI), per 10 000 innbyggere. Aldersjusterte rater.;
 %let tabellvar1=&agg_var1._tot;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
@@ -89,13 +82,14 @@ run;*/
 %let skala=;
 %ratefig(datasett=&dsnIUI);*/
 
+/*
 %let tema=IVF_p;
 %let rv1=&tema._alleaar;
 
 %let fignavn=16_34;
 %let type=inngr;
 %let tittel=Personer som har fått in-vitro fertilisering ila 2015-2017. Rater per 10 000 innbyggere. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Personer som har fått in-vitro fertilisering ila 2015-2017, pr. 10 000 innbyggere i alderen 16-34 år.;
+%let xlabel= Personer som har fått in-vitro fertilisering ila 2015-2017, per 10 000 innbyggere i alderen 16-34 år.;
 %let tabellvar1=&tema._alleaar;
 *%let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1;* &tabellvar2;
@@ -106,13 +100,13 @@ run;*/
 %ratefig(datasett=&tema._bohf_16_34);
 
 %let mappe=Figurer\NPR\fig_pdf;
-%ratefig(datasett=&tema._bohf_16_34, bildeformat=pdf, noxlabel=1);
+%ratefig(datasett=&tema._bohf_16_34, bildeformat=pdf );
 %let mappe=Figurer\NPR;
 
 %let fignavn=35_38;
 %let type=inngr;
 %let tittel=Personer som har fått in-vitro fertilisering ila 2015-2017. Rater per 10 000 innbyggere. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Personer som har fått in-vitro fertilisering ila 2015-2017, pr. 10 000 innbyggere i alderen 35-38 år.;
+%let xlabel= Personer som har fått in-vitro fertilisering ila 2015-2017, per 10 000 innbyggere i alderen 35-38 år.;
 %let tabellvar1=&tema._alleaar;
 *%let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1;* &tabellvar2;
@@ -123,13 +117,13 @@ run;*/
 %ratefig(datasett=&tema._bohf_35_38);
 
 %let mappe=Figurer\NPR\fig_pdf;
-%ratefig(datasett=&tema._bohf_35_38, bildeformat=pdf, noxlabel=1);
+%ratefig(datasett=&tema._bohf_35_38, bildeformat=pdf );
 %let mappe=Figurer\NPR;
 
 %let fignavn=39_55;
 %let type=inngr;
 %let tittel=Personer som har fått in-vitro fertilisering ila 2015-2017. Rater per 10 000 innbyggere. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Personer som har fått in-vitro fertilisering ila 2015-2017, pr. 10 000 innbyggere i alderen 39-55 år.;
+%let xlabel= Personer som har fått in-vitro fertilisering ila 2015-2017, per 10 000 innbyggere i alderen 39-55 år.;
 %let tabellvar1=&tema._alleaar;
 *%let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1;* &tabellvar2;
@@ -140,9 +134,9 @@ run;*/
 %ratefig(datasett=&tema._bohf_39_55);
 
 %let mappe=Figurer\NPR\fig_pdf;
-%ratefig(datasett=&tema._bohf_39_55, bildeformat=pdf, noxlabel=1);
+%ratefig(datasett=&tema._bohf_39_55, bildeformat=pdf );
 %let mappe=Figurer\NPR;
-
+*/
 
 /*
 %let agg_var1 = IVF_p; 
@@ -159,7 +153,7 @@ run;*/
 
 %Let fignavn=assbef;
 %let tittel=Antall inngrep ved in-vitro fertilisering og antall fødsler. Aldersstandardiserte rater per 10 000 innbyggere. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Assistert befruktning ved IVF og antall fødsler, pr. 10 000 innbyggere. Aldersjusterte rater.;
+%let xlabel= Assistert befruktning ved IVF og antall fødsler, per 10 000 innbyggere. Aldersjusterte rater.;
 %let tabellvar1=tot_antall;
 %let tabellvar2=antall_3;
 %let tabellvariable= &tabellvar1 &tabellvar2;

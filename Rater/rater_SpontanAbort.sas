@@ -7,3 +7,6 @@
 %rater_felles(privat=0);
 
 
+proc datasets nolist;
+delete KA_t:
+run;

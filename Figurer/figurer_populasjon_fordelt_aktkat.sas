@@ -316,7 +316,7 @@ proc sgplot data=pop_aktkat noautolegend noborder sganno=anno pad=(Bottom=4% );
   /*vbarparm category=aktkat response=andel_fodsel / fillattrs=(color=CX00509E) missing outlineattrs=(color=black) name="hp2" legendlabel="Fødsler";
   vbarparm category=aktkat response=andel_svkont / fillattrs=(color=CXC3C3C3) missing outlineattrs=(color=black) name="hp3" legendlabel="Kontakter i svangerskapet";*/
   keylegend /*"hp2" "hp3"*/ "hp1"/ location=outside position=bottom down=1 noborder titleattrs=(size=7 weight=bold);
-	yaxis &yvalues label="Andel forbrukt av kvinner i helseatlas" 
+	yaxis &yvalues label="Andel brukt av kvinner i helseatlas" 
 		labelattrs=(size=&fontst)  valuesformat=&yformat. valueattrs=(size=&fontst);
 	xaxis &xvalues label="Type helsetjeneste" 
 		labelattrs=(size=&fontst) valuesformat=&yformat. valueattrs=(size=&fontst);
@@ -337,7 +337,7 @@ proc sgplot data=pop_aktkat noautolegend noborder sganno=anno pad=(Bottom=4% );
   /*vbarparm category=aktkat response=andel_fodsel / fillattrs=(color=CX00509E) missing outlineattrs=(color=black) name="hp2" legendlabel="Fødsler";
   vbarparm category=aktkat response=andel_svkont / fillattrs=(color=CXC3C3C3) missing outlineattrs=(color=black) name="hp3" legendlabel="Kontakter i svangerskapet";*/
   keylegend /*"hp2" "hp3"*/ "hp1"/ location=outside position=bottom down=1 noborder titleattrs=(size=7 weight=bold);
-	yaxis &yvalues label="Andel forbrukt av kvinner i helseatlas" 
+	yaxis &yvalues label="Andel brukt av kvinner i helseatlas" 
 		labelattrs=(size=&fontst)  valuesformat=&yformat. valueattrs=(size=&fontst);
 	xaxis &xvalues label="Type helsetjeneste" 
 		labelattrs=(size=&fontst) valuesformat=&yformat. valueattrs=(size=&fontst);

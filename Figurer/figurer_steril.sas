@@ -1,6 +1,38 @@
+/*FIGUR: Todelt, andel åpne*/
+
+%let tema=steril;
+
+%let dsn1=&tema._a_p_tot_bohf;
+%let rv1=&tema._a_p_tot;
+
+%let dsn2=&tema._ia_p_tot_bohf;
+%let rv2=&tema._ia_p_tot;
+%merge(ant_datasett=2, dsn_ut=&tema._a_bohf); 
+
+%let fignavn=a; 
+%let type=inngr;   
+%let tittel=Antall inngrep for sterilisering per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
+%let xlabel= Antall pr. 10 000 kvinner.;
+%let tabellvar1=antall_1;
+%let tabellvar2=antall_2;
+%let label_1=Åpne;
+%let label_2=Lap./Vag.;
+%let tabellvariable= &tabellvar1 &tabellvar2 ;
+%let labeltabell=&tabellvar1="Åpne" &tabellvar2="Lap." ;
+%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+
+%let skala=/*values=(0 to 1.6 by 0.2)*/;
+
+%let mappe=&mappe_png;
+%ratefig_todeltSoyle(datasett=&tema._a_bohf);
+
+%let mappe=&mappe_pdf;
+%ratefig_todeltSoyle(datasett=&tema._a_bohf, bildeformat=pdf );
 
 
-%let tema=steril_p;
+
+
+
 
 
 
@@ -8,21 +40,39 @@
 /* Lag figur inngrep                 */
 /***************************************************/
 
+%let tema=steril;
 
-%let rv1=&tema._tot;
+%let dsn1=&tema._p_tot_bohf;
+%let rv1=&tema._p_tot;
+
+%let dsn2=&tema._a_p_tot_bohf;
+%let rv2=&tema._a_p_tot;
+
+%merge(ant_datasett=2, dsn_ut=&tema._bohf); 
+
+data &tema._bohf;
+set &tema._bohf;
+/*Setter andel åpne lik missing for N<nkrav*/
+if antall_1 lt &nkrav then andel_2_1=.;
+run;
 
 %let fignavn=;
 %let type=inngr;
 %let tittel=Antall inngrep for sterilisering per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Inngrep for sterilisering, pr. 10 000 innbyggere. Aldersjusterte rater.;
-%let tabellvar1=&tema._tot;
-%let tabellvar2=Innbyggere;
+%let xlabel= Antall pr. 10 000 kvinner.;
+%let tabellvar1=&tema._p_tot;
+%let tabellvar2=andel_2_1;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Inngrep" &tabellvar2="Kvinner";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let labeltabell=&tabellvar1="Inngrep" &tabellvar2="Andel åpne";
+%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLpct8.0;
 %let skala=;
 
-%ratefig(datasett=&tema._tot_bohf);
+%let mappe=&mappe_png;
+%ratefig(datasett=&tema._bohf);
+
+%let mappe=&mappe_pdf;
+%ratefig(datasett=&tema._bohf, bildeformat=pdf );
+
 
 /*Lager rankingtabell*/
 /*proc sort data=&tema._tot_bohf;
@@ -37,7 +87,7 @@ keep &tema._rank BoHF;
 run;*/
 
 
-%let dsn1=&tema._tot_bohf;
+/*%let dsn1=&tema._tot_bohf;
 %let rv1=&tema._tot;
 
 %let dsn2=&tema._inn_bohf;
@@ -48,7 +98,7 @@ run;*/
 %let fignavn=innlagte;
 %let type=inngr;
 %let tittel=Innleggelser som andel av alle inngrep ved inngrep for sterilisering. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Innleggelser som andel av alle inngrep ved inngrep for sterilisering. Aldersjusterte rater.;
+%let xlabel= Antall pr. 10 000 kvinner.;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
@@ -56,35 +106,21 @@ run;*/
 %let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
 %let skala=;
 
-%andelsfig(datasett=&tema._Ainn_bohf);
+%andelsfig(datasett=&tema._Ainn_bohf);*/
 
-/*FIGUR: Todelt, andel ifm keisersnitt*/
 
-%let tema=steril;
 
-%let dsn1=&tema._ks_p_tot_bohf;
-%let rv1=&tema._ks_p_tot;
 
-%let dsn2=&tema._iks_p_tot_bohf;
-%let rv2=&tema._iks_p_tot;
-%merge(ant_datasett=2, dsn_ut=&tema._ks_bohf); 
+/* Lager datasett for Instant Atlas */
+%Let beskrivelse=steril_rate;
+data helseatl.IA_gyn_&beskrivelse;
+  set steril_p_tot_bohf (keep = bohf ratesnitt steril_p_tot innbyggere rename=(ratesnitt=Rate steril_p_tot=Antall)); 
 
-%let fignavn=ks; 
-%let type=inngr;   
-%let tittel=Antall inngrep for sterilisering per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Inngrep for sterilisering, pr. 10 000 innbyggere. Aldersjusterte rater.;
-%let tabellvar1=antall_1;
-%let tabellvar2=antall_2;
-%let label_1=Ifm. KS;
-%let label_2=Andre;
-%let tabellvariable= &tabellvar1 &tabellvar2 ;
-%let labeltabell=&tabellvar1="Ifm. KS" &tabellvar2="Andre" ;
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+BoHF_Navn=vvalue(BoHF);
+Gruppe = 2;
+Niva = 7;
 
-%let skala=/*values=(0 to 1.6 by 0.2)*/;
-
-%ratefig_todeltSoyle(datasett=&tema._ks_bohf);
-
-%let mappe=Figurer\NPR\fig_pdf;
-%ratefig_todeltSoyle(datasett=&tema._ks_bohf, bildeformat=pdf, noxlabel=1);
-%let mappe=Figurer\NPR;
+numeric = "numeric";
+Tom_rad = "";
+Tom_rute = "";
+run;

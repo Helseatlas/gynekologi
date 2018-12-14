@@ -1,6 +1,6 @@
 
 
-%macro KrafHypBlod(datasett =);
+%macro KrafHypPol(datasett =);
 
 data &datasett;
 set &datasett;
@@ -8,7 +8,8 @@ set &datasett;
 array diagnose {*} Hdiag: Bdiag: Tdiag:;
      do i=1 to dim(diagnose);
 
-        if substr(diagnose{i},1,3)='N92' then KrafHypBlod_d=1; /* Kraftig, hyppig og uregelmessig menstruasjon*/ 
+        if substr(diagnose{i},1,3)='N92' then KrafHypPol_d=1; /* Kraftig, hyppig og uregelmessig menstruasjon*/ 
+		if substr(diagnose{i},1,4)='N840' then KrafHypPol_d=1;
 end;
 
 /*Prosedyrekode for livmorkirurgi (hysterektomi)*/
@@ -37,31 +38,16 @@ array Prosedyre {*} NC:;
 
 end;
 
-if KHB_p=1 or KHB_h_p=1 or KHB_d_p=1 then KrafHypBlod_p=1;
+if KHB_p=1 or KHB_h_p=1 or KHB_d_p=1 then KrafHypPol_p=1;
 
-/*KrafHypBlodning*/
-if KrafHypBlod_d=1 and KrafHypBlod_p=1 and AvtSpes=. then KrafHypBlod_dp=1;		/*Tar ikke med 266 kontakter hos avtalespesialist som er feilkodet */
-																						/*(Særlig mange LCA10, påvirker Vestfold og Sørlandet BoHF) */
-																						/*Det er hovedsakelig kvinner 40+ som har fått endometriebiopsi (LCA06)*/
-/*KrafHypBlodning*/
-if KrafHypBlod_d=1 and KHB_h_p=1 and AvtSpes=. then KHB_h_dp=1;	
-else if KrafHypBlod_d=1 and KHB_p=1 and AvtSpes=. then KHB_dp=1;
-else if KrafHypBlod_d=1 and KHB_d_p=1 and AvtSpes=. then KHB_d_dp=1;
-
-/*if KHB_ud_dp=1 then do;
-	if KHB_d_p=1 then KHB_d_dp=1;
-	else if KHB_u_p=1 then KHB_u_dp=1;
-end;*/
-
-if KrafHypBlod_d=1 and KHB_apen=1 and AvtSpes=. then KHB_apen_dp=1;
-else if KrafHypBlod_d=1 and KHB_vag=1 and AvtSpes=. then KHB_vag_dp=1;
-else if KrafHypBlod_d=1 and KHB_lap=1 and AvtSpes=. then KHB_lap_dp=1;
+/*KrafHypBlodning og Polypper*/
+if KrafHypPol_d=1 and KrafHypPol_p=1 and AvtSpes=. then KrafHypPol_dp=1;		/*Tar ikke med 266 kontakter hos avtalespesialist som er feilkodet */
 
 run;
 
 
 
-%mend KrafHypBlod;
+%mend KrafHypPol;
 
  		/*if prosedyre{i} in ('LCB96') then LCB96=1;/*Annen ekstirpasjon av lesjon i uterus*/
 		/*if prosedyre{i} in ('LCB97') then LCB97=1;/*Annen laparoskopisk ekstirpasjon av lesjon i uterus*/

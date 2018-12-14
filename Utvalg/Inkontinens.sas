@@ -6,6 +6,8 @@ set &datasett;
 array diagnose {*} Hdiag: Bdiag: Tdiag:;
 	do i=1 to dim(diagnose);
 		if diagnose{i} in ('N393','N394')  then Inkontinens_d=1; /*Stressinkontinens/Annen spesifisert urininkontinens*/  
+		if diagnose{i} in ('N393')  then S_Inkontinens_d=1;
+		if diagnose{i} in ('N394')  then A_Inkontinens_d=1;
 	end;
 
 array Prosedyre {*} NC:;
@@ -17,6 +19,8 @@ array Prosedyre {*} NC:;
 	end;
 
 	if Inkontinens_d=1 and Inkontinens_p=1 then Inkontinens_dp=1;
+	if S_Inkontinens_d=1 and Inkontinens_p=1 then S_Inkontinens_dp=1;
+	if A_Inkontinens_d=1 and Inkontinens_p=1 then A_Inkontinens_dp=1;
 
 run;
 

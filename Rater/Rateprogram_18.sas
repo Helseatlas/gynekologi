@@ -9,7 +9,7 @@ Den kan også fungere som en test av rateprogrammet. Kjøres slik:
 ```
 */
 
-%let filbane=\\tos-sas-skde-01\SKDE_SAS\felleskoder\master\;
+/*%let filbane=\\tos-sas-skde-01\SKDE_SAS\felleskoder\master\;*/
 options sasautos=("&filbane.Makroer" SASAUTOS);
 
 /*Options symbolgen mlogic mprint;*/

@@ -51,4 +51,6 @@ run;
 
 %forholdstall;
 
-
+proc datasets nolist;
+delete KA_t:
+run;

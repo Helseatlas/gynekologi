@@ -1,4 +1,4 @@
-%let tema=Hyster;
+
 
 
 /***************************************************************/
@@ -8,23 +8,60 @@
 %let fignavn=kir_metode; *additional info for figure name, can be empty;
 %let type=inngr;    *inngrep, konsultasjoner, or undersøkelser;
 %let tittel=Antall hysterektomier per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel=Hysterektomi, ikke-kreft, pr. 10 000 innbyggere. Aldersjusterte rater.;
+%let xlabel= Antall pr. 10 000 kvinner.;
 %let anno=ANNO;
-%let tema=Hyster;
+%let tema=Hyster_alv;
 %let tabellvar1=Andel&del1.;/*fra forbruksmal*/
-%let tabellvar2=Andel&del2.;/*fra forbruksmal*/
-%let tabellvar3=Andel&del3.;/*fra forbruksmal*/
-%let tabellvariable= &tabellvar1 &tabellvar2 &tabellvar3;
-%let label_1=Åpen;
+*%let tabellvar2=Andel&del2.;/*fra forbruksmal*/
+*%let tabellvar3=Andel&del3.;/*fra forbruksmal*/
+%let tabellvar2=tot_antall;/*fra forbruksmal*/
+%let tabellvariable= &tabellvar1 &tabellvar2;
+%let label_1=Åpne;
 %let label_2=Lap;
 %let label_3=Vag;
-%let labeltabell=&tabellvar1="Åpen" &tabellvar2="Lap" &tabellvar3="Vag";
+%let labeltabell=&tabellvar1="Åpne" &tabellvar2="Inngrep";
+%let formattabell=;
 
+%let mappe=&mappe_png;
 %ratefig_tredeltSoyle(del1=Hyster_Aapen_dp_tot, del2=Hyster_Lap_dp_tot, del3=Hyster_Vaginal_dp_tot);
 
-%let mappe=Figurer\NPR\fig_pdf;
-%ratefig_tredeltSoyle(del1=Hyster_Aapen_dp_tot, del2=Hyster_Lap_dp_tot, del3=Hyster_Vaginal_dp_tot, bildeformat=pdf, noxlabel=1);
-%let mappe=Figurer\NPR;
+%let mappe=&mappe_pdf;
+%ratefig_tredeltSoyle(del1=Hyster_Aapen_dp_tot, del2=Hyster_Lap_dp_tot, del3=Hyster_Vaginal_dp_tot, bildeformat=pdf );
+
+
+/*FIGUR MED ANDEL FRA 0 TIL 100*/
+
+%let tema=Hyster;
+
+%let dsn1=&tema._Aapen_dp_tot_bohf;
+%let rv1=&tema._Aapen_dp_tot;
+%let label_1=Åpne;
+
+%let dsn2=&tema._Lap_dp_tot_bohf;
+%let rv2=&tema._Lap_dp_tot;
+%let label_12=Laparaskopiske;
+
+%let dsn3=&tema._Vaginal_dp_tot_bohf;
+%let rv3=&tema._Vaginal_dp_tot;
+%let label_alle=Vaginale;
+
+%let fignavn=alv;
+%let type=inngr;
+%let xlabel=Andel;
+*%let tabellvar1=tot_antall;
+*%let tabellvar2=;
+%let tabellvariable=;
+%let labeltabell=;
+%let formattabell=;
+%let plass_scat=0.05;
+
+%let mappe=&mappe_png;
+%andelsfig_0_100(n_datasett=3, text_a1=Åpne);
+
+
+%let mappe=&mappe_pdf;
+%andelsfig_0_100(n_datasett=3, text_a1=Åpne, bildeformat=pdf );
+
 
 /*************************************************/
 /* Lag panel figur for å se på  trend i perioden */
@@ -33,15 +70,18 @@
 %let tema=Hyster;
 
 %let teknikk=_Aapen;
-%Let aksetekst=Antall hysterektomier åpen inngrep per 10 000 innbyggere;
+%Let aksetekst=Antall pr. 10 000 kvinner.;
+%let mappe=&mappe_png;
 %panelfig;
 
 %let teknikk=_Lap;
-%Let aksetekst=Antall hysterektomier lapraskopi inngrep per 10 000 innbyggere;
+%Let aksetekst=Antall pr. 10 000 kvinner.;
+%let mappe=&mappe_png;
 %panelfig;
 
 %let teknikk=_vaginal;
-%Let aksetekst=Antall hysterektomier vaginal inngrep per 10 000 innbyggere;
+%Let aksetekst=Antall pr. 10 000 kvinner.;
+%let mappe=&mappe_png;
 %panelfig;
 
 data panel_hyster_aapen;
@@ -94,6 +134,8 @@ run;*/
 
 /*PNG*/
 
+%let mappe=&mappe_png;
+
 ODS Graphics ON /reset=All imagename="Panel_&tema._andel_Aapen" imagefmt=png border=off;* width=7in height=3in;
 ODS Listing Image_dpi=300 GPATH="&bildelagring.&mappe";
 /*title "&tema &niva";*/
@@ -104,12 +146,12 @@ scatter X = aar Y = andel_aapen / filledoutlinedmarkers markerfillattrs=(color=b
    markerattrs=(symbol=circlefilled);
 keylegend "Norge" / noborder position=top;
 colaxis label='År' valueattrs=(size=5) labelattrs=(size=8 weight=bold);
-rowaxis label="Andel åpne hysterektomier" valueattrs=(size=6) labelattrs=(size=8 weight=bold);
+rowaxis label="Andel" valueattrs=(size=6) labelattrs=(size=8 weight=bold);
 RUN; ods listing close;
 
 /*PDF*/
 
-%let mappe=Figurer\NPR\fig_pdf;
+%let mappe=&mappe_pdf;
 
 ODS Graphics ON /reset=All imagename="Panel_&tema._andel_Aapen" imagefmt=pdf border=off;* width=7in height=3in;
 ODS Listing Image_dpi=300 GPATH="&bildelagring.&mappe";
@@ -121,10 +163,10 @@ scatter X = aar Y = andel_aapen / filledoutlinedmarkers markerfillattrs=(color=b
    markerattrs=(symbol=circlefilled);
 keylegend "Norge" / noborder position=top;
 colaxis label='År' valueattrs=(size=5) labelattrs=(size=8 weight=bold);
-rowaxis label="Andel åpne hysterektomier" valueattrs=(size=6) labelattrs=(size=8 weight=bold);
+rowaxis label="Andel" valueattrs=(size=6) labelattrs=(size=8 weight=bold);
 RUN; ods listing close;
 
-%let mappe=Figurer\NPR;
+
 
 /*
 %let tema=Hysterektomi;
@@ -141,23 +183,60 @@ RUN; ods listing close;
 %let fignavn=diag; *additional info for figure name, can be empty;
 %let type=inngr;    *inngrep, konsultasjoner, or undersøkelser;
 %let tittel=Antall hysterektomier per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel=Hysterektomi, diagnosegrupper, pr. 10 000 innbyggere. Aldersjusterte rater.;
+%let xlabel= Antall pr. 10 000 kvinner.;
 %let anno=ANNO;
 %let tema=Hyster;
-%let tabellvar1=Andel&del1.;/*fra forbruksmal*/
-%let tabellvar2=Andel&del2.;/*fra forbruksmal*/
-%let tabellvar3=Andel&del3.;/*fra forbruksmal*/
-%let tabellvariable= &tabellvar1 &tabellvar2 &tabellvar3;
-%let label_1=Myom;
-%let label_2=Blod;
+%let tabellvar1=Andel&del2.;/*fra forbruksmal*/
+*%let tabellvar2=Andel&del2.;/*fra forbruksmal*/
+*%let tabellvar3=Andel&del3.;/*fra forbruksmal*/
+%let tabellvar2=tot_antall;/*fra forbruksmal*/
+%let tabellvariable= &tabellvar1 &tabellvar2;
+%let label_1=D25;
+%let label_2=N92;
 %let label_3=Annen;
-%let labeltabell=&tabellvar1="Myom" &tabellvar2="Blod" &tabellvar3="Annen";
+%let labeltabell=&tabellvar1="N92" &tabellvar2="Inngrep";
 
+%let mappe=&mappe_png;
 %ratefig_tredeltSoyle(del1=Hyster_myom_dp_tot, del2=Hyster_blod_dp_tot, del3=Hyster_annen_dp_tot);
 
-%let mappe=Figurer\NPR\fig_pdf;
-%ratefig_tredeltSoyle(del1=Hyster_myom_dp_tot, del2=Hyster_blod_dp_tot, del3=Hyster_annen_dp_tot, bildeformat=pdf, noxlabel=1);
-%let mappe=Figurer\NPR;
+%let mappe=&mappe_pdf;
+%ratefig_tredeltSoyle(del1=Hyster_myom_dp_tot, del2=Hyster_blod_dp_tot, del3=Hyster_annen_dp_tot, bildeformat=pdf );
+
+
+/*FIGUR MED ANDEL FRA 0 TIL 100*/
+
+%let tema=Hyster;
+
+%let dsn1=&tema._blod_dp_tot_bohf;
+%let rv1=&tema._blod_dp_tot;
+%let label_1=N92;
+
+%let dsn2=&tema._myom_dp_tot_bohf;
+%let rv2=&tema._myom_dp_tot;
+%let label_12=D25;
+
+%let dsn3=&tema._annen_dp_tot_bohf;
+%let rv3=&tema._annen_dp_tot;
+%let label_alle=Andre;
+
+%let fignavn=diag;
+%let type=inngr;
+%let xlabel=Andel;
+%let tabellvar1=tot_antall;
+%let tabellvar2=;
+%let tabellvariable=&tabellvar1;
+%let labeltabell=&tabellvar1="Inngrep";
+%let formattabell=&tabellvar1 NLnum8.0;
+%let plass_scat=0.05;
+
+%let mappe=&mappe_png;
+%andelsfig_0_100(n_datasett=3, text_a1=N92);
+
+
+%let mappe=&mappe_pdf;
+%andelsfig_0_100(n_datasett=3, text_a1=N92, bildeformat=pdf );
+
+
 
 
 /***************************************************/
@@ -178,7 +257,7 @@ RUN; ods listing close;
 %let fignavn=innlagte;
 %let type=inngr;
 %let tittel=Innleggelser som andel av alle hysterektomier. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel=Innleggelser som andel av alle hysterektomier. Aldersjusterte rater.;
+%let xlabel=Andel;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
@@ -186,6 +265,7 @@ RUN; ods listing close;
 %let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
 %let skala=;
 
+%let mappe=&mappe_png;
 %andelsfig(datasett=&tema._Ainn_bohf);
 
 
@@ -211,7 +291,7 @@ RUN; ods listing close;
 %let fignavn=robot_ass; *additional info for figure name, can be empty;
 %let type=inngr;    *inngrep, konsultasjoner, or undersøkelser;
 %let tittel=Antall hysterektomier per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel=Hysterektomi, robot assistert, pr. 10 000 innbyggere. Aldersjusterte rater.;
+%let xlabel= Antall pr. 10 000 kvinner.;
 
 * variables to use, and column and label names for the table on the right of the figure;
 %let tabellvar1=antall_1;
@@ -225,6 +305,7 @@ RUN; ods listing close;
 
 %let skala=/*values=(0 to 1.6 by 0.2)*/;
 
+%let mappe=&mappe_png;
 %ratefig_todeltSoyle(datasett=&tema._robot_bohf);
 
 
@@ -260,7 +341,7 @@ run;
 %let fignavn=robot;
 %let type=inngr;
 %let tittel=Robotassisterte inngrep som andel av alle laparaskopiske hysterektomier. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel=Robotassisterte inngrep som andel av alle laparaskopiske hysterektomier. Aldersjusterte rater.;
+%let xlabel=Andel;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
@@ -268,13 +349,42 @@ run;
 %let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
 %let skala=;
 
+%let mappe=&mappe_png;
 %andelsfig(datasett=&tema._Arobot_bohf);
 
 
-%let mappe=Figurer\NPR\fig_pdf;
-%andelsfig(datasett=&tema._Arobot_bohf, bildeformat=pdf, noxlabel=1);
-%let mappe=Figurer\NPR;
+%let mappe=&mappe_pdf;
+%andelsfig(datasett=&tema._Arobot_bohf, bildeformat=pdf );
+
 
 
 %Let nkrav=15;
 %let vis_misstxt=0;
+
+/* Lager datasett for Instant Atlas */
+%Let beskrivelse=hyster_rate;
+data helseatl.IA_gyn_&beskrivelse;
+  set Hyster_alv_bohf (keep = bohf Ratesnitt_tot tot_antall innbyggere rename=(Ratesnitt_tot=Rate tot_antall=Antall)); 
+
+BoHF_Navn=vvalue(BoHF);
+Gruppe = 3;
+Niva = 14;
+
+numeric = "numeric";
+Tom_rad = "";
+Tom_rute = "";
+run;
+
+/* Lager datasett for Instant Atlas */
+%Let beskrivelse=hyster_andelA;
+data helseatl.IA_gyn_&beskrivelse;
+  set Hyster_alv_bohf (keep = bohf AndelHyster_Aapen_dp_tot Hyster_Aapen_dp_tot tot_antall rename=(AndelHyster_Aapen_dp_tot=Andel Hyster_Aapen_dp_tot=Antall tot_antall=innbyggere)); 
+
+BoHF_Navn=vvalue(BoHF);
+Gruppe = 3;
+Niva = 15;
+
+numeric = "numeric";
+Tom_rad = "";
+Tom_rute = "";
+run;
