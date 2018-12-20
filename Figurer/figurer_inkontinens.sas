@@ -15,7 +15,7 @@
 %let fignavn=SA;
 %let type=inngr;
 %let tittel=Antall inngrep for urininkontinens per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2014-16.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let label_1=Stress;
 %let label_2=Annen;
 %let tabellvar1=antall_1;
@@ -57,7 +57,7 @@ run;*/
 %let fignavn=;
 %let type=inngr;
 %let tittel=Antall inngrep for urininkontinens per 10 000 kvinner. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let tabellvar1=antall_1;
 *%let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1;* &tabellvar2;

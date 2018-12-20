@@ -65,7 +65,7 @@ run;*/
 %let fignavn=;
 %let type=inngr;
 %let tittel=Antall inngrep for kraftig og/eller hyppig menstruasjon per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let tabellvar1=&tema._tot;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
@@ -144,7 +144,7 @@ run;
 %let fignavn=type; *additional info for figure name, can be empty;
 %let type=inngr;    *inngrep, konsultasjoner, or undersøkelser;
 %let tittel=Antall inngrep for kraftig og/eller hyppig menstruasjon per 10 000 kvinner. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let anno=ANNO;
 %let tabellvar1=Andel&del1.;/*fra forbruksmal*/
 %let tabellvar2=Andel&del3.;/*fra forbruksmal*/

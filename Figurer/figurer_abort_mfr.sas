@@ -17,7 +17,7 @@
 %let fignavn=kirmed;
 %let type=allekvinner; /*Angir populasjon/nevner*/
 %let tittel=Antall selvbestemte aborter, per. 10 000 kvinner. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let label_2=Kirurgisk metode;
 %let label_1=Medikamentell metode;
 %let tabellvar1=tot_antall;

@@ -17,7 +17,7 @@
 %let fignavn=offpriv;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med kolposkopi per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let label_1=Off. sykehus;
 %let label_2=Avtalespesialist;
 %let tabellvar1=tot_antall;
@@ -48,7 +48,7 @@
 %let fignavn=offpriv;
 %let type=unders;
 %let tittel=Antall polikliniske kontakter med cervix biopsi per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel=Antall pr. 10 000 kvinner.;
+%let xlabel=Antall pr. 10 000 kvinner;
 %let label_1=Off. sykehus;
 %let label_2=Avtalespesialist;
 %let tabellvar1=tot_antall;
@@ -87,7 +87,7 @@
 %let fignavn=;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med kolposkopi og/eller cervix biopsi per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let tabellvar1=andel_2_1;
 %let tabellvar2=antall_1;
 %let tabellvariable= &tabellvar1 &tabellvar2;
@@ -120,7 +120,7 @@
 %let fignavn=offpriv;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med kolposkopi og/eller cervix biopsi per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let tabellvar1=andel_2_1;
 %let tabellvar2=antall_1;
 %let tabellvariable= &tabellvar1 &tabellvar2;
@@ -187,7 +187,7 @@ run;*/
 %let fignavn=tot;
 %let anno=ANNO;
 %let tittel=Antall polikliniske undersøkelser med kolposkopi/biopsi per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let tabellvar1=Andel&del1.;/*fra forbruksmal*/
 %let tabellvar2=Andel&del2.;/*fra forbruksmal*/
 %let tabellvar3=Andel&del3.;/*fra forbruksmal*/
@@ -210,7 +210,7 @@ run;*/
 %let fignavn=off;
 %let anno=ANNO;
 %let tittel=Antall polikliniske undersøkelser på sykehus med kolposkopi/biopsi per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let tabellvar1=Andel&del1.;/*fra forbruksmal*/
 %let tabellvar2=Andel&del2.;/*fra forbruksmal*/
 %let tabellvar3=Andel&del3.;/*fra forbruksmal*/
@@ -228,7 +228,7 @@ run;*/
 %let fignavn=priv;
 %let anno=ANNO;
 %let tittel=Antall polikliniske undersøkelser hos avtalespesialist med kolposkopi/biopsi per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let tabellvar1=Andel&del1.;/*fra forbruksmal*/
 %let tabellvar2=Andel&del2.;/*fra forbruksmal*/
 %let tabellvar3=Andel&del3.;/*fra forbruksmal*/
@@ -264,10 +264,10 @@ run;*/
 %let skala=;
 
 %let mappe=&mappe_png;
-%andelsfig(datasett=&tema._Akolp_bohf);
+%andelsfig(datasett=&tema._Akolp_bohf, labelcol=black);
 
 %let mappe=&mappe_pdf;
-%andelsfig(datasett=&tema._Akolp_bohf, bildeformat=pdf );
+%andelsfig(datasett=&tema._Akolp_bohf, bildeformat=pdf, labelcol=black );
 
 
 

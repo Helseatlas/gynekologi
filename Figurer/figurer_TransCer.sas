@@ -10,7 +10,7 @@
 %let fignavn=;
 %let type=inngr;
 %let tittel=Antall transcervikale inngrep per 10 000 kvinner. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let tabellvar1=&tema._tot;
 *%let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1;* &tabellvar2;
@@ -33,7 +33,7 @@
 %let fignavn=diag; *additional info for figure name, can be empty;
 %let type=inngr;    *inngrep, konsultasjoner, or undersøkelser;
 %let tittel=Antall transcervikale inngrep per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let anno=ANNO;
 %let tema=TransCer;
 %let tabellvar1=Andel&del1.;/*andel N92*/

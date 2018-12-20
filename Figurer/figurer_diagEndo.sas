@@ -17,7 +17,7 @@
 %let fignavn=BiopsiAbrasio;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med endometriebiopsi og utskrapning per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel=Antall pr. 10 000 kvinner;
 %let label_1=Endometriebiopsi;
 %let label_2=Utskrapning;
 %let tabellvar1=antall_1;
@@ -52,7 +52,7 @@
 %let fignavn=BiopsiAbrasio_u50;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med endometriebiopsi og utskrapning per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let label_1=Endometriebiopsi;
 %let label_2=utskrapning;
 %let tabellvar1=antall_1;
@@ -87,7 +87,7 @@
 %let fignavn=BiopsiAbrasio_o50;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med endometriebiopsi og utskrapning per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let label_1=Endometriebiopsi;
 %let label_2=utskrapning;
 %let tabellvar1=antall_1;
@@ -122,7 +122,7 @@
 %let fignavn=BiopsiAbrasio;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med endometriebiopsi og utskrapning per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let label_1=Endometriebiopsi;
 %let label_2=utskrapning;
 %let tabellvar1=antall_1;
@@ -157,7 +157,7 @@
 %let fignavn=BiopsiAbrasio_Premen;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med endometriebiopsi og utskrapning per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let label_1=Endometriebiopsi;
 %let label_2=utskrapning;
 %let tabellvar1=antall_1;
@@ -205,7 +205,7 @@ run;*/
 %let fignavn=offpriv;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med endometriebiopsi per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let label_1=Off. sykehus;
 %let label_2=Avtalespesialist;
 %let tabellvar1=antall_1;
@@ -229,7 +229,7 @@ run;*/
 %let fignavn=;
 %let type=inngr;
 %let tittel=Antall inngrep med fraksjonert utskrapning per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let tabellvar1=&rv1;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;

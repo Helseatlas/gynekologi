@@ -8,7 +8,7 @@
 %let fignavn=kir_metode; *additional info for figure name, can be empty;
 %let type=inngr;    *inngrep, konsultasjoner, or undersøkelser;
 %let tittel=Antall hysterektomier per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let anno=ANNO;
 %let tema=Hyster_alv;
 %let tabellvar1=Andel&del1.;/*fra forbruksmal*/
@@ -70,17 +70,17 @@
 %let tema=Hyster;
 
 %let teknikk=_Aapen;
-%Let aksetekst=Antall pr. 10 000 kvinner.;
+%Let aksetekst=Antall pr. 10 000 kvinner;
 %let mappe=&mappe_png;
 %panelfig;
 
 %let teknikk=_Lap;
-%Let aksetekst=Antall pr. 10 000 kvinner.;
+%Let aksetekst=Antall pr. 10 000 kvinner;
 %let mappe=&mappe_png;
 %panelfig;
 
 %let teknikk=_vaginal;
-%Let aksetekst=Antall pr. 10 000 kvinner.;
+%Let aksetekst=Antall pr. 10 000 kvinner;
 %let mappe=&mappe_png;
 %panelfig;
 
@@ -183,7 +183,7 @@ RUN; ods listing close;
 %let fignavn=diag; *additional info for figure name, can be empty;
 %let type=inngr;    *inngrep, konsultasjoner, or undersøkelser;
 %let tittel=Antall hysterektomier per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let anno=ANNO;
 %let tema=Hyster;
 %let tabellvar1=Andel&del2.;/*fra forbruksmal*/
@@ -291,7 +291,7 @@ RUN; ods listing close;
 %let fignavn=robot_ass; *additional info for figure name, can be empty;
 %let type=inngr;    *inngrep, konsultasjoner, or undersøkelser;
 %let tittel=Antall hysterektomier per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 
 * variables to use, and column and label names for the table on the right of the figure;
 %let tabellvar1=antall_1;

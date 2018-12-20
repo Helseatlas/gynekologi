@@ -72,7 +72,7 @@ run;
 %let fignavn=andelhyst;
 %let type=inngr;
 %let tittel=Antall inngrep for myom i livmor per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let label_1=Andre inngrep;
 %let label_2=Hysterektomi;
 %let tabellvar1=tot_antall;

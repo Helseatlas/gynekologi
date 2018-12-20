@@ -12,7 +12,7 @@
 %let fignavn=a; 
 %let type=inngr;   
 %let tittel=Antall inngrep for sterilisering per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let label_1=Åpne;
@@ -59,7 +59,7 @@ run;
 %let fignavn=;
 %let type=inngr;
 %let tittel=Antall inngrep for sterilisering per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let tabellvar1=&tema._p_tot;
 %let tabellvar2=andel_2_1;
 %let tabellvariable= &tabellvar1 &tabellvar2;
@@ -98,7 +98,7 @@ run;*/
 %let fignavn=innlagte;
 %let type=inngr;
 %let tittel=Innleggelser som andel av alle inngrep ved inngrep for sterilisering. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;

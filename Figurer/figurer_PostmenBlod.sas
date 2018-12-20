@@ -26,7 +26,7 @@ run;
 %let fignavn=offpriv;
 %let type=kons;
 %let tittel=Antall polikliniske kontakter for postmenopausale blødninger per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner.;
+%let xlabel= Antall pr. 10 000 kvinner;
 %let label_1=Off. sykehus;
 %let label_2=Avtalespesialist;
 %let tabellvar1=tot_antall;
