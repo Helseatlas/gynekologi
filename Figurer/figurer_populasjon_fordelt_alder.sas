@@ -4,7 +4,7 @@ ODS Graphics ON /reset=All imagename="antall_alder_SSBbefolkningen" imagefmt=png
 ODS Listing Image_dpi=300 GPATH="&bildelagring.&mappe";
 title "&tittel";
 proc sgplot data=SSB_i_alder noborder noautolegend sganno=annossb pad=(Bottom=5%);
-  vbarparm category=alder response=innbyggere / fillattrs=(color=CX00509E) outlineattrs=(color=grey thickness=0.5) missing;
+  vbarparm category=alder response=innbyggere / fillattrs=(color=CX00509E) outlineattrs=(color=grey thickness=0) missing;
   yaxis &yvalues label="Antall" 
 		labelattrs=(size=&fontst)  valuesformat=&yformat. valueattrs=(size=&fontst);
 	xaxis values=(16 to 105 by 1) fitpolicy=thin offsetmin=0.035 
@@ -20,7 +20,7 @@ ODS Graphics ON /reset=All imagename="antall_alder_SSBbefolkningen" imagefmt=pdf
 ODS Listing Image_dpi=300 GPATH="&bildelagring.&mappe";
 title "&tittel";
 proc sgplot data=SSB_i_alder noborder noautolegend sganno=annossb pad=(Bottom=5%);
-  vbarparm category=alder response=innbyggere / fillattrs=(color=CX00509E) outlineattrs=(color=grey thickness=0.5) missing;
+  vbarparm category=alder response=innbyggere / fillattrs=(color=CX00509E) outlineattrs=(color=grey thickness=0) missing;
   yaxis &yvalues label="Antall" 
 		labelattrs=(size=&fontst)  valuesformat=&yformat. valueattrs=(size=&fontst);
 	xaxis values=(16 to 105 by 1) fitpolicy=thin offsetmin=0.035 
@@ -38,6 +38,11 @@ by alder;
 run;
 
 proc sort data=SSB_i_alder;
+by alder;
+run;
+
+data utv_SSB_alder;
+merge utv_alder SSB_i_alder;
 by alder;
 run;
 
@@ -60,9 +65,9 @@ ODS Graphics ON /reset=All imagename="antall_alder_SSB_utvalg_NPR" imagefmt=png 
 ODS Listing Image_dpi=300 GPATH="&bildelagring.&mappe";
 title "&tittel";
 proc sgplot data=NPR_utv_SSB_alder noborder noautolegend sganno=anno pad=(Bottom=5%);
-  vbarparm category=alder response=innbyggere / fillattrs=(color=CX95BDE6) outlineattrs=(color=grey thickness=0.5) missing name="hp1" legendlabel="Antall kv. innbyggere";
-  vbarparm category=alder response=personer / fillattrs=(color=CX568BBF) outlineattrs=(color=grey thickness=0.5) missing name="hp2" legendlabel="Antall i spes.helsetj.";
-  vbarparm category=alder response=tot_unik / fillattrs=(color=CX00509E) outlineattrs=(color=grey thickness=0.5) missing name="hp3" legendlabel="Antall i helseatlas";
+  vbarparm category=alder response=innbyggere / fillattrs=(color=CX95BDE6) outlineattrs=(color=grey thickness=0) missing name="hp1" legendlabel="Antall kv. innbyggere";
+  vbarparm category=alder response=personer / fillattrs=(color=CX568BBF) outlineattrs=(color=grey thickness=0) missing name="hp2" legendlabel="Antall i spes.helsetj.";
+  vbarparm category=alder response=tot_unik / fillattrs=(color=CX00509E) outlineattrs=(color=grey thickness=0) missing name="hp3" legendlabel="Antall i helseatlas";
   keylegend "hp3" "hp2" "hp1"/ location=outside position=bottom down=2 noborder titleattrs=(size=6);
     yaxis &yvalues label="Antall" 
 		labelattrs=(size=&fontst)  valuesformat=&yformat. valueattrs=(size=&fontst);
@@ -78,9 +83,9 @@ ODS Graphics ON /reset=All imagename="antall_alder_SSB_utvalg_NPR" imagefmt=pdf 
 ODS Listing Image_dpi=300 GPATH="&bildelagring.&mappe";
 title "&tittel";
 proc sgplot data=NPR_utv_SSB_alder noborder noautolegend sganno=anno pad=(Bottom=5%);
-  vbarparm category=alder response=innbyggere / fillattrs=(color=CX95BDE6) outlineattrs=(color=grey thickness=0.5) missing name="hp1" legendlabel="Antall kv. innbyggere";
-  vbarparm category=alder response=personer / fillattrs=(color=CX568BBF) outlineattrs=(color=grey thickness=0.5) missing name="hp2" legendlabel="Antall i spes.helsetj.";
-  vbarparm category=alder response=tot_unik / fillattrs=(color=CX00509E) outlineattrs=(color=grey thickness=0.5) missing name="hp3" legendlabel="Antall i helseatlas";
+  vbarparm category=alder response=innbyggere / fillattrs=(color=CX95BDE6) outlineattrs=(color=grey thickness=0) missing name="hp1" legendlabel="Antall kv. innbyggere";
+  vbarparm category=alder response=personer / fillattrs=(color=CX568BBF) outlineattrs=(color=grey thickness=0) missing name="hp2" legendlabel="Antall i spes.helsetj.";
+  vbarparm category=alder response=tot_unik / fillattrs=(color=CX00509E) outlineattrs=(color=grey thickness=0) missing name="hp3" legendlabel="Antall i helseatlas";
   keylegend "hp1" "hp2" "hp3"/ location=inside position=topright down=3 noborder titleattrs=(size=6);
     yaxis &yvalues label="Antall" 
 		labelattrs=(size=&fontst)  valuesformat=&yformat. valueattrs=(size=&fontst);

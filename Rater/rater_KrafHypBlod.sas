@@ -8,7 +8,7 @@
 
 
 %let agg_var = KrafHypBlod_dp;
-%rater_felles(privat=0);
+%rater_felles(privat=0, unik = 0);
 
 %let agg_var = KHB_dp;
 %rater_felles(privat=0);

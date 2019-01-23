@@ -8,6 +8,7 @@ array Prosedyre {*} NC:;
     do i=1 to dim(prosedyre); 
 
 		if prosedyre{i} in ('LCA16') then TransCer_p=1;/*Destruksjon av endometrium*/
+		if prosedyre{i} in ('LCB20') then TransCer_p=1;/*Transvaginal enukleasjon av myoma uteri*/	
 		if prosedyre{i} in ('LCB25') then TransCer_p=1;/*Hysteroskopisk ekstirpasjon av lesjon*/	
 		if prosedyre{i} in ('LCB28') then TransCer_p=1;/*Hysteroskopisk eksisjon av endometrium*/
 		if prosedyre{i} in ('LCB32') then TransCer_p=1;/*Hysteroskopisk destruksjon av endometrium*/

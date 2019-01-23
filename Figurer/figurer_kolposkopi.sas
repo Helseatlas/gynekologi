@@ -170,18 +170,7 @@
 %andelsfig(datasett=&tema._prprs_bohf, bildeformat=pdf );
 
 
-
-/*Lager rankingtabell*/
-/*proc sort data=&tema._bohf;
-by decending tot_rate;
-run;
-
-data rank_&tema;
-set &tema._bohf;
-where BoHF ne 8888;
-&tema._rank+1;
-keep &tema._rank BoHF;
-run;*/
+/*Tredelt figur bare kolp, kolp+biop, bare biop - Alle polikl kontakter */
 
 %let tema=kolp_biop;
 %let fignavn=tot;
@@ -205,6 +194,7 @@ run;*/
 %let mappe=&mappe_pdf;
 %ratefig_tredeltSoyle(del1=kolp_p_poli, del2=kolp_biop_p_poli, del3=biop_p_poli, bildeformat=pdf );
 
+/*Tredelt figur bare kolp, kolp+biop, bare biop - Kontaker på sykehus */
 
 %let tema=kolp_biop;
 %let fignavn=off;
@@ -224,6 +214,9 @@ run;*/
 %let mappe=&mappe_png;
 %ratefig_tredeltSoyle(del1=kolp_p_off, del2=kolp_biop_p_off, del3=biop_p_off);
 
+
+/*Tredelt figur bare kolp, kolp+biop, bare biop - Kontaker hos avtalespesialist */
+
 %let tema=kolp_biop;
 %let fignavn=priv;
 %let anno=ANNO;
@@ -241,6 +234,9 @@ run;*/
 
 %let mappe=&mappe_png;
 %ratefig_tredeltSoyle(del1=kolp_p_priv, del2=kolp_biop_p_priv, del3=biop_p_priv);
+
+
+/*ANDELSFIGUR: Kontakter hos avtalespesialist med kolposkopi som andel av alle kontakter hos gynekologisk avtalespesialist.*/
 
 %let tema=kolposkopi;
 
@@ -353,6 +349,7 @@ run;
 %let mappe=&mappe_pdf;
 %andelsfig(datasett=&tema._priv_bohf, bildeformat=pdf );
 
+/*0-100, tredelt søyle, andel av kontakter med cervixbiopsi som har tilstandskode for hhv kreft, forstadier og andre */
 
 %let tema=cervix;
 

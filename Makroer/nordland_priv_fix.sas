@@ -20,9 +20,10 @@ run;
 data nordland2015;
 set qwerty_inn;
 where aar = 2015 and bohf = 3;
-keep alder komnr priv poli_priv tmp_alder tmp_komnr;
+keep alder komnr priv poli_priv priv_unik tmp_alder tmp_komnr;
 rename priv      = priv2015;
 rename poli_priv = poli_priv2015;
+rename priv_unik = priv_unik2015;
 tmp_alder = alder;
 tmp_komnr = komnr;
 
@@ -31,9 +32,10 @@ run;
 data nordland2016;
 set qwerty_inn;
 where aar = 2016 and bohf = 3;
-keep alder komnr priv poli_priv tmp_alder tmp_komnr;
+keep alder komnr priv poli_priv priv_unik tmp_alder tmp_komnr;
 rename priv      = priv2016;
 rename poli_priv = poli_priv2016;
+rename priv_unik = priv_unik2016;
 tmp_alder = alder;
 tmp_komnr = komnr;
 
@@ -87,6 +89,8 @@ priv      = (priv2015 + priv2016)/2;
 tot       = off + priv;
 poli_priv = (poli_priv2015 + poli_priv2016)/2;
 poli      = poli_off + poli_priv;
+priv_unik = (priv_unik2015 + priv_unik2016)/2;
+
 
 aar = 2017;
 

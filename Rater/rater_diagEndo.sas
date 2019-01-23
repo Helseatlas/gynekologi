@@ -17,7 +17,7 @@
 
 %let agg_var = diagEndoB_A_dp;
 %nordland_priv_fix(inndata=helseatl.k_u_&agg_var._18, utdata=helseatl.k_u_&agg_var._fix_18);
-%rater_felles(kun_poli=1, Ratefil=helseatl.k_u_&agg_var._fix_18);
+%rater_felles(kun_poli=1, Ratefil=helseatl.k_u_&agg_var._fix_18, unik = 0);
 
 %let agg_var = diagEndoU_A_dp;
 %rater_felles(kun_total = 1);
@@ -28,10 +28,10 @@
 
 %let agg_var = PostmenBlodB_dp;
 %nordland_priv_fix(inndata=helseatl.k_u_&agg_var._18, utdata=helseatl.k_u_&agg_var._fix_18);
-%rater_felles(kun_poli=1, Ratefil=helseatl.k_u_&agg_var._fix_18);
+%rater_felles(kun_poli=1, Ratefil=helseatl.k_u_&agg_var._fix_18, unik = 0, innlegg = 0);
 
 %let agg_var = PostmenBlodU_dp;
-%rater_felles(kun_total = 1);
+%rater_felles(kun_total = 1, unik = 0);
 
 
 

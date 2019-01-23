@@ -74,42 +74,6 @@ run;
 %ratefig(datasett=&tema._bohf, bildeformat=pdf );
 
 
-/*Lager rankingtabell*/
-/*proc sort data=&tema._tot_bohf;
-by decending rateSnitt;
-run;
-
-data rank_&tema;
-set &tema._tot_bohf;
-where BoHF ne 8888;
-&tema._rank+1;
-keep &tema._rank BoHF;
-run;*/
-
-
-/*%let dsn1=&tema._tot_bohf;
-%let rv1=&tema._tot;
-
-%let dsn2=&tema._inn_bohf;
-%let rv2=&tema._inn;
-%merge(ant_datasett=2, dsn_ut=&tema._Ainn_bohf); 
-
-%let Andel=andel_2_1;
-%let fignavn=innlagte;
-%let type=inngr;
-%let tittel=Innleggelser som andel av alle inngrep ved inngrep for sterilisering. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
-%let tabellvar1=antall_1;
-%let tabellvar2=antall_2;
-%let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Inngrep" &tabellvar2="Innleggelser";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
-%let skala=;
-
-%andelsfig(datasett=&tema._Ainn_bohf);*/
-
-
-
 
 /* Lager datasett for Instant Atlas */
 %Let beskrivelse=steril_rate;

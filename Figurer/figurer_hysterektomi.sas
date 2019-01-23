@@ -4,7 +4,7 @@
 /***************************************************************/
 /* Lag tredelt figur for teknikker - åpen, lapraskopi, vaginal */
 /***************************************************************/
-/*INPUT FOR HVER FIGUR:*/
+
 %let fignavn=kir_metode; *additional info for figure name, can be empty;
 %let type=inngr;    *inngrep, konsultasjoner, or undersøkelser;
 %let tittel=Antall hysterektomier per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
@@ -29,7 +29,7 @@
 %ratefig_tredeltSoyle(del1=Hyster_Aapen_dp_tot, del2=Hyster_Lap_dp_tot, del3=Hyster_Vaginal_dp_tot, bildeformat=pdf );
 
 
-/*FIGUR MED ANDEL FRA 0 TIL 100*/
+/*FIGUR MED ANDEL FRA 0 TIL 100, delt på: åpen, lap, vag*/
 
 %let tema=Hyster;
 
@@ -126,10 +126,6 @@ nandel_aapen=nrate_aapen/nrate_total;
 
 run;
 
-/*data panel_andel_aapen;
- set panel_andel_aapen;
-  format bohf bohf_kort_dagkir.;
-run;*/
 
 
 /*PNG*/
@@ -167,19 +163,10 @@ rowaxis label="Andel" valueattrs=(size=6) labelattrs=(size=8 weight=bold);
 RUN; ods listing close;
 
 
-
-/*
-%let tema=Hysterektomi;
-%let teknikk=;
-%Let aksetekst=Antall total hysterektomier inngrep per 10 000 innbyggere;
-%panelfig;
-*/
-
 /*********************************************************/
 /* Lag tredelt figur for tilstandskoder (diagnosegruppe) */
 /*********************************************************/
 
-/*INPUT FOR HVER FIGUR:*/
 %let fignavn=diag; *additional info for figure name, can be empty;
 %let type=inngr;    *inngrep, konsultasjoner, or undersøkelser;
 %let tittel=Antall hysterektomier per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
@@ -203,7 +190,7 @@ RUN; ods listing close;
 %ratefig_tredeltSoyle(del1=Hyster_myom_dp_tot, del2=Hyster_blod_dp_tot, del3=Hyster_annen_dp_tot, bildeformat=pdf );
 
 
-/*FIGUR MED ANDEL FRA 0 TIL 100*/
+/*FIGUR MED ANDEL FRA 0 TIL 100, delt på: tilstandskoder*/
 
 %let tema=Hyster;
 
@@ -236,77 +223,6 @@ RUN; ods listing close;
 %let mappe=&mappe_pdf;
 %andelsfig_0_100(n_datasett=3, text_a1=N92, bildeformat=pdf );
 
-
-
-
-/***************************************************/
-/* Lag figur andel innlagte, inngrep               */
-/***************************************************/
-
-
-%let tema=hysterektomi_dp;
-
-%let dsn1=&tema._tot_bohf;
-%let rv1=&tema._tot;
-
-%let dsn2=&tema._inn_bohf;
-%let rv2=&tema._inn;
-%merge(ant_datasett=2, dsn_ut=&tema._Ainn_bohf); 
-
-%let Andel=andel_2_1;
-%let fignavn=innlagte;
-%let type=inngr;
-%let tittel=Innleggelser som andel av alle hysterektomier. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel=Andel;
-%let tabellvar1=antall_1;
-%let tabellvar2=antall_2;
-%let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Inngrep" &tabellvar2="Innleggelser";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
-%let skala=;
-
-%let mappe=&mappe_png;
-%andelsfig(datasett=&tema._Ainn_bohf);
-
-
-/*********************************************************/
-/* Lag todelt figur for robot assist                    */
-/*********************************************************/
-
-
-%let tema=hyster;
-
-%let dsn1=&tema._robot_dp_tot_bohf;
-%let rv1=&tema._robot_dp_tot;
-
-%let dsn2=&tema._ikkerobot_dp_tot_bohf;
-%let rv2=&tema._ikkerobot_dp_tot;
-
-%merge(ant_datasett=2, dsn_ut=&tema._robot_bohf); 
-
-
-
-/*INPUT FOR HVER FIGUR:*/
-
-%let fignavn=robot_ass; *additional info for figure name, can be empty;
-%let type=inngr;    *inngrep, konsultasjoner, or undersøkelser;
-%let tittel=Antall hysterektomier per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
-
-* variables to use, and column and label names for the table on the right of the figure;
-%let tabellvar1=antall_1;
-%let tabellvar2=antall_2;
-%let tabellvar3=Innbyggere;
-%let label_2=ikke robot;
-%let label_1=robot assistert ;
-%let tabellvariable= &tabellvar1 &tabellvar2 &tabellvar3;
-%let labeltabell=&tabellvar1="robot" &tabellvar2="ikke robot" &tabellvar3="Kvinner";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0 &tabellvar3 NLnum8.0;
-
-%let skala=/*values=(0 to 1.6 by 0.2)*/;
-
-%let mappe=&mappe_png;
-%ratefig_todeltSoyle(datasett=&tema._robot_bohf);
 
 
 /*********************************************************/

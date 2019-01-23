@@ -1,6 +1,6 @@
 
 /***************************************************/
-/* Lag figur todelt LCA10/LCA06                */
+/* Lag figur todelt LCA10/LCA06  (utskraping, endometriebiopsi)              */
 /***************************************************/
 
 %let tema=diagEndo;
@@ -174,18 +174,6 @@
 %ratefig_todeltSoyle(datasett=&tema._BU_A_bohf,bohf_format=bohf_kort_Nordland, bildeformat=pdf );
 
 
-
-/*Lager rankingtabell*/
-/*proc sort data=&tema._bohf;
-by decending tot_rate;
-run;
-
-data rank_&tema;
-set &tema._bohf;
-where BoHF ne 8888;
-&tema._rank+1;
-keep &tema._rank BoHF;
-run;*/
 
 /***************************************************/
 /* Lag figur todelt endombiopsi off/priv                */
