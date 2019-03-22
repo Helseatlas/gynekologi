@@ -10,19 +10,19 @@
 %Let aar=2016; /* Standardiseringsår defineres her*/
 
 %let agg_var = Hyster_Aapen_dp; *D-diagnose, P-prosedure;
-%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._t);
+%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._t, unik = 0);
 data &agg_var._tot_bohf_t;
  set &agg_var._tot_bohf;
 run;
 
 %let agg_var = Hyster_Vaginal_dp;
-%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._t);
+%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._t, unik = 0);
 data &agg_var._tot_bohf_t;
  set &agg_var._tot_bohf;
 run;
 
 %let agg_var = Hyster_Lap_dp;
-%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._t);
+%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._t, unik = 0);
 data &agg_var._tot_bohf_t;
  set &agg_var._tot_bohf;
 run;
@@ -32,13 +32,13 @@ run;
 /****************************************************************/
 
 %let agg_var = Hyster_robot_dp;
-%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._t);
+%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._t, unik = 0);
 data &agg_var._tot_bohf_t;
  set &agg_var._tot_bohf;
 run;
 
 %let agg_var = Hyster_ikkerobot_dp;
-%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._t);
+%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._t, unik = 0);
 data &agg_var._tot_bohf_t;
  set &agg_var._tot_bohf;
 run;
@@ -54,15 +54,15 @@ run;
 /****************************************************************/
 
 %let agg_var = Hyster_Aapen_dp; *D-diagnose, P-prosedure;
-%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._18);
+%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._18, unik = 0);
 
 
 %let agg_var = Hyster_Vaginal_dp;
-%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._18);
+%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._18, unik = 0);
 
 
 %let agg_var = Hyster_Lap_dp;
-%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._18);
+%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._18, unik = 0);
 
 /****************************************************************/
 /****************************************************************/
@@ -75,26 +75,26 @@ run;
 /****************************************************************/
 
 %let agg_var = Hyster_myom_dp;
-%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._18);
+%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._18, unik = 0);
 
 
 %let agg_var = Hyster_blod_dp;
-%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._18);
+%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._18, unik = 0);
 
 /****************************************************************/
 /* Robot Assistert                                              */
 /****************************************************************/
 
 %let agg_var = Hyster_annen_dp;
-%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._18);
+%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._18, unik = 0);
 
 
 %let agg_var = Hyster_robot_dp;
-%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._18);
+%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._18, unik = 0);
 
 
 %let agg_var = Hyster_ikkerobot_dp;
-%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._18);
+%rater_felles(kun_total = 1, Ratefil=helseatl.k_u_&agg_var._18, unik = 0);
 
 proc datasets nolist;
 delete KA_t:

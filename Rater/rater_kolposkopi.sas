@@ -5,11 +5,11 @@
 
 %let agg_var = kontakt_avtspes;
 %nordland_priv_fix(inndata=helseatl.k_u_&agg_var._18, utdata=helseatl.k_u_&agg_var._fix_18);
-%rater_felles(kun_total=1, Ratefil=helseatl.k_u_&agg_var._fix_18);
+%rater_felles(kun_total=1, Ratefil=helseatl.k_u_&agg_var._fix_18, unik = 0);
 
 %let agg_var = kolposkopi_p;
 %nordland_priv_fix(inndata=helseatl.k_u_&agg_var._18, utdata=helseatl.k_u_&agg_var._fix_18);
-%rater_felles(kun_poli=1, Ratefil=helseatl.k_u_&agg_var._fix_18);
+%rater_felles(kun_poli=1, Ratefil=helseatl.k_u_&agg_var._fix_18, unik = 0);
 
 %let agg_var = cervix_biopsi_p;
 %nordland_priv_fix(inndata=helseatl.k_u_&agg_var._18, utdata=helseatl.k_u_&agg_var._fix_18);
@@ -17,11 +17,11 @@
 
 %let agg_var = cervix_C_dp;
 %nordland_priv_fix(inndata=helseatl.k_u_&agg_var._18, utdata=helseatl.k_u_&agg_var._fix_18);
-%rater_felles(kun_poli=1, Ratefil=helseatl.k_u_&agg_var._fix_18);
+%rater_felles(kun_poli=1, Ratefil=helseatl.k_u_&agg_var._fix_18, unik = 0);
 
 %let agg_var = cervix_DN_dp;
 %nordland_priv_fix(inndata=helseatl.k_u_&agg_var._18, utdata=helseatl.k_u_&agg_var._fix_18);
-%rater_felles(kun_poli=1, Ratefil=helseatl.k_u_&agg_var._fix_18);
+%rater_felles(kun_poli=1, Ratefil=helseatl.k_u_&agg_var._fix_18, unik = 0);
 
 %let agg_var = cervix_U_dp;
 %nordland_priv_fix(inndata=helseatl.k_u_&agg_var._18, utdata=helseatl.k_u_&agg_var._fix_18);
