@@ -58,7 +58,7 @@ run;
 /* Lag figur KUHR kontakter + NPR konsultasjoner   */
 /***************************************************/
 
-%include "&filbane.Stiler\Anno_logo_kilde_NPR_KUHR_SSB.sas";
+%include "&filbane\Stiler\Anno_logo_kilde_NPR_KUHR_SSB.sas";
 
 %let tema=endombiopsi;
 
@@ -150,7 +150,7 @@ run;
 %ratefig_tredeltSoyle(del1=diagEndoB_p_off, del2=diagEndoB_p_priv, del3=endombiopsi_kontakter, bildeformat=pdf );
 
 
-%include "&filbane.Stiler\Anno_logo_kilde_NPR_SSB.sas";
+%include "&filbane\Stiler\Anno_logo_kilde_NPR_SSB.sas";
 
 /* Lager datasett for Instant Atlas */
 %Let beskrivelse=diagEndo_rate;

@@ -10,20 +10,20 @@ Den kan også fungere som en test av rateprogrammet. Kjøres slik:
 */
 
 /*%let filbane=\\tos-sas-skde-01\SKDE_SAS\felleskoder\master\;*/
-options sasautos=("&filbane.Makroer" SASAUTOS);
+options sasautos=("&filbane\Makroer" SASAUTOS);
 
 /*Options symbolgen mlogic mprint;*/
 
-%include "&filbane.Formater\SKDE_somatikk.sas";
-%include "&filbane.Formater\NPR_somatikk.sas";
-%include "&filbane.Formater\bo.sas";
-%include "&filbane.Formater\beh.sas";
-%include "&filbane.Formater\komnr.sas";
+%include "&filbane\Formater\SKDE_somatikk.sas";
+%include "&filbane\Formater\NPR_somatikk.sas";
+%include "&filbane\Formater\bo.sas";
+%include "&filbane\Formater\beh.sas";
+%include "&filbane\Formater\komnr.sas";
 
-%include "&filbane.rateprogram\rateberegninger.sas";
+%include "&filbane\rateprogram\rateberegninger.sas";
 
-%include "&filbane.Stiler\stil_figur.sas";
-%include "&filbane.Stiler\Anno_logo_kilde_NPR_SSB.sas";
+%include "&filbane\Stiler\stil_figur.sas";
+%include "&filbane\Stiler\Anno_logo_kilde_NPR_SSB.sas";
 
 /******  DATAGRUNNLAG  ****************************************************************/
 
@@ -47,7 +47,7 @@ options sasautos=("&filbane.Makroer" SASAUTOS);
 %let Verstkommune_HN=;
 /* Dersom du skal ha bilde-filer */
 %let bildeformat=png; /*Format*/
-%let lagring="\\hn.helsenord.no\UNN-Avdelinger\SKDE.avd\Analyse\Data\SAS\Bildefiler"; /*Hvor skal filene lagres*/
+%let lagring="\\hn.helsenord.no\RHF\SKDE\Analyse\Data\SAS\Bildefiler"; /*Hvor skal filene lagres*/
 %let hoyde=8.0cm; %let bredde=11.0cm; /*Høyde (8) og Bredde (11) på bildefilene, gjelder kun bilde-filer*/
 %let skala=; /* Skala på x-aksen på figurene - eks: values=(0 to 0.8 by 0.2) */
 
