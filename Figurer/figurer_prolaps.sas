@@ -16,19 +16,19 @@
 %let fignavn=;
 %let type=inngr;
 %let tittel=Antall inngrep for genitalt prolaps per 10 000 kvinner. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
+%let xlabel= Number per 10,000 women;
 %let tabellvar1=antall_1;
 *%let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1;* &tabellvar2;
-%let labeltabell=&tabellvar1="Inngrep";* &tabellvar2="Pasienter";
-%let formattabell=&tabellvar1 NLnum8.0;* &tabellvar2 NLnum8.0;
+%let labeltabell=&tabellvar1="Proc.";* &tabellvar2="Patients";
+%let formattabell=&tabellvar1 comma8.0;* &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
-%ratefig(datasett=&tema._bohf);
+%ratefig(datasett=&tema._bohf, sprak = en);
 
 %let mappe=&mappe_pdf;
-%ratefig(datasett=&tema._bohf, bildeformat=pdf );
+%ratefig(datasett=&tema._bohf, bildeformat=pdf, sprak = en);
 
 
 /* Lager datasett for Instant Atlas */

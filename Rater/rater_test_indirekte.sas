@@ -36,10 +36,10 @@
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
 %let labeltabell=&tabellvar1="indirekte rate" &tabellvar2="Innbyggere";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let formattabell=&tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
-%ratefig(datasett=&dsn_ut, aar1=2015, aar2=2016, aar3=2017);
+%ratefig(datasett=&dsn_ut, aar1=2015, aar2=2016, aar3=2017, sprak = en);
 
 
 %let tema=Steril;
@@ -53,8 +53,8 @@
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
 %let labeltabell=&tabellvar1="ujust rate" &tabellvar2="Innbyggere";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let formattabell=&tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
-%ratefig(datasett=&dsn_ut, aar1=2015, aar2=2016, aar3=2017);
+%ratefig(datasett=&dsn_ut, aar1=2015, aar2=2016, aar3=2017, sprak = en);
 

@@ -31,21 +31,21 @@ run;
 %let fignavn=andelhyst;
 %let type=inngr;
 %let tittel=Antall inngrep for myom i livmor per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
-%let label_1=Andre inngrep;
-%let label_2=Hysterektomi;
+%let xlabel= Number per 10,000 women;
+%let label_1=Other proc.;
+%let label_2=Hysterectomy;
 %let tabellvar1=tot_antall;
 *%let tabellvar2=pas_antall;
 %let tabellvariable= &tabellvar1;* &tabellvar2;
-%let labeltabell=&tabellvar1="Inngrep";* &tabellvar2="Pasienter";
-%let formattabell=&tabellvar1 NLnum8.0;* &tabellvar2 NLnum8.0;
+%let labeltabell=&tabellvar1="Proc.";* &tabellvar2="Patients";
+%let formattabell=&tabellvar1 comma8.0;* &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
-%ratefig_todeltSoyle(datasett=&tema._bohf);
+%ratefig_todeltSoyle(datasett=&tema._bohf, sprak = en);
 
 %let mappe=&mappe_pdf;
-%ratefig_todeltSoyle(datasett=&tema._bohf, bildeformat=pdf );
+%ratefig_todeltSoyle(datasett=&tema._bohf, bildeformat=pdf, sprak = en);
 
 
 /*FIGUR MED ANDEL FRA 0 TIL 100*/
@@ -54,31 +54,31 @@ run;
 
 %let dsn1=&tema._apen_dp_tot_bohf;
 %let rv1=&tema._apen_dp_tot;
-%let label_1=Åpne;
+%let label_1=Open;
 
 %let dsn2=&tema._Lap_dp_tot_bohf;
 %let rv2=&tema._Lap_dp_tot;
-%let label_12=Laparaskopiske;
+%let label_12=Laparoscopic;
 
 %let dsn3=&tema._Vag_dp_tot_bohf;
 %let rv3=&tema._Vag_dp_tot;
-%let label_alle=Vaginale;
+%let label_alle=Vaginal;
 
 %let fignavn=alv;
 %let type=inngr;
-%let xlabel=Andel;
+%let xlabel=Proportion;
 %let tabellvar1=tot_antall;
 %let tabellvar2=;
 %let tabellvariable=;*&tabellvar1;
-%let labeltabell=&tabellvar1="Inngrep";
-%let formattabell=&tabellvar1 NLnum8.0;
+%let labeltabell=&tabellvar1="Proc.";
+%let formattabell=&tabellvar1 comma8.0;
 %let plass_scat=0.05;
 
 %let mappe=&mappe_png;
-%andelsfig_0_100(n_datasett=3, text_a1=Åpne);
+%andelsfig_0_100(n_datasett=3, text_a1=Open, sprak = en;
 
 %let mappe=&mappe_pdf;
-%andelsfig_0_100(n_datasett=3, text_a1=Åpne, bildeformat=pdf );
+%andelsfig_0_100(n_datasett=3, text_a1=Open, bildeformat=pdf, sprak = en);
 
 
 
@@ -119,8 +119,8 @@ run;
 %let tabellvar1=tot_antall;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Inngrep" &tabellvar2="Innbyggere";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let labeltabell=&tabellvar1="Proc." &tabellvar2="Innbyggere";
+%let formattabell=&tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %ratefig_todeltSoyle(datasett=&tema._bohf);*/
@@ -140,8 +140,8 @@ run;
 %let tabellvar1=&tema._tot;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Inngrep" &tabellvar2="Kvinner";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let labeltabell=&tabellvar1="Proc." &tabellvar2="Kvinner";
+%let formattabell=&tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %ratefig(datasett=&tema._tot_bohf);*/

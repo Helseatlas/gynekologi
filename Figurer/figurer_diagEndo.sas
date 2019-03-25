@@ -17,14 +17,14 @@
 %let fignavn=BiopsiAbrasio;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med endometriebiopsi og utskrapning per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel=Antall pr. 10 000 kvinner;
+%let xlabel=Number per 10,000 women;
 %let label_1=Endometriebiopsi;
 %let label_2=Utskrapning;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
 %let labeltabell=&tabellvar1="Biopsi" &tabellvar2="Utskrapning";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
@@ -52,14 +52,14 @@
 %let fignavn=BiopsiAbrasio_u50;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med endometriebiopsi og utskrapning per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
+%let xlabel= Number per 10,000 women;
 %let label_1=Endometriebiopsi;
 %let label_2=utskrapning;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
 %let labeltabell=&tabellvar1="Biopsi" &tabellvar2="utskrapning";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
@@ -87,14 +87,14 @@
 %let fignavn=BiopsiAbrasio_o50;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med endometriebiopsi og utskrapning per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
+%let xlabel= Number per 10,000 women;
 %let label_1=Endometriebiopsi;
 %let label_2=utskrapning;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
 %let labeltabell=&tabellvar1="Biopsi" &tabellvar2="utskrapning";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
@@ -122,14 +122,14 @@
 %let fignavn=BiopsiAbrasio;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med endometriebiopsi og utskrapning per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
+%let xlabel= Number per 10,000 women;
 %let label_1=Endometriebiopsi;
 %let label_2=utskrapning;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
 %let labeltabell=&tabellvar1="Biopsi" &tabellvar2="utskrapning";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
@@ -157,14 +157,14 @@
 %let fignavn=BiopsiAbrasio_Premen;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med endometriebiopsi og utskrapning per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
+%let xlabel= Number per 10,000 women;
 %let label_1=Endometriebiopsi;
 %let label_2=utskrapning;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
 %let labeltabell=&tabellvar1="Biopsi" &tabellvar2="utskrapning";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
@@ -193,14 +193,14 @@
 %let fignavn=offpriv;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med endometriebiopsi per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
-%let label_1=Off. sykehus;
-%let label_2=Avtalespesialist;
+%let xlabel= Number per 10,000 women;
+%let label_1=Publ. hospital;
+%let label_2=Priv. practice;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Off. sykehus" &tabellvar2="Avt.spes.";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let labeltabell=&tabellvar1="Publ. hosp." &tabellvar2="Priv. pract.";
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
@@ -217,16 +217,16 @@
 %let fignavn=;
 %let type=inngr;
 %let tittel=Antall inngrep med fraksjonert utskrapning per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
+%let xlabel= Number per 10,000 women;
 %let tabellvar1=&rv1;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Inngrep" &tabellvar2="Kvinner";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let labeltabell=&tabellvar1="Proc." &tabellvar2="Kvinner";
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
-%ratefig(datasett=&rv1._bohf,bohf_format=bohf_kort_Nordland);
+%ratefig(datasett=&rv1._bohf,bohf_format=bohf_kort_Nordland, sprak = en);
 
 /* Lag andelsfigur: andel utskrapisng med N92 som hdiag  */
 /***************************************************/
@@ -246,19 +246,19 @@
 %let fignavn=Hdiag_N92;
 %let type=inngr;
 %let tittel=Andel utskrapninger med N92 som hdiag. Aldersstandardisert. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Andel;
+%let xlabel= Prop.;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
 %let labeltabell=&tabellvar1="Alle" &tabellvar2="N92";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0 andel2 NLnum8.1 ;
+%let formattabell=&tabellvar1 comma8.0 &tabellvar2 comma8.0 andel2 comma8.1 ;
 %let skala=;
 
 %let mappe=&mappe_png;
-%andelsfig(datasett=&tema._N92_bohf);
+%andelsfig(datasett=&tema._N92_bohf, sprak = en);
 
 %let mappe=&mappe_pdf;
-%andelsfig(datasett=&tema._N92_bohf, bildeformat=pdf );
+%andelsfig(datasett=&tema._N92_bohf, bildeformat=pdf, sprak = en);
 
 
 

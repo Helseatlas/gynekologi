@@ -16,7 +16,7 @@ options sasautos=("&filbane\Makroer" SASAUTOS);
 
 %include "&filbane\Formater\SKDE_somatikk.sas";
 %include "&filbane\Formater\NPR_somatikk.sas";
-%include "&filbane\Formater\bo.sas";
+%include "&filbane\Formater\bo_eng.sas";
 %include "&filbane\Formater\beh.sas";
 %include "&filbane\Formater\komnr.sas";
 

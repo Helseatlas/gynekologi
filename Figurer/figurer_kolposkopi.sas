@@ -17,18 +17,18 @@
 %let fignavn=offpriv;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med kolposkopi per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
-%let label_1=Off. sykehus;
-%let label_2=Avtalespesialist;
+%let xlabel= Number per 10,000 women;
+%let label_1=Publ. hospital;
+%let label_2=Priv. practice;
 %let tabellvar1=tot_antall;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Undersøkelser" &tabellvar2="Innbyggere";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let labeltabell=&tabellvar1="Examinations" &tabellvar2="Inhabitants";
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
-%ratefig_todeltSoyle(datasett=&tema._bohf,bohf_format=bohf_kort_Nordland);
+%ratefig_todeltSoyle(datasett=&tema._bohf,bohf_format=bohf_kort_Nordland, sprak = en);
 
 
 /***************************************************/
@@ -48,20 +48,20 @@
 %let fignavn=offpriv;
 %let type=unders;
 %let tittel=Antall polikliniske kontakter med cervix biopsi per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel=Antall pr. 10 000 kvinner;
-%let label_1=Off. sykehus;
-%let label_2=Avtalespesialist;
+%let xlabel=Number per 10,000 women;
+%let label_1=Publ. hospital;
+%let label_2=Priv. practice;
 %let tabellvar1=tot_antall;
 %let tabellvariable= &tabellvar1;
-%let labeltabell=&tabellvar1="Kontakter";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLnum8.0;
+%let labeltabell=&tabellvar1="Contacts";
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
-%ratefig_todeltSoyle(datasett=&tema._bohf,bohf_format=bohf_kort_Nordland);
+%ratefig_todeltSoyle(datasett=&tema._bohf,bohf_format=bohf_kort_Nordland, sprak = en);
 
 %let mappe=&mappe_pdf;
-%ratefig_todeltSoyle(datasett=&tema._bohf,bohf_format=bohf_kort_Nordland, bildeformat=pdf );
+%ratefig_todeltSoyle(datasett=&tema._bohf,bohf_format=bohf_kort_Nordland, bildeformat=pdf, sprak = en);
 
 
 /***************************************************/
@@ -87,12 +87,12 @@
 %let fignavn=;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med kolposkopi og/eller cervix biopsi per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
+%let xlabel= Number per 10,000 women;
 %let tabellvar1=andel_2_1;
 %let tabellvar2=antall_1;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Andel off. sykehus" &tabellvar2="Kontakter";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLpct8.1 &tabellvar2 NLnum8.0;
+%let labeltabell=&tabellvar1="Andel off. sykehus" &tabellvar"Contacts";
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLpct8.1 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
@@ -120,19 +120,19 @@
 %let fignavn=offpriv;
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med kolposkopi og/eller cervix biopsi per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
+%let xlabel= Number per 10,000 women;
 %let tabellvar1=andel_2_1;
 %let tabellvar2=antall_1;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Andel avt.spes." &tabellvar2="Kontakter";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLpct8.1 &tabellvar2 NLnum8.0;
+%let labeltabell=&tabellvar1="Andel avt.spes." &tabellvar2="Contacts";
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLpct8.1 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
-%ratefig(datasett=&tema._offpriv_bohf);
+%ratefig(datasett=&tema._offpriv_bohf, sprak = en);
 
 %let mappe=&mappe_pdf;
-%ratefig(datasett=&tema._offpriv_bohf, bildeformat=pdf );
+%ratefig(datasett=&tema._offpriv_bohf, bildeformat=pdf, sprak = en);
 
 
 %let vis_aarsvar=1;
@@ -155,19 +155,19 @@
 %let fignavn=kons_pr_pers;
 %let type=unders;
 %let tittel=Konsultasjoner/pers. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Andel;
+%let xlabel= Proportion;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Kontakter" &tabellvar2="Personer";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0 andel2 NLnum8.1 ;
+%let labeltabell=&tabellvar1="Contacts" &tabellvar2="Personer";
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0 andel2 comma8.1 ;
 %let skala=;
 
 %let mappe=&mappe_png;
-%andelsfig(datasett=&tema._prprs_bohf);
+%andelsfig(datasett=&tema._prprs_bohf, sprak = en);
 
 %let mappe=&mappe_pdf;
-%andelsfig(datasett=&tema._prprs_bohf, bildeformat=pdf );
+%andelsfig(datasett=&tema._prprs_bohf, bildeformat=pdf, sprak = en);
 
 
 /*Tredelt figur bare kolp, kolp+biop, bare biop - Alle polikl kontakter */
@@ -176,7 +176,7 @@
 %let fignavn=tot;
 %let anno=ANNO;
 %let tittel=Antall polikliniske undersøkelser med kolposkopi/biopsi per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
+%let xlabel= Number per 10,000 women;
 %let tabellvar1=Andel&del1.;/*fra forbruksmal*/
 %let tabellvar2=Andel&del2.;/*fra forbruksmal*/
 %let tabellvar3=Andel&del3.;/*fra forbruksmal*/
@@ -185,7 +185,7 @@
 %let label_1=Bare kolposkopi;
 %let label_2=Kolposkopi med biopsi;
 %let label_3=Bare biopsi;
-%let labeltabell=&tabellvar1="Kolp.";* &tabellvar2="Kolp. med biopsi" &tabellvar3="Biopsi" &tabellvar4="Kontakter";
+%let labeltabell=&tabellvar1="Kolp.";* &tabellvar2="Kolp. med biopsi" &tabellvar3="Biopsi" &tabellvar4="Contacts";
 
 %let mappe=&mappe_png;
 %ratefig_tredeltSoyle(del1=kolp_p_poli, del2=kolp_biop_p_poli, del3=biop_p_poli);
@@ -200,7 +200,7 @@
 %let fignavn=off;
 %let anno=ANNO;
 %let tittel=Antall polikliniske undersøkelser på sykehus med kolposkopi/biopsi per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
+%let xlabel= Number per 10,000 women;
 %let tabellvar1=Andel&del1.;/*fra forbruksmal*/
 %let tabellvar2=Andel&del2.;/*fra forbruksmal*/
 %let tabellvar3=Andel&del3.;/*fra forbruksmal*/
@@ -221,7 +221,7 @@
 %let fignavn=priv;
 %let anno=ANNO;
 %let tittel=Antall polikliniske undersøkelser hos avtalespesialist med kolposkopi/biopsi per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
+%let xlabel= Number per 10,000 women;
 %let tabellvar1=Andel&del1.;/*fra forbruksmal*/
 %let tabellvar2=Andel&del2.;/*fra forbruksmal*/
 %let tabellvar3=Andel&del3.;/*fra forbruksmal*/
@@ -251,19 +251,19 @@
 %let fignavn=kolp_alleavtspes;
 %let type=unders;
 %let tittel=Kontakter hos avtalespesialist med kolposkopi som andel av alle kontakter hos gynekologisk avtalespesialist. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Andel;
+%let xlabel= Proportion;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
 %let labeltabell=&tabellvar1="Med kolposkopi" &tabellvar2="Alle kontakter";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
-%andelsfig(datasett=&tema._Akolp_bohf, labelcol=black);
+%andelsfig(datasett=&tema._Akolp_bohf, labelcol=black, sprak = en);
 
 %let mappe=&mappe_pdf;
-%andelsfig(datasett=&tema._Akolp_bohf, bildeformat=pdf, labelcol=black );
+%andelsfig(datasett=&tema._Akolp_bohf, bildeformat=pdf, labelcol=black, sprak = en);
 
 
 
@@ -296,17 +296,17 @@ run;
 %let fignavn=kolp_off;
 %let type=unders;
 %let tittel=Kontakter på sykehus med bare kolposkopi som andel av alle kontakter med kolposkopi og/eller biopsi. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Andel;
+%let xlabel= Proportion;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvar3=andel_1_2;
 %let tabellvariable=;
-%let labeltabell=&tabellvar1="Med kolposkopi" &tabellvar2="Alle kontakter" &tabellvar3="Andel";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0 &tabellvar3 NLpct8.1;
+%let labeltabell=&tabellvar1="Med kolposkopi" &tabellvar2="Alle kontakter" &tabellvar3="Prop.";
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0 &tabellvar3 NLpct8.1;
 %let skala=;
 
 %let mappe=&mappe_png;
-%andelsfig(datasett=&tema._off_bohf);
+%andelsfig(datasett=&tema._off_bohf, sprak = en);
 
 /*ANDEL KOLPOSKOPI AV ALLE KOLP/BIOP			PRIV */
 
@@ -335,19 +335,19 @@ run;
 %let fignavn=kolp_priv;
 %let type=unders;
 %let tittel=Kontakter hos avtalespesialist med bare kolposkopi som andel av alle kontakter med kolposkopi og/eller biopsi. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Andel;
+%let xlabel= Proportion;
 %let tabellvar1=antall_1;
 %let tabellvar2=tot_antall;
 %let tabellvariable= &tabellvar1 &tabellvar2;
 %let labeltabell=&tabellvar1="Bare kolposkopi" &tabellvar2="Kolp. og/eller biopsi";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0 &tabellvar3 NLpct8.1;
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0 &tabellvar3 NLpct8.1;
 %let skala=;
 
 %let mappe=&mappe_png;
-%andelsfig(datasett=&tema._priv_bohf);
+%andelsfig(datasett=&tema._priv_bohf, sprak = en);
 
 %let mappe=&mappe_pdf;
-%andelsfig(datasett=&tema._priv_bohf, bildeformat=pdf );
+%andelsfig(datasett=&tema._priv_bohf, bildeformat=pdf, sprak = en);
 
 /*0-100, tredelt søyle, andel av kontakter med cervixbiopsi som har tilstandskode for hhv kreft, forstadier og andre */
 
@@ -391,10 +391,10 @@ where bohf ne 8888;
 	where bohf ne 8888;
 	 keylegend "hp3" "hp2" "hp1"/ location=outside position=bottom down=1 noborder titleattrs=(size=6);
 	   Yaxistable andel_C /Label="C53" location=inside labelpos=top position=right valueattrs=(size=8 family=arial) labelattrs=(size=8);
-     yaxis display=(noticks noline) label='Opptaksområde' labelattrs=(size=8 weight=bold) type=discrete discreteorder=data valueattrs=(size=8);
-     xaxis display=(nolabel) offsetmin=0.02 offsetmax=0.02 valueattrs=(size=8) label="Andel" labelattrs=(size=8 weight=bold);
+     yaxis display=(noticks noline) label='Hospital referral area' labelattrs=(size=8 weight=bold) type=discrete discreteorder=data valueattrs=(size=8);
+     xaxis display=(nolabel) offsetmin=0.02 offsetmax=0.02 valueattrs=(size=8) label="Prop." labelattrs=(size=8 weight=bold);
 	*label rate_CDN="rate C53/D06/N87";
-format bohf bohf_kort_nordland. andel_CDNU andel_CDN andel_C nlpct8.1 rate_CDN nlnum8.0;
+format bohf bohf_kort_nordland. andel_CDNU andel_CDN andel_C nlpct8.1 rate_CDN comma8.0;
 
 
 run;ods listing close;

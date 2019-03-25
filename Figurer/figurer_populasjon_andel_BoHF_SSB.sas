@@ -172,10 +172,10 @@ where bohf ne 8888;
 	where bohf ne 8888;
 	 	 keylegend "hp2" "hp1"/ location=outside position=bottom down=1 noborder titleattrs=(size=6);
 	 Yaxistable snittalder_SSB_i /Label location=inside labelpos=bottom position=right valueattrs=(size=7 family=arial) labelattrs=(size=7);
-     yaxis display=(noticks noline) label='Opptaksområde' labelattrs=(size=7 weight=bold) type=discrete discreteorder=data valueattrs=(size=7);
+     yaxis display=(noticks noline) label='Hospital referral area' labelattrs=(size=7 weight=bold) type=discrete discreteorder=data valueattrs=(size=7);
      xaxis /*display=(nolabel)*/ offsetmin=0.02 offsetmax=0.1 valueattrs=(size=7) label="Andel av totalbefolkningen" labelattrs=(size=7 weight=bold);
 label snittalder_SSB_i="Gj.sn. alder";
-format snittalder_SSB_i nlnum8.1 andel_totbef andel_totbef_16_55 andel_kv_16_55 andel_kv_16_55N andel_kv_16_pluss andel_kv_16_plussN nlpct8.;
+format snittalder_SSB_i comma8.1 andel_totbef andel_totbef_16_55 andel_kv_16_55 andel_kv_16_55N andel_kv_16_pluss andel_kv_16_plussN nlpct8.;
 
 title 'Andel 16-55 år (kvinner) - BoHF';
 
@@ -197,12 +197,12 @@ where bohf ne 8888;
 	where bohf ne 8888;
 	 keylegend "hp2" "hp1"/ location=outside position=bottom down=1 noborder titleattrs=(size=6);
 	 Yaxistable snittalder_SSB_i /Label location=inside labelpos=bottom position=right valueattrs=(size=7 family=arial) labelattrs=(size=7);
-     yaxis display=(noticks noline) label='Opptaksområde' labelattrs=(size=7 weight=bold) type=discrete discreteorder=data valueattrs=(size=7);
-     xaxis /*display=(nolabel)*/ offsetmin=0.02 offsetmax=0.1 valueattrs=(size=7) label="Andel av totalbefolkningen" labelattrs=(size=7 weight=bold);
+     yaxis display=(noticks noline) label='Hospital referral area' labelattrs=(size=7 weight=bold) type=discrete discreteorder=data valueattrs=(size=7);
+     xaxis /*display=(nolabel)*/ offsetmin=0.02 offsetmax=0.1 valueattrs=(size=7) label="Prop. of total population" labelattrs=(size=7 weight=bold);
 label snittalder_SSB_i="Gj.sn. alder";
-format snittalder_SSB_i nlnum8.1 andel_totbef andel_totbef_16_55 andel_kv_16_55 andel_kv_16_55N andel_kv_16_pluss andel_kv_16_plussN nlpct8.;
+format snittalder_SSB_i comma8.1 andel_totbef andel_totbef_16_55 andel_kv_16_55 andel_kv_16_55N andel_kv_16_pluss andel_kv_16_plussN nlpct8.;
 
-title 'Andel 16-55 år (kvinner) - BoHF';
+title 'Prop. 16-55 years (women) - BoHF';
 
 run;Title; ods listing close;
 

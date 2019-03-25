@@ -10,19 +10,19 @@
 %let fignavn=;
 %let type=inngr;
 %let tittel=Antall inngrep for kraftige/hyppige blødninger og endometriepolypper per 10 000 kvinner. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
+%let xlabel= Number per 10,000 women;
 %let tabellvar1=&tema._tot;
 *%let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1;* &tabellvar2;
-%let labeltabell=&tabellvar1="Inngrep";* &tabellvar2="Pasienter";
-%let formattabell=&tabellvar1 NLnum8.0;* &tabellvar2 NLnum8.0;
+%let labeltabell=&tabellvar1="Proc.";* &tabellvar2="Patients";
+%let formattabell=&tabellvar1 comma8.0;* &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
-%ratefig(datasett=&tema._tot_bohf);
+%ratefig(datasett=&tema._tot_bohf, sprak = en);
 
 %let mappe=&mappe_pdf;
-%ratefig(datasett=&tema._tot_bohf, bildeformat=pdf );
+%ratefig(datasett=&tema._tot_bohf, bildeformat=pdf, sprak = en);
 
 
 %let tema=KrafHyp;
@@ -53,10 +53,10 @@ proc sgplot data=&tema._bohf noborder noautolegend sganno=anno pad=(Bottom=5%);
     
 	 Yaxistable antall_1 antall_2/ Label location=inside labelpos=bottom position=right valueattrs=(size=8 family=arial) labelattrs=(size=8);
      yaxis display=(noticks noline) label='Opptaksområde' labelattrs=(size=8 weight=bold) type=discrete discreteorder=data valueattrs=(size=8);
-     xaxis offsetmin=0.02 offsetmax=0.02  valueattrs=(size=8) label='Antall pr. 10 000 kvinner' labelattrs=(size=8 weight=bold);
+     xaxis offsetmin=0.02 offsetmax=0.02  valueattrs=(size=8) label='Number per 10,000 women' labelattrs=(size=8 weight=bold);
      
 	 label antall_1="Inngrep, med polypper" antall_2="Inngrep, uten polypper";
-	 format antall_1 antall_2 nlnum8.0;
+	 format antall_1 antall_2 comma8.0;
      title 'Inngrep for kraftige/hyppige blødninger og polypper pr 10 000 kvinner, fordelt på BoHF, gjennomsnitt for perioden 2015-2017';
 
 run;Title; ods listing close;

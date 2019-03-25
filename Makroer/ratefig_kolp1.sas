@@ -1,4 +1,4 @@
-%macro ratefig_kolp1(datasett=, aar1=2015, aar2=2016, aar3=2017, bildeformat=png, noxlabel=0,sprak=no);
+%macro ratefig_kolp1(datasett=, aar1=2015, aar2=2016, aar3=2017, bildeformat=png, noxlabel=0,sprak=en);
 
 /*Setter aktuelle rater i datasettet til missing hvis antall observasjoner er under grensen (nkrav)*/
 Data &datasett;

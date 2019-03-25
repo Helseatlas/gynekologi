@@ -13,16 +13,16 @@
 %let fignavn=;
 %let type=inngr;
 %let tittel=Antall inngrep for kraftig og/eller hyppig menstruasjon per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
+%let xlabel= Number per 10,000 women;
 %let tabellvar1=&tema._tot;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Inngrep" &tabellvar2="Innbyggere";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let labeltabell=&tabellvar1="Proc." &tabellvar2="Innbyggere";
+%let formattabell=&tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
-%ratefig(datasett=&tema._tot_bohf);
+%ratefig(datasett=&tema._tot_bohf, sprak = en);
 
 
 /***************************************************************/
@@ -34,7 +34,7 @@
 %let fignavn=type; *additional info for figure name, can be empty;
 %let type=inngr;    *inngrep, konsultasjoner, or undersøkelser;
 %let tittel=Antall inngrep for kraftig og/eller hyppig menstruasjon per 10 000 kvinner. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
+%let xlabel= Number per 10,000 women;
 %let anno=ANNO;
 %let tabellvar1=Andel&del1.;/*fra forbruksmal*/
 %let tabellvar2=Andel&del3.;/*fra forbruksmal*/
@@ -42,9 +42,9 @@
 %let tabellvar3=tot_antall;/*fra forbruksmal*/
 %let tabellvariable= &tabellvar1 &tabellvar2 &tabellvar3;
 %let label_1=ER/EA;
-%let label_2=Andre;
-%let label_3=Hysterektomi;
-%let labeltabell=&tabellvar1="ER/EA" &tabellvar2="Hyst." &tabellvar3="Inngrep";
+%let label_2=Other;
+%let label_3=Hysterectomy;
+%let labeltabell=&tabellvar1="ER/EA" &tabellvar2="Hyst." &tabellvar3="Proc.";
 
 %let mappe=&mappe_png;
 %ratefig_tredeltSoyle(del1=KHB_d_dp_tot, del2=KHB_dp_tot, del3=KHB_h_dp_tot);
@@ -59,31 +59,31 @@
 
 %let dsn1=&tema._apen_dp_tot_bohf;
 %let rv1=&tema._apen_dp_tot;
-%let label_1=Åpne;
+%let label_1=Open;
 
 %let dsn2=&tema._Lap_dp_tot_bohf;
 %let rv2=&tema._Lap_dp_tot;
-%let label_12=Laparaskopiske;
+%let label_12=Laparoscopic;
 
 %let dsn3=&tema._Vag_dp_tot_bohf;
 %let rv3=&tema._Vag_dp_tot;
-%let label_alle=Vaginale;
+%let label_alle=Vaginal;
 
 %let fignavn=alv;
 %let type=inngr;
-%let xlabel=Andel;
+%let xlabel=Proportion;
 %let tabellvar1=tot_antall;
 %let tabellvar2=;
 %let tabellvariable=;*&tabellvar1;
-%let labeltabell=;*&tabellvar1="Inngrep";
-%let formattabell=&tabellvar1 NLnum8.0;
+%let labeltabell=;*&tabellvar1="Proc.";
+%let formattabell=&tabellvar1 comma8.0;
 %let plass_scat=0.5;
 
 %let mappe=&mappe_png;
-%andelsfig_0_100(n_datasett=3, text_a1=Åpne);
+%andelsfig_0_100(n_datasett=3, text_a1=Open, sprak = en);
 
 %let mappe=&mappe_pdf;
-%andelsfig_0_100(n_datasett=3, text_a1=Åpne, bildeformat=pdf );
+%andelsfig_0_100(n_datasett=3, text_a1=Open, bildeformat=pdf, sprak = en);
 
 
 
@@ -128,8 +128,8 @@ run;
 %let tabellvar1=tot_antall;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Inngrep" &tabellvar2="Innbyggere";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let labeltabell=&tabellvar1="Proc." &tabellvar2="Innbyggere";
+%let formattabell=&tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %ratefig_todeltSoyle(datasett=&tema._bohf);*/
@@ -149,8 +149,8 @@ run;
 %let tabellvar1=&tema._tot;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Inngrep" &tabellvar2="Innbyggere";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let labeltabell=&tabellvar1="Proc." &tabellvar2="Innbyggere";
+%let formattabell=&tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %ratefig(datasett=&tema._tot_bohf);*/
@@ -178,8 +178,8 @@ run;
 %let tabellvar1=tot_antall;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Inngrep" &tabellvar2="Innbyggere";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let labeltabell=&tabellvar1="Proc." &tabellvar2="Innbyggere";
+%let formattabell=&tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %ratefig_todeltSoyle(datasett=&tema._bohf);*/

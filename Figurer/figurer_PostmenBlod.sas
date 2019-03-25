@@ -26,21 +26,21 @@ run;
 %let fignavn=offpriv;
 %let type=kons;
 %let tittel=Antall polikliniske kontakter for postmenopausale blødninger per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
-%let label_1=Off. sykehus;
-%let label_2=Avtalespesialist;
+%let xlabel= Number per 10,000 women;
+%let label_1=Publ. hospital;
+%let label_2=Priv. practice;
 %let tabellvar1=tot_antall;
 %let tabellvar2=antall_3;
 %let tabellvariable= &tabellvar1;* &tabellvar2;
-%let labeltabell=&tabellvar1="Kontakter";* &tabellvar2="Pasienter";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let labeltabell=&tabellvar1="Contacts";* &tabellvar2="Patients";
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
-%ratefig_todeltSoyle(datasett=&tema._bohf,bohf_format=bohf_kort_Nordland);
+%ratefig_todeltSoyle(datasett=&tema._bohf,bohf_format=bohf_kort_Nordland, sprak = en);
 
 %let mappe=&mappe_pdf;
-%ratefig_todeltSoyle(datasett=&tema._bohf,bohf_format=bohf_kort_Nordland, bildeformat=pdf );
+%ratefig_todeltSoyle(datasett=&tema._bohf,bohf_format=bohf_kort_Nordland, bildeformat=pdf, sprak = en);
 
 
 /*Andel som har fått endombiopsi/utskraping*/
@@ -57,19 +57,19 @@ run;
 %let fignavn=diagEndo;
 %let type=kons;
 %let tittel=Andel polikliniske kontakter for postmenopausale blødninger med endometriebiopsi og/eller utstraping per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Andel;
+%let xlabel= Proportion;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Kontakter" &tabellvar2="Med biopsi/utskr.";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let labeltabell=&tabellvar1="Contacts" &tabellvar2="With biopsy/curettage";
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
-%andelsfig(datasett=&tema._bohf);
+%andelsfig(datasett=&tema._bohf, sprak = en);
 
 %let mappe=&mappe_pdf;
-%andelsfig(datasett=&tema._bohf, bildeformat=pdf );
+%andelsfig(datasett=&tema._bohf, bildeformat=pdf, sprak = en);
 
 
 

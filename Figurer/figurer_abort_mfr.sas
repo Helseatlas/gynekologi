@@ -17,19 +17,19 @@
 %let fignavn=kirmed;
 %let type=allekvinner; /*Angir populasjon/nevner*/
 %let tittel=Antall selvbestemte aborter, per. 10 000 kvinner. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
+%let xlabel= Number per 10,000 women;
 %let label_2=Kirurgisk metode;
 %let label_1=Medikamentell metode;
 %let tabellvar1=tot_antall;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
 %let labeltabell=&tabellvar1="Aborter" &tabellvar2="Kvinner";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let formattabell=&tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 %let anno=ANNOMFRSSB;
 
 %let mappe=&mappe_png;
-%ratefig_todeltSoyle(datasett=&tema._kirmed_bohf, aar1=2015, aar2=2016, aar3=2017);
+%ratefig_todeltSoyle(datasett=&tema._kirmed_bohf, aar1=2015, aar2=2016, aar3=2017, sprak = en);
 
 
 /***************************************************/
@@ -42,20 +42,20 @@
 %let fignavn=kir;
 %let type=allekvinner; /*Angir populasjon/nevner*/
 %let tittel=Kirurgiske aborter som andel av alle selvbestemte aborter. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Andel;
+%let xlabel= Prop.;
 %let tabellvar1=antall_2;
 %let tabellvar2=antall_1;
 %let tabellvariable= &tabellvar1 &tabellvar2;
 %let labeltabell=&tabellvar1="Kir." &tabellvar2="Med.";
-%let formattabell=&tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0;
+%let formattabell=&tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 %let anno=ANNOMFRSSB;
 
 %let mappe=&mappe_png;
-%andelsfig(datasett=&tema._kirmed_bohf, labelcol=black);
+%andelsfig(datasett=&tema._kirmed_bohf, labelcol=black, sprak = en);
 
 %let mappe=&mappe_pdf;
-%andelsfig(datasett=&tema._kirmed_bohf, bildeformat=pdf, labelcol=black);
+%andelsfig(datasett=&tema._kirmed_bohf, bildeformat=pdf, labelcol=black, sprak = en);
 
 
 %let anno=anno;

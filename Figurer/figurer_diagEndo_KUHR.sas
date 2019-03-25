@@ -34,12 +34,12 @@ run;
 %let tabellvar2=Innbyggere;
 
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Kontakter" &tabellvar2="Kvinner";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0 ;
+%let labeltabell=&tabellvar1="Contacts" &tabellvar2="Kvinner";
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0 ;
 %let skala=;
 
 %let mappe=&mappe_png;
-%ratefig(datasett=&tema._bohf,bohf_format=bohf_kort_Nordland);
+%ratefig(datasett=&tema._bohf,bohf_format=bohf_kort_Nordland, sprak = en);
 
 /*Lager rankingtabell*/
 proc sort data=&tema._bohf;
@@ -102,24 +102,24 @@ run;
 %let fignavn=NPR_KUHR;
 %let type=unders;
 %let tittel=Antall kontakter hos fastlege og i spesialisthelsetjenesten med endometriebiopsi/fraksjonert utskraping, per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
+%let xlabel= Number per 10,000 women;
 
 %let label_1=Spes. helsetj.;
-%let label_2=Fastlege;
+%let label_2=RGP;
 
 %let tabellvar1=alle_kontakter;
 %let tabellvar2=andel_FL;
 
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Kontakter" &tabellvar2="Andel fastlege";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLnum8.0 &tabellvar2 NLnum8.0 andel_FL nlpct8.1;
+%let labeltabell=&tabellvar1="Contacts" &tabellvar2="Andel fastlege";
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0 andel_FL nlpct8.1;
 %let skala=;
 
 %let mappe=&mappe_png;
-%ratefig_todeltSoyle(datasett=&tema._npr_kuhr_bohf,bohf_format=bohf_kort_Nordland);
+%ratefig_todeltSoyle(datasett=&tema._npr_kuhr_bohf,bohf_format=bohf_kort_Nordland, sprak = en);
 
 %let mappe=&mappe_pdf;
-%ratefig_todeltSoyle(datasett=&tema._npr_kuhr_bohf,bohf_format=bohf_kort_Nordland, bildeformat=pdf );
+%ratefig_todeltSoyle(datasett=&tema._npr_kuhr_bohf,bohf_format=bohf_kort_Nordland, bildeformat=pdf, sprak = en);
 
 
 %let vis_aarsvar_todelt=1;
@@ -130,7 +130,7 @@ run;
 %let fignavn=off_priv_FL; *additional info for figure name, can be empty;
 %let type=unders;    *inngrep, konsultasjoner, or undersøkelser;
 %let tittel=Antall kontakter hos fastlege og i spesialisthelsetjenesten med endometriebiopsi, per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Antall pr. 10 000 kvinner;
+%let xlabel= Number per 10,000 women;
 %let anno=ANNO;
 %let tema=diagEndo;
 *%let tabellvar1=Andel&del1.;
@@ -139,8 +139,8 @@ run;
 %let tabellvariable= &tabellvar1;
 %let label_1=Poli. off.;
 %let label_2=Poli. priv.;
-%let label_3=Fastlege;
-%let labeltabell=&tabellvar1="Fastlege";
+%let label_3=RGP;
+%let labeltabell=&tabellvar1="RGP";
 
 %let mappe=&mappe_png;
 %ratefig_tredeltSoyle(del1=diagEndoB_p_off, del2=diagEndoB_p_priv, del3=endombiopsi_kontakter);
