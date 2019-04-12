@@ -47,10 +47,10 @@
 %let labeltabell=&tabellvar1="ER/EA" &tabellvar2="Hyst." &tabellvar3="Proc.";
 
 %let mappe=&mappe_png;
-%ratefig_tredeltSoyle(del1=KHB_d_dp_tot, del2=KHB_dp_tot, del3=KHB_h_dp_tot);
+%ratefig_tredeltSoyle(del1=KHB_d_dp_tot, del2=KHB_dp_tot, del3=KHB_h_dp_tot, sprak = en);
 
 %let mappe=&mappe_pdf;
-%ratefig_tredeltSoyle(del1=KHB_d_dp_tot, del2=KHB_dp_tot, del3=KHB_h_dp_tot, bildeformat=pdf );
+%ratefig_tredeltSoyle(del1=KHB_d_dp_tot, del2=KHB_dp_tot, del3=KHB_h_dp_tot, bildeformat=pdf, sprak = en);
 
 
 /*FIGUR MED ANDEL FRA 0 TIL 100*/

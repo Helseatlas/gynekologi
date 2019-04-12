@@ -17,7 +17,7 @@ quit;
 
 
 %Let bildeformat=pdf;
-%let mappe=Figurer\Populasjon\fig_pdf;
+%let mappe=Figurer_eng\Populasjon;
 
 proc sort data=UTV_NPR_SSB_bo;
 by descending andel_utv;
@@ -41,7 +41,7 @@ proc sgplot data=UTV_NPR_SSB_bo noborder noautolegend sganno=anno pad=(Bottom=5%
 
 run;Title; ods listing close;
 
-%let mappe=Figurer\Populasjon\;
+%let mappe=Figurer_eng\Populasjon\;
 %Let bildeformat=png;
 
 /* Merge SSB with selected utvalg*/
@@ -95,10 +95,10 @@ run;Title; ods listing close;
 %utvalg_ssb(utvalg=kolp, tellevar= priv_unik);
 
 %Let bildeformat=pdf;
-%let mappe=Figurer\Populasjon\fig_pdf;
+%let mappe=Figurer_eng\Populasjon;
 %utvalg_ssb(utvalg=kolp, tellevar= priv_unik);
 
-%let mappe=Figurer\Populasjon\;
+%let mappe=Figurer_eng\Populasjon\;
 %Let bildeformat=png;
 
 /*%Let label_utvalg=Andel &utvalg;

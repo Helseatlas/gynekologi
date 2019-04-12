@@ -23,7 +23,7 @@ options sasautos=("&filbane.Makroer" SASAUTOS);
 %include "&filbane.rateprogram\rateberegninger.sas";
 
 %include "&filbane.stiler\stil_figur.sas";
-%include "&filbane.stiler\Anno_logo_kilde_NPR_SSB.sas";
+%include "&filbane.stiler\Anno_logo_kilde_NPR_SSB_eng.sas";
 
 /******  DATAGRUNNLAG  ****************************************************************/
 

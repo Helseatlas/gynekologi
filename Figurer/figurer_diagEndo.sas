@@ -18,20 +18,20 @@
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med endometriebiopsi og utskrapning per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
 %let xlabel=Number per 10,000 women;
-%let label_1=Endometriebiopsi;
-%let label_2=Utskrapning;
+%let label_1=Endometrial biopsies;
+%let label_2=Curettages;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Biopsi" &tabellvar2="Utskrapning";
+%let labeltabell=&tabellvar1="Biopsy" &tabellvar2="Curettage";
 %let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
-%ratefig_todeltSoyle(datasett=&tema._BU_bohf,bohf_format=bohf_kort_Nordland);
+%ratefig_todeltSoyle(datasett=&tema._BU_bohf,bohf_format=bohf_kort_Nordland, sprak = en);
 
 %let mappe=&mappe_pdf;
-%ratefig_todeltSoyle(datasett=&tema._BU_bohf,bohf_format=bohf_kort_Nordland, bildeformat=pdf );
+%ratefig_todeltSoyle(datasett=&tema._BU_bohf,bohf_format=bohf_kort_Nordland, bildeformat=pdf, sprak = en);
 
 
 /***************************************************/
@@ -53,20 +53,20 @@
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med endometriebiopsi og utskrapning per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
 %let xlabel= Number per 10,000 women;
-%let label_1=Endometriebiopsi;
-%let label_2=utskrapning;
+%let label_1=Endometrial biopsies;
+%let label_2=Curettages;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Biopsi" &tabellvar2="utskrapning";
+%let labeltabell=&tabellvar1="Biopsy" &tabellvar2="Curettage";
 %let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
-%ratefig_todeltSoyle(datasett=&tema._BU_u50_bohf,bohf_format=bohf_kort_Nordland);
+%ratefig_todeltSoyle(datasett=&tema._BU_u50_bohf,bohf_format=bohf_kort_Nordland, sprak = en);
 
 %let mappe=&mappe_pdf;
-%ratefig_todeltSoyle(datasett=&tema._BU_u50_bohf,bohf_format=bohf_kort_Nordland, bildeformat=pdf );
+%ratefig_todeltSoyle(datasett=&tema._BU_u50_bohf,bohf_format=bohf_kort_Nordland, bildeformat=pdf, sprak = en);
 
 
 /***************************************************/
@@ -88,20 +88,20 @@
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med endometriebiopsi og utskrapning per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
 %let xlabel= Number per 10,000 women;
-%let label_1=Endometriebiopsi;
-%let label_2=utskrapning;
+%let label_1=Endometrial biopsies;
+%let label_2=Curettages;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Biopsi" &tabellvar2="utskrapning";
+%let labeltabell=&tabellvar1="Biopsy" &tabellvar2="Curettage";
 %let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
-%ratefig_todeltSoyle(datasett=&tema._BU_o50_bohf,bohf_format=bohf_kort_Nordland);
+%ratefig_todeltSoyle(datasett=&tema._BU_o50_bohf,bohf_format=bohf_kort_Nordland, sprak = en);
 
 %let mappe=&mappe_pdf;
-%ratefig_todeltSoyle(datasett=&tema._BU_o50_bohf,bohf_format=bohf_kort_Nordland, bildeformat=pdf );
+%ratefig_todeltSoyle(datasett=&tema._BU_o50_bohf,bohf_format=bohf_kort_Nordland, bildeformat=pdf, sprak = en);
 
 
 /***************************************************/
@@ -123,20 +123,20 @@
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med endometriebiopsi og utskrapning per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
 %let xlabel= Number per 10,000 women;
-%let label_1=Endometriebiopsi;
-%let label_2=utskrapning;
+%let label_1=Endometrial biopsies;
+%let label_2=Curettages;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Biopsi" &tabellvar2="utskrapning";
+%let labeltabell=&tabellvar1="Biopsy" &tabellvar2="Curettage";
 %let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
-%ratefig_todeltSoyle(datasett=&tema._BU_pmb_bohf,bohf_format=bohf_kort_Nordland);
+%ratefig_todeltSoyle(datasett=&tema._BU_pmb_bohf,bohf_format=bohf_kort_Nordland, sprak = en);
 
 %let mappe=&mappe_pdf;
-%ratefig_todeltSoyle(datasett=&tema._BU_pmb_bohf,bohf_format=bohf_kort_Nordland, bildeformat=pdf );
+%ratefig_todeltSoyle(datasett=&tema._BU_pmb_bohf,bohf_format=bohf_kort_Nordland, bildeformat=pdf, sprak = en);
 
 
 /***************************************************/
@@ -158,20 +158,20 @@
 %let type=unders;
 %let tittel=Antall polikliniske undersøkelser med endometriebiopsi og utskrapning per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
 %let xlabel= Number per 10,000 women;
-%let label_1=Endometriebiopsi;
-%let label_2=utskrapning;
+%let label_1=Endometrial biopsies;
+%let label_2=Curettages;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Biopsi" &tabellvar2="utskrapning";
+%let labeltabell=&tabellvar1="Biopsy" &tabellvar2="Curettage";
 %let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
-%ratefig_todeltSoyle(datasett=&tema._BU_A_bohf,bohf_format=bohf_kort_Nordland);
+%ratefig_todeltSoyle(datasett=&tema._BU_A_bohf,bohf_format=bohf_kort_Nordland, sprak = en);
 
 %let mappe=&mappe_pdf;
-%ratefig_todeltSoyle(datasett=&tema._BU_A_bohf,bohf_format=bohf_kort_Nordland, bildeformat=pdf );
+%ratefig_todeltSoyle(datasett=&tema._BU_A_bohf,bohf_format=bohf_kort_Nordland, bildeformat=pdf, sprak = en);
 
 
 
@@ -204,7 +204,7 @@
 %let skala=;
 
 %let mappe=&mappe_png;
-%ratefig_todeltSoyle(datasett=&tema._bohf,bohf_format=bohf_kort_Nordland);
+%ratefig_todeltSoyle(datasett=&tema._bohf,bohf_format=bohf_kort_Nordland, sprak = en);
 
 /***************************************************/
 /* Lag figur utskrapning                 */
@@ -221,7 +221,7 @@
 %let tabellvar1=&rv1;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Proc." &tabellvar2="Kvinner";
+%let labeltabell=&tabellvar1="Proc." &tabellvar2="Women";
 %let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
@@ -246,11 +246,11 @@
 %let fignavn=Hdiag_N92;
 %let type=inngr;
 %let tittel=Andel utskrapninger med N92 som hdiag. Aldersstandardisert. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Prop.;
+%let xlabel= Proportion;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Alle" &tabellvar2="N92";
+%let labeltabell=&tabellvar1="All" &tabellvar2="N92";
 %let formattabell=&tabellvar1 comma8.0 &tabellvar2 comma8.0 andel2 comma8.1 ;
 %let skala=;
 

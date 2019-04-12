@@ -23,7 +23,7 @@
 %let tabellvar1=tot_antall;
 %let tabellvar2=Innbyggere;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Aborter" &tabellvar2="Kvinner";
+%let labeltabell=&tabellvar1="Abortions" &tabellvar2="Women";
 %let formattabell=&tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 %let anno=ANNOMFRSSB;
@@ -42,11 +42,11 @@
 %let fignavn=kir;
 %let type=allekvinner; /*Angir populasjon/nevner*/
 %let tittel=Kirurgiske aborter som andel av alle selvbestemte aborter. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
-%let xlabel= Prop.;
+%let xlabel= Proportion;
 %let tabellvar1=antall_2;
 %let tabellvar2=antall_1;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Kir." &tabellvar2="Med.";
+%let labeltabell=&tabellvar1="Surg." &tabellvar2="Med.";
 %let formattabell=&tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 %let anno=ANNOMFRSSB;
