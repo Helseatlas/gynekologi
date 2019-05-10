@@ -36,20 +36,20 @@ run;
 %end;
 
 ODS Graphics ON /reset=All imagename="&tema._&type._rate_&fignavn" imagefmt=&bildeformat border=off width=640px height=520px;
-ODS Listing Image_dpi=500 GPATH="&bildelagring.&mappe";
+ODS Listing Image_dpi=300 GPATH="&bildelagring.&mappe";
 title "&tittel";
 proc sgplot data=&datasett noborder noautolegend sganno=&anno pad=(Bottom=5%);
 %if &vis_misstxt ne 1 %then %do;
 hbarparm category=bohf response=Ratesnitt2 / fillattrs=(color=CX95BDE6) missing outlineattrs=(color=CX00509E) name="hp1" 
-legendlabel="Kontakter på sykehus & kontakter hos avtalespesialist med biopsi"; 
+legendlabel="Contacts at public or private treatment providers with cervical biopsy";  /*BoHFene*/
 hbarparm category=bohf response=rate_4 / fillattrs=(color=CX00509E) missing outlineattrs=(color=CX00509E) name="hp2" 
-legendlabel="Kontakter hos avtalespesialist, bare kolposkopi"; 
+legendlabel="Contacts at private treatment providers, only colposcopy"; 
 %end; 
 %if &vis_misstxt=1 %then %do;
 hbarparm category=bohf response=RateSnitt / fillattrs=(color=CX95BDE6) missing outlineattrs=(color=CX00509E) name="hp1" 
-legendlabel="Kontakter på sykehus & kontakter hos avtalespesialist med biopsi";  /*BoHFene*/
+legendlabel="Contacts at public or private treatment providers with cervical biopsy";  /*BoHFene*/
 hbarparm category=bohf response=rate_4 / fillattrs=(color=CX00509E) missing outlineattrs=(color=CX00509E) name="hp2" 
-legendlabel="Kontakter hos avtalespesialist, bare kolposkopi"; 
+legendlabel="Contacts at private treatment providers, only colposcopy"; 
 %end; 
 hbarparm category=bohf response=Snittrate / fillattrs=(color=CXC3C3C3) outlineattrs=(color=CX4C4C4C);		/*Norge*/
 hbarparm category=bohf response=nrate_4 / fillattrs=(color=CX4C4C4C) missing outlineattrs=(color=CX4C4C4C);

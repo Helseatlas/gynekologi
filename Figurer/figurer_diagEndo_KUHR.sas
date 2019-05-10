@@ -58,7 +58,7 @@ run;
 /* Lag figur KUHR kontakter + NPR konsultasjoner   */
 /***************************************************/
 
-%include "&filbane\Stiler\Anno_logo_kilde_NPR_KUHR_SSB.sas";
+%include "&filbane\Stiler\Anno_logo_kilde_NPR_KUHR_SSB_eng.sas";
 
 %let tema=endombiopsi;
 
@@ -104,15 +104,15 @@ run;
 %let tittel=Antall kontakter hos fastlege og i spesialisthelsetjenesten med endometriebiopsi/fraksjonert utskraping, per 10 000 innbyggere. Aldersstandardiserte rater. Gjennomsnitt per år i perioden 2015-17.;
 %let xlabel= Number per 10,000 women;
 
-%let label_1=Spes. helsetj.;
+%let label_1=Spec. healthcare;
 %let label_2=RGP;
 
 %let tabellvar1=alle_kontakter;
 %let tabellvar2=andel_FL;
 
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Contacts" &tabellvar2="Andel fastlege";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0 andel_FL nlpct8.1;
+%let labeltabell=&tabellvar1="Contacts" &tabellvar2="% RGP";
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0 andel_FL percent8.1;
 %let skala=;
 
 %let mappe=&mappe_png;

@@ -33,10 +33,10 @@ proc sgplot data=UTV_NPR_SSB_bo noborder noautolegend sganno=anno pad=(Bottom=5%
     
 	 Yaxistable andel_utv / Label location=inside labelpos=top position=right valueattrs=(size=8 family=arial) labelattrs=(size=8);
      yaxis display=(noticks noline) label='Hospital referral areas' labelattrs=(size=8 weight=bold) type=discrete discreteorder=data valueattrs=(size=8);
-     xaxis offsetmin=0.02 offsetmax=0.02  valueattrs=(size=8) label='Andel' labelattrs=(size=8 weight=bold);
+     xaxis offsetmin=0.02 offsetmax=0.02  valueattrs=(size=8) label='Proportion' labelattrs=(size=8 weight=bold);
      
 	 label andel_utv="Prop.";
-	 format andel_utv nlpct8.1;
+	 format andel_utv percent8.1;
      title 'Kvinner i helseatlas som andel av alle kvinner, fordelt på BoHF, gjennomsnitt for perioden 2015-2017';
 
 run;Title; ods listing close;
@@ -82,7 +82,7 @@ proc sgplot data=&utvalg._utv_SSB_bo noborder noautolegend sganno=anno pad=(Bott
      xaxis offsetmin=0.02 offsetmax=0.02  valueattrs=(size=8) label='Andel' labelattrs=(size=8 weight=bold);
      
 	 label snittalder_SSB_i="Snittalder, SSB" snittalder_&utvalg.="Snittalder, &utvalg.";
-	 format innbyggere_SSB_i comma8.0 tot_unik_utv comma8.0 snittalder_SSB_i snittalder_utv snittalder_&utvalg.  comma8.1 andel_&utvalg._utv andel_utv andel_&utvalg._SSB utv_minus_&utvalg nlpct8.1;
+	 format innbyggere_SSB_i comma8.0 tot_unik_utv comma8.0 snittalder_SSB_i snittalder_utv snittalder_&utvalg.  comma8.1 andel_&utvalg._utv andel_utv andel_&utvalg._SSB utv_minus_&utvalg percent8.1;
      title 'Kvinner i helseatlas som andel av alle kvinner, fordelt på BoHF, gjennomsnitt for perioden 2015-2017';
 
 run;Title; ods listing close;

@@ -61,7 +61,7 @@ run;
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Contacts" &tabellvar2="With biopsy/curettage";
+%let labeltabell=&tabellvar1="Contacts" &tabellvar2="With biopsy/cur.";
 %let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 

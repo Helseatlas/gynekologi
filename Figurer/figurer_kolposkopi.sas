@@ -91,8 +91,8 @@
 %let tabellvar1=andel_2_1;
 %let tabellvar2=antall_1;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Andel off. sykehus" &tabellvar"Contacts";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLpct8.1 &tabellvar2 comma8.0;
+%let labeltabell=&tabellvar1="% public" &tabellvar2="Contacts";
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 percent8.1 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
@@ -124,8 +124,8 @@
 %let tabellvar1=andel_2_1;
 %let tabellvar2=antall_1;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Andel avt.spes." &tabellvar2="Contacts";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 NLpct8.1 &tabellvar2 comma8.0;
+%let labeltabell=&tabellvar1="Private" &tabellvar2="Contacts";
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 percent8.1 &tabellvar2 comma8.0;
 %let skala=;
 
 %let mappe=&mappe_png;
@@ -255,7 +255,7 @@
 %let tabellvar1=antall_1;
 %let tabellvar2=antall_2;
 %let tabellvariable= &tabellvar1 &tabellvar2;
-%let labeltabell=&tabellvar1="Med kolposkopi" &tabellvar2="Alle kontakter";
+%let labeltabell=&tabellvar1="With colposcopy" &tabellvar2="All contacts";
 %let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0;
 %let skala=;
 
@@ -383,7 +383,7 @@ run;
 ODS Graphics ON /reset=All imagename="&tema._unders_CDNU" imagefmt=pdf border=off ;
 ODS Listing Image_dpi=300 GPATH="&bildelagring.&mappe";
 proc sgplot data=&tema._CDNU_bohf noborder noautolegend sganno=anno pad=(Bottom=5%);
-hbarparm category=bohf response=andel_CDNU / fillattrs=(color=CX95BDE6)  outlineattrs=(color=CX00509E) missing name="hp1" legendlabel="Andre"; 
+hbarparm category=bohf response=andel_CDNU / fillattrs=(color=CX95BDE6)  outlineattrs=(color=CX00509E) missing name="hp1" legendlabel="Other"; 
 hbarparm category=bohf response=andel_CDN  / fillattrs=(color=CX568BBF)  outlineattrs=(color=CX00509E) missing name="hp2" legendlabel="D06/N87"; 
 hbarparm category=bohf response=andel_C    / fillattrs=(color=CX00509E)  outlineattrs=(color=CX00509E) missing name="hp3" legendlabel="C53"; 
 where bohf ne 8888;

@@ -75,7 +75,7 @@ run;
 %let plass_scat=0.05;
 
 %let mappe=&mappe_png;
-%andelsfig_0_100(n_datasett=3, text_a1=Open, sprak = en;
+%andelsfig_0_100(n_datasett=3, text_a1=Open, sprak = en);
 
 %let mappe=&mappe_pdf;
 %andelsfig_0_100(n_datasett=3, text_a1=Open, bildeformat=pdf, sprak = en);
