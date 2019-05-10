@@ -1,6 +1,6 @@
 ***************;
 /*ANALYSE FOR SSB-befolkningen:*/
-* andel av totalbefolkningen som er henholdsvis 16-55 Ã¥r og 56+;
+* andel av totalbefolkningen som er henholdsvis 16-55 år og 56+;
 
 data populasjon2015_17;
   set populasjon2015_17;
@@ -162,8 +162,8 @@ ODS Graphics ON /reset=All imagename="Andel_BoHF_SSBbefolkningen" imagefmt=png b
 ODS Listing Image_dpi=300 GPATH="&bildelagring.&mappe";
 title "&tittel";
 proc sgplot data=antall_bohf_malder noborder noautolegend sganno=annoSSB pad=(Bottom=5%);
-hbarparm category=bohf response=andel_kv_16_pluss       / fillattrs=(color=CX95BDE6) missing name="hp1" legendlabel="56+ Ã¥r"; 
-hbarparm category=bohf response=andel_kv_16_55 / fillattrs=(color=CX00509E) missing name="hp2" legendlabel="16-55 Ã¥r"; 
+hbarparm category=bohf response=andel_kv_16_pluss       / fillattrs=(color=CX95BDE6) missing name="hp1" legendlabel="56+ år"; 
+hbarparm category=bohf response=andel_kv_16_55 / fillattrs=(color=CX00509E) missing name="hp2" legendlabel="16-55 år"; 
 where bohf ne 8888;
 /*hbarparm category=bohf response=andel_kv_16_plussN       / fillattrs=(color=CXC3C3C3);*/
 /*hbarparm category=bohf response=andel_kv_16_55N / fillattrs=(color=CX4C4C4C);*/
@@ -175,9 +175,9 @@ where bohf ne 8888;
      yaxis display=(noticks noline) label='Hospital referral area' labelattrs=(size=7 weight=bold) type=discrete discreteorder=data valueattrs=(size=7);
      xaxis /*display=(nolabel)*/ offsetmin=0.02 offsetmax=0.1 valueattrs=(size=7) label="Andel av totalbefolkningen" labelattrs=(size=7 weight=bold);
 label snittalder_SSB_i="Gj.sn. alder";
-format snittalder_SSB_i comma8.1 andel_totbef andel_totbef_16_55 andel_kv_16_55 andel_kv_16_55N andel_kv_16_pluss andel_kv_16_plussN nlpct8.;
+format snittalder_SSB_i comma8.1 andel_totbef andel_totbef_16_55 andel_kv_16_55 andel_kv_16_55N andel_kv_16_pluss andel_kv_16_plussN percent8.;
 
-title 'Andel 16-55 Ã¥r (kvinner) - BoHF';
+title 'Andel 16-55 år (kvinner) - BoHF';
 
 run;Title; ods listing close;
 
@@ -187,8 +187,8 @@ ODS Graphics ON /reset=All imagename="Andel_BoHF_SSBbefolkningen" imagefmt=pdf b
 ODS Listing Image_dpi=300 GPATH="&bildelagring.&mappe";
 title "&tittel";
 proc sgplot data=antall_bohf_malder noborder noautolegend sganno=annoSSB pad=(Bottom=5%);
-hbarparm category=bohf response=andel_kv_16_pluss       / fillattrs=(color=CX95BDE6) missing name="hp1" legendlabel="56+ Ã¥r"; 
-hbarparm category=bohf response=andel_kv_16_55 / fillattrs=(color=CX00509E) missing name="hp2" legendlabel="16-55 Ã¥r"; 
+hbarparm category=bohf response=andel_kv_16_pluss       / fillattrs=(color=CX95BDE6) missing name="hp1" legendlabel="56+ år"; 
+hbarparm category=bohf response=andel_kv_16_55 / fillattrs=(color=CX00509E) missing name="hp2" legendlabel="16-55 år"; 
 where bohf ne 8888;
 /*hbarparm category=bohf response=andel_kv_16_plussN       / fillattrs=(color=CXC3C3C3);*/
 /*hbarparm category=bohf response=andel_kv_16_55N / fillattrs=(color=CX4C4C4C);*/
@@ -200,7 +200,7 @@ where bohf ne 8888;
      yaxis display=(noticks noline) label='Hospital referral area' labelattrs=(size=7 weight=bold) type=discrete discreteorder=data valueattrs=(size=7);
      xaxis /*display=(nolabel)*/ offsetmin=0.02 offsetmax=0.1 valueattrs=(size=7) label="Prop. of total population" labelattrs=(size=7 weight=bold);
 label snittalder_SSB_i="Gj.sn. alder";
-format snittalder_SSB_i comma8.1 andel_totbef andel_totbef_16_55 andel_kv_16_55 andel_kv_16_55N andel_kv_16_pluss andel_kv_16_plussN nlpct8.;
+format snittalder_SSB_i comma8.1 andel_totbef andel_totbef_16_55 andel_kv_16_55 andel_kv_16_55N andel_kv_16_pluss andel_kv_16_plussN percent8.;
 
 title 'Prop. 16-55 years (women) - BoHF';
 

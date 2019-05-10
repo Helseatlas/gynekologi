@@ -10,7 +10,7 @@ if &n_datasett=3 then do;
 andel_ds12=(rate_1+rate_2)/(rate_1+rate_2+rate_3);
 andel_ds1=rate_1/(rate_1+rate_2+rate_3);
 plass_scatter=&plass_scat;
-andel_ds1_text=cat("&text_a1", put(andel_ds1, nlpct8.1));
+andel_ds1_text=cat("&text_a1", put(andel_ds1, percent8.1));
 tot_antall=antall_1+antall_2+antall_3;
 
 if &vis_misstxt=1 then do;
@@ -28,7 +28,7 @@ end;
 if &n_datasett=2 then do;
 andel_ds1=rate_1/(rate_1+rate_2);
 plass_scatter=&plass_scat;
-andel_ds1_text=cat("&text_a1", put(andel_ds1, nlpct8.1));
+andel_ds1_text=cat("&text_a1", put(andel_ds1, percent8.1));
 
 if &vis_misstxt=1 then do;
 	if tot_antall lt &nkrav then do;
@@ -114,7 +114,7 @@ scatter x=plass y=bohf /datalabel=Misstext datalabelpos=right markerattrs=(size=
 	 xaxis offsetmin=0.02 offsetmax=0.05 valueattrs=(size=8) label="&xlabel" labelattrs=(size=8 weight=bold);
 	%end;
 	label &labeltabell;
-format andel_alle andel_ds12 andel_ds1 nlpct8.1 &formattabell;
+format andel_alle andel_ds12 andel_ds1 percent8.1 &formattabell;
 
 
 run;ods listing close;

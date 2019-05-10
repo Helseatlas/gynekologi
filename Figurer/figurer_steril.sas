@@ -64,7 +64,7 @@ run;
 %let tabellvar2=andel_2_1;
 %let tabellvariable= &tabellvar1 &tabellvar2;
 %let labeltabell=&tabellvar1="Proc." &tabellvar2="Prop. open";
-%let formattabell=&tabellvar1 comma8.0 &tabellvar2 NLpct8.0;
+%let formattabell=&tabellvar1 comma8.0 &tabellvar2 percent8.0;
 %let skala=;
 
 %let mappe=&mappe_png;

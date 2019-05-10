@@ -302,7 +302,7 @@ run;
 %let tabellvar3=andel_1_2;
 %let tabellvariable=;
 %let labeltabell=&tabellvar1="Med kolposkopi" &tabellvar2="Alle kontakter" &tabellvar3="Prop.";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0 &tabellvar3 NLpct8.1;
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0 &tabellvar3 percent8.1;
 %let skala=;
 
 %let mappe=&mappe_png;
@@ -340,7 +340,7 @@ run;
 %let tabellvar2=tot_antall;
 %let tabellvariable= &tabellvar1 &tabellvar2;
 %let labeltabell=&tabellvar1="Bare kolposkopi" &tabellvar2="Kolp. og/eller biopsi";
-%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0 &tabellvar3 NLpct8.1;
+%let formattabell=bohf bohf_kort_Nordland. &tabellvar1 comma8.0 &tabellvar2 comma8.0 &tabellvar3 percent8.1;
 %let skala=;
 
 %let mappe=&mappe_png;
@@ -370,7 +370,7 @@ andel_CDNU=1;
 andel_CDN=(rate_1+rate_2)/(rate_1+rate_2+rate_3);
 andel_C=rate_1/(rate_1+rate_2+rate_3);
 plass_scatter=0.1;
-andel_C_text=cat('C53', put(andel_C, nlpct8.1));
+andel_C_text=cat('C53', put(andel_C, percent8.1));
 rate_CDN=rate_1+rate_2;
 run;
 
@@ -394,7 +394,7 @@ where bohf ne 8888;
      yaxis display=(noticks noline) label='Hospital referral area' labelattrs=(size=8 weight=bold) type=discrete discreteorder=data valueattrs=(size=8);
      xaxis display=(nolabel) offsetmin=0.02 offsetmax=0.02 valueattrs=(size=8) label="Prop." labelattrs=(size=8 weight=bold);
 	*label rate_CDN="rate C53/D06/N87";
-format bohf bohf_kort_nordland. andel_CDNU andel_CDN andel_C nlpct8.1 rate_CDN comma8.0;
+format bohf bohf_kort_nordland. andel_CDNU andel_CDN andel_C percent8.1 rate_CDN comma8.0;
 
 
 run;ods listing close;
